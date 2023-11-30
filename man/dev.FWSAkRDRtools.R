@@ -18,8 +18,6 @@ rmarkdown::render('vignettes/02_Setup_FWSAkRDRtools.Rmd')
 rmarkdown::render('vignettes/03_FWSAkRDRtools_Tutorial.Rmd')
 
 # Update site
-pkgdown::clean_site()
-pkgdown::build_site(examples = FALSE)
 pkgdown::deploy_to_branch(
   clean = TRUE,
   branch = "gh-pages",
@@ -29,7 +27,10 @@ pkgdown::deploy_to_branch(
   examples = FALSE
 )
 
-pkgdown::build_site_github_pages(examples = FALSE)
+# pkgdown::clean_site()
+# pkgdown::build_site(examples = FALSE)
+pkgdown::build_reference(examples = FALSE)
+# pkgdown::build_site_github_pages(examples = FALSE)
 # usethis::use_github_action("pkgdown")
 # usethis::use_pkgdown_github_pages()
 # usethis::browse_github_actions()

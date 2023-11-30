@@ -9,9 +9,7 @@
 #' @seealso ```commit.files()```
 #' @export
 #' @examples
-#' \dontrun{
 #' e.g.commit<- commit.files(project = "mbmlb_010_Grey_headed_chickadee_hybridization", local.folder = getwd(), recursive = TRUE)
-#' }
 
 
 # check if incoming/incoming
