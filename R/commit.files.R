@@ -458,7 +458,7 @@ commit.files <-
                             paste0(
                               "\n[INPUT NEEDED]\nMultiple copies of '",
                               duplicate.files[a],
-                              "' are designated to be committed to '",
+                              "' are going to be committed to '",
                               gsub.RDR.dup.locs.conflict,
                               "'.\n\nHow do you want to proceed?"
                             )
