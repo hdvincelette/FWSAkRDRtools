@@ -128,6 +128,11 @@ e.g.tabular.data <-
     recursive = TRUE
   )
 
+e.g.commit <-
+  commit.files(project = "mbmlb_010_Grey_headed_chickadee_hybridization",
+               local.folder = getwd(),
+               recursive = TRUE)
+
 
 # NOTES
 
