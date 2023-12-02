@@ -13,6 +13,7 @@
 #' @examples
 #' # e.g.summary<- summarize.files(project = "mbmlb_007_NWR_Alaska_Landbird_Monitoring_Survey", subfolder = c("/", "final_data", "metadata"), incoming = TRUE, main = FALSE, recursive = TRUE)
 
+# progress bar digiart
 
 summarize.files <-
   function(project,
@@ -65,7 +66,7 @@ summarize.files <-
       for (a in 1:length(subfolder.pattern)) {
 
         message(paste0(
-          "Searching for subfolder(s) '",
+          "Searching for subfolder '",
           subfolder.pattern[a],
           "' in '",
           project,
@@ -113,7 +114,7 @@ summarize.files <-
       if (length(subfolder.list) == 0) {
         stop(
           paste0(
-            "Subfolder(s) '",
+            "Subfolder '",
             subfolder.pattern,
             "' not found in project folder ",
             project
@@ -133,41 +134,6 @@ summarize.files <-
         recurse  = TRUE,
       )
     }
-
-
-    # subfolder.list.pattern <- c()
-    #
-    # if (is.null(subfolder.pattern) == FALSE) {
-    #   for (b in 1:length(subfolder.pattern)) {
-    #     subfolder.list.pattern <-
-    #       c(
-    #         subfolder.list.pattern,
-    #         stringr::str_subset(subfolder.list, subfolder.pattern[b])
-    #       )
-    #   }
-    #   if (is.null(subfolder.list.pattern) == FALSE) {
-    #     subfolder.list <- subfolder.list.pattern
-    #   } else {
-    #     stop(
-    #       paste0(
-    #         "Subfolder(s) '",
-    #         subfolder.pattern,
-    #         "' not found in project folder ",
-    #         project
-    #       )
-    #     )
-    #   }
-    # }
-
-
-    # subfolder.list <- list.dirs(
-    #   path = paste0("//ifw7ro-file.fws.doi.net/datamgt/",
-    #                 program,
-    #                 "/",
-    #                 project),
-    #   recursive  = TRUE
-    # )
-
 
     files.sum <- data.frame(
       subfolder = character(0),
