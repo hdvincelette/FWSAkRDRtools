@@ -22,7 +22,7 @@ Returns a download of the project folder and all its contents.
 Creates a copy of a RDR project folder in a specified location. Remote users must be connected to one of the Service’s approved remote connection technologies, such as a Virtual Private Network (VPN).
 }
 \examples{
-clone.project(project = "mbmlb_010_Grey_headed_chickadee_hybridization", path = getwd(), main = TRUE, incoming = TRUE)
+# clone.project(project = "mbmlb_010_Grey_headed_chickadee_hybridization", path = getwd(), main = TRUE, incoming = TRUE)
 }
 \seealso{
 \code{clone.project()}

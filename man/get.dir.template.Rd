@@ -22,7 +22,7 @@ Returns a download of the project directory tree template.
 Creates the RDR project folder structure in a specified location.
 }
 \examples{
-get.dir.template(project = "mbmlb_909_Eskimo_Curlew_study", path = getwd(), main = TRUE, incoming = TRUE)
+# get.dir.template(project = "mbmlb_909_Eskimo_Curlew_study", path = getwd(), main = TRUE, incoming = TRUE)
 }
 \seealso{
 \code{get.dir.template()}

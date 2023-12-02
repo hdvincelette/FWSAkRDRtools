@@ -26,7 +26,7 @@ Returns a vector of paths to files which match the search criteria.
 Finds data file(s) from a specified RDR project folder. Remote users must be connected to one of the Service’s approved remote connection technologies, such as a Virtual Private Network (VPN).
 }
 \examples{
-e.g.file.locs<- find.files(pattern = c("template","dictionary","\\\\.csv","hello"), project = "mbmlb_007_NWR_Alaska_Landbird_Monitoring_Survey", incoming = TRUE, main = FALSE, recursive = TRUE, full.path = FALSE)
+# e.g.file.locs<- find.files(pattern = c("template","dictionary","\\.csv","hello"), project = "mbmlb_007_NWR_Alaska_Landbird_Monitoring_Survey", incoming = TRUE, main = FALSE, recursive = TRUE, full.path = FALSE)
 }
 \seealso{
 \code{find.files()}

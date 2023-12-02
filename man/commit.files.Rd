@@ -20,9 +20,7 @@ Returns a vector of the committed files.
 Copies local file(s) to the "incoming" subfolder of a specified RDR project and updates the changelog to document changes. Remote users must be connected the Service’s approved remote connection technologies, such as a Virtual Private Network (VPN) AND be granted write permission to the project’s “incoming" subfolder (i.e., be an authorized "data steward").
 }
 \examples{
-\dontrun{
-e.g.commit<- commit.files(project = "mbmlb_010_Grey_headed_chickadee_hybridization", local.folder = getwd(), recursive = TRUE)
-}
+# e.g.commit<- commit.files(project = "mbmlb_010_Grey_headed_chickadee_hybridization", local.folder = getwd(), recursive = TRUE)
 }
 \seealso{
 \code{commit.files()}

@@ -47,7 +47,7 @@ utils::package_version("0.0.1")
 usethis::use_version("patch")
 
 # Add packages to DESCRIPTION
-usethis::use_package("dplyr")
+usethis::use_package("fs")
 
 # Create R script
 usethis::use_r("summarize.proj.R")

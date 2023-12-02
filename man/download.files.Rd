@@ -36,7 +36,7 @@ Returns file download(s) which match the search criteria.
 Searches for file name patterns in a specified RDR project folder and downloads all matching files. Remote users must be connected to one of the Service’s approved remote connection technologies, such as a Virtual Private Network (VPN).
 }
 \examples{
-download.files(pattern = c("template","dictionary","\\\\.csv","hello"), project = "mbmlb_007_NWR_Alaska_Landbird_Monitoring_Survey", path = getwd(), incoming = TRUE, main = TRUE, recursive = TRUE, download.file.method = "curl")
+# download.files(pattern = c("template","dictionary","\\.csv","hello"), project = "mbmlb_007_NWR_Alaska_Landbird_Monitoring_Survey", path = getwd(), incoming = TRUE, main = TRUE, recursive = TRUE, download.file.method = "curl")
 }
 \seealso{
 \code{download.files()}
