@@ -11,7 +11,7 @@
 #' @seealso ```read.tables()```
 #' @export
 #' @examples
-#' e.g.tabular.data<- read.tables(pattern = c("\\.csv","\\.xlsx"), project = "mbmlb_007_NWR_Alaska_Landbird_Monitoring_Survey", incoming = TRUE, main = TRUE, recursive = TRUE)
+#' # e.g.tabular.data<- read.tables(pattern = c("\\.csv","\\.xlsx"), project = "mbmlb_007_NWR_Alaska_Landbird_Monitoring_Survey", incoming = TRUE, main = TRUE, recursive = TRUE)
 
 
 read.tables <-

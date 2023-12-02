@@ -9,10 +9,8 @@
 #' @seealso ```commit.files()```
 #' @export
 #' @examples
-#' e.g.commit<- commit.files(project = "mbmlb_010_Grey_headed_chickadee_hybridization", local.folder = getwd(), recursive = TRUE)
+#' # e.g.commit<- commit.files(project = "mbmlb_010_Grey_headed_chickadee_hybridization", local.folder = getwd(), recursive = TRUE)
 
-
-# check if incoming/incoming
 # alternative to amatch - compare against RDR paths with same first level folder
 
 commit.files <-
@@ -115,12 +113,9 @@ commit.files <-
     for (a in 1:length(RDR.file.elements)) {
       RDR.file.elements[[a]] <- c(RDR.path, RDR.file.elements[[a]])
     }
-    RDR.incoming.file.elements <-
-      RDR.file.elements[grepl("/incoming", RDR.file.elements)]
-    RDR.main.file.elements <-
-      RDR.file.elements[!grepl("/incoming", RDR.file.elements)]
-    RDR.incoming.files <- sapply(RDR.incoming.file.elements, "[", 3)
-    RDR.main.files <- sapply(RDR.main.file.elements, "[", 3)
+    RDR.files <- sapply(RDR.file.elements, "[", 3)
+
+
     if ("changelog.txt" %in% sapply(local.file.elements, "[", 4)) {
       new.local.file.elements <- c()
       for (d in 1:length(local.file.elements)) {
@@ -131,11 +126,14 @@ commit.files <-
       }
       local.file.elements <- new.local.file.elements
     }
+
+    local.files <- sapply(local.file.elements, "[", 4)
+
     ## Check for local incoming subfolder ####
-    if (TRUE %in% stringr::str_detect(sapply(local.file.elements, "[", 2), "/incoming")) {
+    if (TRUE %in% stringr::str_starts(sapply(local.file.elements, "[", 2), "/incoming")) {
       incoming.choice <- utils::menu(
         c(
-          "Only files in the 'Incoming' subfolder",
+          "Only files in the 'incoming' subfolder",
           "Only files in the main subfolders",
           "All files"
         ),
@@ -147,12 +145,16 @@ commit.files <-
       )
       if (incoming.choice == 1) {
         local.file.elements <-
-          local.file.elements[grepl("/incoming", local.file.elements)]
+          local.file.elements[stringr::str_starts(sapply(local.file.elements, "[", 2), "/incoming")]
       } else if (incoming.choice == 2) {
         local.file.elements <-
-          local.file.elements[!grepl("/incoming", local.file.elements)]
+          local.file.elements[stringr::str_starts(sapply(local.file.elements, "[", 2),
+                                                  "/incoming",
+                                                  negate = TRUE)]
       }
     }
+    local.files <- sapply(local.file.elements, "[", 4)
+
     ## Check for duplicate files within the local folder ####
     duplicate.files <- unique(local.files[duplicated(local.files)])
     if (length(duplicate.files) != 0) {
@@ -222,8 +224,8 @@ commit.files <-
     }
     message(cat(""))
     local.files <- sapply(local.file.elements, "[", 4)
-    ## Check for duplicate files between local folder and RDR incoming folder ####
-    duplicate.files <- intersect(local.files, RDR.incoming.files)
+    ## Check for duplicate files between local folder and RDR folder ####
+    duplicate.files <- intersect(local.files, RDR.files)
     if (length(duplicate.files) != 0) {
       for (a in 1:length(duplicate.files)) {
         local.dup.elements <- c()
@@ -234,26 +236,28 @@ commit.files <-
           }
         }
         local.dup.locs <- sapply(local.dup.elements, "[", 2)
-        RDR.incoming.dup.elements <- c()
-        for (b in 1:length(RDR.incoming.file.elements)) {
-          if (RDR.incoming.file.elements[[b]][3] == duplicate.files[a]) {
-            RDR.incoming.dup.elements[[length(RDR.incoming.dup.elements) + 1]] <-
-              RDR.incoming.file.elements[[b]]
+        RDR.dup.elements <- c()
+        for (b in 1:length(RDR.file.elements)) {
+          if (RDR.file.elements[[b]][3] == duplicate.files[a]) {
+            RDR.dup.elements[[length(RDR.dup.elements) + 1]] <-
+              RDR.file.elements[[b]]
           }
         }
-        RDR.incoming.dup.locs <-
-          sapply(RDR.incoming.dup.elements, "[", 2)
-        file.choice <- utils::menu(c("Yes", "No"),
-                                   title =
-                                     cat(
-                                       paste0(
-                                         "\n[INPUT NEEDED]\n'",
-                                         duplicate.files[a],
-                                         "' already exists in the RDR subfolder '",
-                                         RDR.incoming.dup.locs,
-                                         "'. Do you want to overwrite this file?"
-                                       )
-                                     ))
+        RDR.dup.locs <-
+          sapply(RDR.dup.elements, "[", 2)
+        file.choice <- utils::menu(
+          c("Yes", "No"),
+          title =
+            cat(
+              paste0(
+                "\n[INPUT NEEDED]\n'",
+                duplicate.files[a],
+                "' already exists in the following RDR subfolder(s):\n"
+              ),
+              paste0(RDR.dup.locs, sep = "\n"),
+              "\nDo you still want to commit this file?"
+            )
+        )
         if (file.choice == 2) {
           local.file.elements <-
             local.file.elements[!local.file.elements %in% local.dup.elements]
@@ -261,56 +265,11 @@ commit.files <-
       }
     }
     local.files <- sapply(local.file.elements, "[", 4)
-    ## Check for duplicate files between local folder and RDR main folder ####
-    duplicate.files <- intersect(local.files, RDR.main.files)
-    if (length(duplicate.files) != 0) {
-      for (a in 1:length(duplicate.files)) {
-        local.dup.elements <- c()
-        for (b in 1:length(local.file.elements)) {
-          if (local.file.elements[[b]][4] == duplicate.files[a]) {
-            local.dup.elements[[length(local.dup.elements) + 1]] <-
-              local.file.elements[[b]]
-          }
-        }
-        local.dup.locs <- sapply(local.dup.elements, "[", 2)
-        RDR.main.dup.elements <- c()
-        for (b in 1:length(RDR.main.file.elements)) {
-          if (RDR.main.file.elements[[b]][3] == duplicate.files[a]) {
-            RDR.main.dup.elements[[length(RDR.main.dup.elements) + 1]] <-
-              RDR.main.file.elements[[b]]
-          }
-        }
-        RDR.main.dup.locs <-
-          sapply(RDR.main.dup.elements, "[", 2)
-        for (d in 1:length(RDR.main.dup.locs)) {
-          if (RDR.main.dup.locs[d] == "") {
-            RDR.main.dup.locs[d] <- "/"
-          }
-        }
-        file.choice <- utils::menu(c("Yes", "No"),
-                                   title =
-                                     cat(
-                                       paste0(
-                                         "\n[INPUT NEEDED]\n",
-                                         duplicate.files[a],
-                                         "' already exists in the RDR subfolder '",
-                                         RDR.main.dup.locs,
-                                         "'. Do you want to overwrite this file?"
-                                       )
-                                     ))
-        if (file.choice == 2) {
-          local.file.elements <-
-            local.file.elements[!local.file.elements %in% local.dup.elements]
-        }
-      }
-    }
-    local.files <- sapply(local.file.elements, "[", 3)
-    if (length(local.files) == 0) {
-      stop("There are no files to commit")
-    }
+
+
     ## Check if local subfolders match existing RDR incoming subfolders ####
     local.subfolders <- unique(sapply(local.file.elements, "[", 2))
-    message("\nSearching for RDR subfolders...")
+    message("\nFinding RDR subfolders...")
     RDR.subfolders <- gsub(
       paste0("//ifw7ro-file.fws.doi.net/datamgt/",
              program,
@@ -321,15 +280,15 @@ commit.files <-
                 recursive = TRUE)
     )
     RDR.main.subfolders <-
-      RDR.subfolders[!grepl("/incoming", RDR.subfolders)]
+      RDR.subfolders[stringr::str_starts(RDR.subfolders, "/incoming", negate = TRUE)]
     for (a in 1:length(local.subfolders)) {
-      if (grepl("/incoming", local.subfolders[a]) == TRUE) {
+      if (stringr::str_starts(local.subfolders[a], "/incoming") == TRUE) {
         subfolder.ref <- "'incoming' subfolder"
       } else {
         subfolder.ref <- "main"
       }
       gsub.local.subfolder <-
-        gsub("/incoming", "", local.subfolders[a])
+        gsub("^/incoming", "", local.subfolders[a])
       if (!gsub.local.subfolder %in% RDR.main.subfolders) {
         RDR.match <-
           RDR.main.subfolders[stringdist::amatch(gsub.local.subfolder,
@@ -391,9 +350,11 @@ commit.files <-
               }
             }
           }
+
           # if (dir.exists(paste0(RDR.path, "/incoming", new.path)) == FALSE) {
           #   dir.create(paste0(RDR.path, "/incoming", new.path))
           # }
+
           RDR.main.subfolders <-
             c(RDR.main.subfolders, new.path)
         }
@@ -404,7 +365,7 @@ commit.files <-
             )
           )
           new.subfolder <-
-            readline(prompt = )
+            readline(prompt =)
           new.subfolder <- as.character(new.subfolder)
           if (startsWith(new.subfolder, "/") == FALSE) {
             new.subfolder <- paste0("/", new.subfolder)
@@ -412,6 +373,7 @@ commit.files <-
           if (endsWith(new.subfolder, "/") == TRUE) {
             new.subfolder <- sub("/$", "", new.subfolder)
           }
+
           # RDR.match <-
           #   RDR.main.subfolders[stringdist::amatch(new.subfolder,
           #                                          RDR.main.subfolders,
@@ -419,10 +381,13 @@ commit.files <-
           #
           #
           # add.subfolders <- gsub(RDR.match, "", new.subfolder)
+
           new.path <- new.subfolder
+
           # if (dir.exists(paste0(RDR.path, "/incoming", new.path)) == FALSE) {
           #   dir.create(paste0(RDR.path, "/incoming", new.path))
           # }
+
           RDR.main.subfolders <- c(RDR.main.subfolders, new.path)
           for (b in 1:length(local.file.elements)) {
             if (local.file.elements[[b]][2] == local.subfolders[a]) {
@@ -447,15 +412,113 @@ commit.files <-
     }
     local.files <- sapply(local.file.elements, "[", 4)
     local.subfolders <- sapply(local.file.elements, "[", 2)
+
+
     ## Summarize commit ####
-    commit.from.file.list <-
-      paste0(sapply(local.file.elements, "[", 2),
-             "/",
-             sapply(local.file.elements, "[", 4))
-    commit.to.file.list <-
-      paste0(sapply(local.file.elements, "[", 3),
-             "/",
-             sapply(local.file.elements, "[", 4))
+
+    for (a in 1:length(local.file.elements)) {
+      local.file.elements[[a]][3] <-
+        paste0("/incoming",
+               gsub("^/incoming", "", local.file.elements[[a]][3]))
+    }
+
+    duplicate.files <- unique(local.files[duplicated(local.files)])
+
+    if (length(duplicate.files) != 0) {
+      for (a in 1:length(duplicate.files)) {
+        RDR.dup.elements <- c()
+        for (b in 1:length(local.file.elements)) {
+          if (local.file.elements[[b]][4] == duplicate.files[a]) {
+            RDR.dup.elements[[length(RDR.dup.elements) + 1]] <-
+              local.file.elements[[b]]
+          }
+        }
+
+        RDR.dup.locs <- sapply(RDR.dup.elements, "[", 3)
+
+
+        if (TRUE %in% duplicated(RDR.dup.locs)) {
+          RDR.dup.locs.conflict <-
+            unique(RDR.dup.locs[duplicated(RDR.dup.locs)])
+
+          for (c in 1:length(RDR.dup.locs.conflict)) {
+            gsub.RDR.dup.locs.conflict <-
+              gsub("^/incoming", "", RDR.dup.locs.conflict[c])
+
+            for (d in 1:length(gsub.RDR.dup.locs.conflict)) {
+              if (gsub.RDR.dup.locs.conflict[c] == "") {
+                gsub.RDR.dup.locs.conflict[d] <- "/"
+              }
+            }
+
+            dup.commit.choice <-
+              utils::menu(c("Select file to commit",
+                            "Skip these files"),
+                          title = cat(
+                            paste0(
+                              "\n[INPUT NEEDED]\nMultiple copies of '",
+                              duplicate.files[a],
+                              "' are designated to be committed to '",
+                              gsub.RDR.dup.locs.conflict,
+                              "'.\n\nHow do you want to proceed?"
+                            )
+                          ))
+
+            if (dup.commit.choice == 1) {
+              local.ref.locs <- c()
+
+              for (d in 1:length(local.file.elements)) {
+                if (local.file.elements[[d]][4] == duplicate.files[a] &
+                    local.file.elements[[d]][3] == RDR.dup.locs.conflict[c]) {
+                  local.ref.locs <- c(local.ref.locs, local.file.elements[[d]][2])
+                }
+              }
+
+              for (d in 1:length(local.ref.locs)) {
+                if (local.ref.locs[d] == "") {
+                  local.ref.locs[d] <- "/"
+                }
+              }
+
+              dup.commit.selection <-
+                utils::menu(c(local.ref.locs),
+                            title = cat(paste0(
+                              "\n[INPUT NEEDED]\nCommit which file(s)?"
+                            )))
+
+              for (d in 1:length(local.ref.locs)) {
+                if (local.ref.locs[d] == "/") {
+                  local.ref.locs[d] <- ""
+                }
+              }
+
+              remove.locs <-
+                local.ref.locs[!local.ref.locs %in% local.ref.locs[dup.commit.selection]]
+            } else {
+              remove.locs <- local.ref.locs
+            }
+
+
+            new.local.file.elements <- c()
+            for (b in 1:length(local.file.elements)) {
+              if (local.file.elements[[b]][4] == duplicate.files[a] &
+                  local.file.elements[[b]][2] %in% remove.locs) {
+                next
+              } else {
+                new.local.file.elements <-
+                  c(new.local.file.elements,
+                    local.file.elements[b])
+              }
+            }
+            local.file.elements <- new.local.file.elements
+          }
+        }
+      }
+    }
+
+
+
+
     # gsub.commit.to.file.list <-
     #   mapply(
     #     c,
@@ -464,15 +527,25 @@ commit.files <-
     #     SIMPLIFY = FALSE,
     #     USE.NAMES = FALSE
     #   )
+
+
+    commit.from.file.list <-
+      paste0(sapply(local.file.elements, "[", 2),
+             "/",
+             sapply(local.file.elements, "[", 4))
+    commit.to.file.list <-
+      paste0(sapply(local.file.elements, "[", 3),
+             "/",
+             sapply(local.file.elements, "[", 4))
+
     gsub.commit.to.file.list <-
       gsub("^/incoming", "", commit.to.file.list)
+
     commit.choice <-
       utils::menu(
-        c(
-          "Commit all files",
+        c("Commit all files",
           "Select files to commit",
-          "Cancel commit"
-        ),
+          "Cancel commit"),
         title =
           cat(
             paste0(
@@ -540,7 +613,7 @@ commit.files <-
     ## Update incoming changelog ####
     message(cat("\n[INPUT NEEDED\nProvide an email for the changelog:"))
     user.email <-
-      readline(prompt = )
+      readline(prompt =)
     date <- format(Sys.Date(), format = "%Y%m%d")
     local.location <-
       sapply(strsplit(commit.from.file.list, "/(?!.*/)", perl = TRUE),
@@ -565,7 +638,7 @@ commit.files <-
       dplyr::mutate("message" =
                       paste0("  -- ", file, " (", gsub("^/incoming", "", RDR.location), ")"))
     commit.summary <-
-      commit.summary[order(commit.summary$RDR.location, decreasing = FALSE), ]
+      commit.summary[order(commit.summary$RDR.location, decreasing = FALSE),]
     invisible(if (file.exists(paste0(RDR.path, "/incoming/changelog.txt")) == FALSE) {
       file.create(paste0(RDR.path, "/incoming/changelog.txt"))
     })

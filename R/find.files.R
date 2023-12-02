@@ -12,7 +12,7 @@
 #' @seealso ```find.files()```
 #' @export
 #' @examples
-#' e.g.file.locs<- find.files(pattern = c("template","dictionary","\\.csv","hello"), project = "mbmlb_007_NWR_Alaska_Landbird_Monitoring_Survey", incoming = TRUE, main = FALSE, recursive = TRUE, full.path = FALSE)
+#' # e.g.file.locs<- find.files(pattern = c("template","dictionary","\\.csv","hello"), project = "mbmlb_007_NWR_Alaska_Landbird_Monitoring_Survey", incoming = TRUE, main = FALSE, recursive = TRUE, full.path = FALSE)
 
 
 find.files <-

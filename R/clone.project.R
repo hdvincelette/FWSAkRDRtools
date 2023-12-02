@@ -10,7 +10,7 @@
 #' @seealso ```clone.project()```
 #' @export
 #' @examples
-#' clone.project(project = "mbmlb_010_Grey_headed_chickadee_hybridization", path = getwd(), main = TRUE, incoming = TRUE)
+#' # clone.project(project = "mbmlb_010_Grey_headed_chickadee_hybridization", path = getwd(), main = TRUE, incoming = TRUE)
 
 
 clone.project <-

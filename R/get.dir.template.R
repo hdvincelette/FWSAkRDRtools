@@ -10,7 +10,7 @@
 #' @seealso ```get.dir.template()```
 #' @export
 #' @examples
-#' get.dir.template(project = "mbmlb_909_Eskimo_Curlew_study", path = getwd(), main = TRUE, incoming = TRUE)
+#' # get.dir.template(project = "mbmlb_909_Eskimo_Curlew_study", path = getwd(), main = TRUE, incoming = TRUE)
 
 
 get.dir.template <- function(project,

@@ -13,7 +13,7 @@
 #' @seealso ```download.files()```
 #' @export
 #' @examples
-#' download.files(pattern = c("template","dictionary","\\.csv","hello"), project = "mbmlb_007_NWR_Alaska_Landbird_Monitoring_Survey", path = getwd(), incoming = TRUE, main = TRUE, recursive = TRUE, download.file.method = "curl")
+#' # download.files(pattern = c("template","dictionary","\\.csv","hello"), project = "mbmlb_007_NWR_Alaska_Landbird_Monitoring_Survey", path = getwd(), incoming = TRUE, main = TRUE, recursive = TRUE, download.file.method = "curl")
 
 
 download.files <-
