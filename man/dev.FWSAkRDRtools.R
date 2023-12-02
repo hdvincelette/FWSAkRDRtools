@@ -95,7 +95,7 @@ FWSAkRDRtools::clone.project(project = "mbmlb_010_Grey_headed_chickadee_hybridiz
 e.g.summary <-
   FWSAkRDRtools::summarize.files(
     project = "mbmlb_007_NWR_Alaska_Landbird_Monitoring_Survey",
-    # subfolder = c("analysis_output", "final_data", "metadata"),
+    subfolder = c("analysis_output", "final_data", "metadata"),
     incoming = TRUE,
     main = FALSE
   )
