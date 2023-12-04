@@ -17,9 +17,11 @@ URL: https://github.com/hdvincelette/FWSAkRDRtools,
 Imports: 
     dplyr,
     fs,
+    magrittr,
     plyr,
     readxl,
     rlang,
+    stringdist,
     stringi,
     stringr,
     utils
