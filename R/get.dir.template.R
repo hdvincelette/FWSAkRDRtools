@@ -17,8 +17,6 @@ get.dir.template <- function(project,
                              path,
                              main = TRUE,
                              incoming = TRUE) {
-  `%>%` <- magrittr::`%>%`
-
   ## Parameter arguments
   if (missing(path)) {
     new.path <- getwd()
