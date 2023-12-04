@@ -52,6 +52,10 @@ usethis::use_version("patch")
 usethis::use_package("plyr")
 usethis::use_pipe()
 
+# Test functions
+usethis::use_test("commit.files.R")
+devtools::test('.')
+
 # Create R script
 usethis::use_r("summarize.proj.R")
 
