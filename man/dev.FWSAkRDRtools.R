@@ -7,7 +7,7 @@ remove.packages("FWSAkRDRtools")
 setwd("C:/Users/hvincelette/OneDrive - DOI/Documents/GitHub/FWSAkRDRtools")
 
 devtools::load_all()
-devtools::document()
+devtools::document(roclets = c('rd', 'collate', 'namespace'))
 devtools::build_readme()
 devtools::install()
 
@@ -49,7 +49,8 @@ utils::package_version("0.0.1")
 usethis::use_version("patch")
 
 # Add packages to DESCRIPTION
-usethis::use_package("fs")
+usethis::use_package("plyr")
+usethis::use_pipe()
 
 # Create R script
 usethis::use_r("summarize.proj.R")
@@ -63,6 +64,10 @@ usethis::use_directory("docs")
 # Check which packages used in function
 rfile <- file.choose()
 NCmisc::list.functions.in.file(rfile)
+
+# Update license
+usethis::use_gpl3_license()
+usethis::use_mit_license()
 
 # Create package zip
 build()
