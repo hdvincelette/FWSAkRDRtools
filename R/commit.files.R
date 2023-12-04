@@ -17,7 +17,6 @@ commit.files <-
   function(project,
            local.folder,
            recursive) {
-    `%>%` <- magrittr::`%>%`
     ## Parameter arguments
     if (missing(recursive)) {
       recursive <- TRUE
