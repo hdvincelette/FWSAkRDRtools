@@ -21,8 +21,6 @@ summarize.files <-
            main = TRUE,
            incoming = TRUE,
            recursive = TRUE) {
-    `%>%` <- magrittr::`%>%`
-
     ## Parameter arguments
     if (missing(subfolder)) {
       subfolder <- NULL
