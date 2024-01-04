@@ -71,6 +71,10 @@ download.files <-
                       "",
                       file.url)
 
+    if (rlang::is_empty(file.list) == TRUE) {
+      stop("Operation halted.")
+    }
+
     file.choice <- utils::select.list(
       c(file.list),
       multiple = TRUE,
