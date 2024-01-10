@@ -45,7 +45,7 @@ renv::snapshot()
 gitcreds::gitcreds_set()
 
 # Update version
-utils::package_version("0.0.1")
+utils::package_version("0.0.2")
 usethis::use_version("patch")
 
 # Add packages to DESCRIPTION
