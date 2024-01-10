@@ -50,7 +50,7 @@ usethis::use_version("patch")
 pkgdown::build_site(examples = FALSE)
 
 # Add packages to DESCRIPTION
-usethis::use_package("plyr")
+usethis::use_package("downloader")
 usethis::use_pipe()
 
 # Test functions
