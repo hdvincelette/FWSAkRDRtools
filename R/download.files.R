@@ -58,10 +58,11 @@ download.files <-
       stop("Project folder name must contain the program prefix (e.g., mbmlb_)")
     }
 
-    file.url <- FWSAkRDRtools::find.files(pattern,
-                                          project,
-                                          main,
-                                          incoming,
+    file.url <- FWSAkRDRtools::find.files(pattern = pattern,
+                                          project = project,
+                                          main = main,
+                                          incoming = incoming,
+                                          recursive = recursive,
                                           full.path = TRUE)
 
     file.list <- gsub(paste0("//ifw7ro-file.fws.doi.net/datamgt/",
