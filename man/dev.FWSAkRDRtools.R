@@ -47,6 +47,7 @@ gitcreds::gitcreds_set()
 # Update version
 utils::package_version("0.0.2")
 usethis::use_version("patch")
+pkgdown::build_site(examples = FALSE)
 
 # Add packages to DESCRIPTION
 usethis::use_package("plyr")
