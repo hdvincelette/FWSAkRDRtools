@@ -93,7 +93,8 @@ download.files <-
       downloader::download(
         url = paste0("File:", selected.url[b]),
         destfile = file.path(path, basename(selected.url[b])),
-        mode = "w",
+        method= download.file.method,
+        mode = "wb",
         quiet = FALSE
       )
     }
