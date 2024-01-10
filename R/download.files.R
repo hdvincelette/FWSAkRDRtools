@@ -90,10 +90,10 @@ download.files <-
                            file.choice)
 
     for (b in 1:length(selected.url)) {
-      download.file(
+      downloader::download(
         url = paste0("File:", selected.url[b]),
-        file.path(path, destfile = basename(selected.url[b])),
-        mode = "auto",
+        destfile = file.path(path, basename(selected.url[b])),
+        mode = "w",
         quiet = FALSE
       )
     }
