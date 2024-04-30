@@ -138,7 +138,7 @@ summarize.files <-
       numfiles = numeric(0),
       size = numeric(0),
       last.file.modification = as.POSIXct(character(0)),
-      last.file.addition =  as.POSIXct(character(0)),
+      last.file.creation =  as.POSIXct(character(0)),
       stringsAsFactors = FALSE
     )
 
@@ -184,7 +184,7 @@ summarize.files <-
           numfiles = 0,
           size = 0,
           last.file.modification = NA,
-          last.file.addition = NA
+          last.file.creation = NA
         )
       } else {
 
@@ -215,7 +215,7 @@ summarize.files <-
           numfiles = nrow(file.info.list),
           size = sum(file.info.list$size),
           last.file.modification = max(file.info.list$modification_time),
-          last.file.addition = max(file.info.list$change_time)
+          last.file.creation = max(file.info.list$birth_time)
         )
 
       }
