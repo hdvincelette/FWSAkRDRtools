@@ -70,17 +70,28 @@ read.tables <-
       tabular.list <- c(tabular.list, tabular.files)
     }
 
-    file.choice <- utils::select.list(c(gsub(
-      paste0("//ifw7ro-file.fws.doi.net/datamgt/",
-             program,
-             "/",
-             project),
-      "",
-      tabular.list
-    )),
-    multiple = TRUE,
-    graphics = TRUE,
-    title = "Read in which file(s)?")
+    if(length(tabular.list)==1) {
+      file.choice <- gsub(
+        paste0("//ifw7ro-file.fws.doi.net/datamgt/",
+               program,
+               "/",
+               project),
+        "",
+        tabular.list
+      )
+    } else {
+      file.choice <- utils::select.list(c(gsub(
+        paste0("//ifw7ro-file.fws.doi.net/datamgt/",
+               program,
+               "/",
+               project),
+        "",
+        tabular.list
+      )),
+      multiple = TRUE,
+      graphics = TRUE,
+      title = "Read in which file(s)?")
+    }
 
     tabular.list<- paste0("//ifw7ro-file.fws.doi.net/datamgt/",
                       program,
