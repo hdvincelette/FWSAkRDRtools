@@ -10,7 +10,7 @@
 #' @param download.file.method Character string. Method to be used for downloading files. Print ?options for available methods. Default is "auto".
 #' @return Returns file download(s) which match the search criteria.
 #' @keywords USFWS, repository, download, files
-#' @seealso ```download.files()```
+#' @seealso ```read.tables()```
 #' @export
 #' @examples
 #' # download.files(pattern = c("template","dictionary","\\.csv","hello"), project = "mbmlb_007_NWR_Alaska_Landbird_Monitoring_Survey", path = getwd(), incoming = TRUE, main = TRUE, recursive = TRUE, download.file.method = "curl")
@@ -37,7 +37,7 @@ download.files <-
       incoming <- TRUE
     }
     if (missing(recursive)) {
-      recursive <- FALSE
+      recursive <- TRUE
     }
     if (missing(download.file.method))
       download.file.method <- "auto"

@@ -6,7 +6,7 @@
 #' @param recursive Logical. Whether to search for and commit files in subdirectories. Default is TRUE.
 #' @return Returns a vector of the committed files.
 #' @keywords USFWS, repository
-#' @seealso ```commit.files()```
+#' @seealso ```summarize.files()```
 #' @export
 #' @examples
 #' # e.g.commit<- commit.files(project = "mbmlb_010_Grey_headed_chickadee_hybridization", local.folder = getwd(), recursive = TRUE)

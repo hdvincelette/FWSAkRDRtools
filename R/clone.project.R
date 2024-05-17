@@ -7,7 +7,7 @@
 #' @param incoming Logical. Whether to return results from the "incoming" project subfolder. Default is TRUE.
 #' @return Returns a download of the project folder and all its contents.
 #' @keywords USFWS, repository, download, clone
-#' @seealso ```clone.project()```
+#' @seealso ```get.dir.template()```
 #' @export
 #' @examples
 #' # clone.project(project = "mbmlb_010_Grey_headed_chickadee_hybridization", path = getwd(), main = TRUE, incoming = TRUE)

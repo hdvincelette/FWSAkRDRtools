@@ -9,7 +9,7 @@
 #' @param full.path Logical. Whether to return full file path. Default is FALSE
 #' @return Returns a vector of paths to files which match the search criteria.
 #' @keywords USFWS, repository
-#' @seealso ```find.files()```
+#' @seealso ```download.files()```
 #' @export
 #' @examples
 #' # e.g.file.locs<- find.files(pattern = c("template","dictionary","\\.csv","hello"), project = "mbmlb_007_NWR_Alaska_Landbird_Monitoring_Survey", incoming = TRUE, main = FALSE, recursive = TRUE, full.path = FALSE)
@@ -33,7 +33,7 @@ find.files <-
       incoming <- TRUE
     }
     if (missing(recursive)) {
-      recursive <- FALSE
+      recursive <- TRUE
     }
     if (missing(full.path)) {
       full.path <- FALSE

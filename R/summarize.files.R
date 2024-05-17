@@ -8,7 +8,7 @@
 #' @param recursive Logical. Whether to search for files in subdirectories. Default is TRUE.
 #' @return Returns a data frame summarizing subfolder contents.
 #' @keywords USFWS, repository, summary, snapshot
-#' @seealso ```summarize.files()```
+#' @seealso ```commit.files()```
 #' @export
 #' @examples
 #' # e.g.summary<- summarize.files(project = "mbmlb_007_NWR_Alaska_Landbird_Monitoring_Survey", subfolder = c("/", "final_data", "metadata"), incoming = TRUE, main = FALSE, recursive = TRUE)

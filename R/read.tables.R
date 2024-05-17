@@ -8,7 +8,7 @@
 #' @param recursive Logical. Whether to search for and read in files in subdirectories. Default is TRUE.
 #' @return Returns a data frame of one or more selected tabular data files.
 #' @keywords USFWS, repository
-#' @seealso ```read.tables()```
+#' @seealso ```find.files()```
 #' @export
 #' @examples
 #' # e.g.tabular.data<- read.tables(pattern = c("\\.csv","\\.xlsx"), project = "mbmlb_007_NWR_Alaska_Landbird_Monitoring_Survey", incoming = TRUE, main = TRUE, recursive = TRUE)
@@ -31,7 +31,7 @@ read.tables <-
       incoming <- TRUE
     }
     if (missing(recursive)) {
-      recursive <- FALSE
+      recursive <- TRUE
     }
 
     program.list <- c("^fes", "^mbm", "^nwrs", "^osm", "^sa")
@@ -52,6 +52,7 @@ read.tables <-
                                           project,
                                           main,
                                           incoming,
+                                          recursive,
                                           full.path = TRUE)
 
 
