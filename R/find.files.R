@@ -3,6 +3,7 @@
 #' Finds data file(s) from a specified RDR project folder. Remote users must be connected to one of the Service’s approved remote connection technologies, such as a Virtual Private Network (VPN).
 #' @param pattern Character vector. File name pattern(s). Must be a regular expression; print ?base::regex for help. Default is NULL, which returns results for all files.
 #' @param project Character string. Name of the project folder.
+#' @param subfolder.path Character string. Project subfolder path.
 #' @param main Logical. Whether to return results from the main project folder (all subfolders except "incoming"). Default is TRUE.
 #' @param incoming Logical. whether to return results from the "incoming" project subfolder. Default is TRUE.
 #' @param recursive Logical. Whether to search for files in subdirectories. Default is TRUE.
@@ -18,6 +19,7 @@
 find.files <-
   function(pattern,
            project,
+           subfolder.path,
            main,
            incoming,
            recursive,
@@ -25,6 +27,12 @@ find.files <-
     ## Parameter arguments
     if (missing(pattern)) {
       pattern <- NULL
+    }
+    if (missing(subfolder.path)) {
+      subfolder.path <- ""
+    } else {
+      subfolder.path <- sub("^/", "", subfolder.path)
+      subfolder.path <- sub("/$", "", subfolder.path)
     }
     if (missing(main)) {
       main <- TRUE
@@ -53,6 +61,23 @@ find.files <-
       stop("Project folder name must contain the program prefix (e.g., mbmlb_)")
     }
 
+
+    if (!subfolder.path %in%  list.dirs(
+      path = paste0(
+        "//ifw7ro-file.fws.doi.net/datamgt/",
+        program,
+        "/",
+        project,
+        "/"
+      ),
+      full.names = FALSE,
+      recursive = TRUE
+    )
+    ) {
+      stop("Project subfolder path not found.")
+    }
+
+
     file.url <- character(0)
 
     if (is.null(pattern) == TRUE) {
@@ -65,6 +90,8 @@ find.files <-
             program,
             "/",
             project,
+            "/",
+            subfolder.path,
             "/"
           ),
           pattern = NULL,
@@ -91,6 +118,8 @@ find.files <-
               program,
               "/",
               project,
+              "/",
+              subfolder.path,
               "/"
             ),
             pattern = pattern[a],

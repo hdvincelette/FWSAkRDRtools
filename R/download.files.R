@@ -3,7 +3,8 @@
 #' Searches for file name patterns in a specified RDR project folder and downloads all matching files. Remote users must be connected to one of the Service’s approved remote connection technologies, such as a Virtual Private Network (VPN).
 #' @param pattern Character vector. File name pattern(s). Must be a regular expression; print ?base::regex for help. Default is NULL, which allows a selection from all files.
 #' @param project Character string. Name of the project folder.
-#' @param path  	Character string. Directory path where the downloaded files will be saved. Default is the working directory, getwd().
+#' @param subfolder.path Character string. Project subfolder path.
+#' @param local.path Character string. Directory path where the downloaded files will be saved. Default is the working directory, getwd().
 #' @param main Logical. Whether to return results from the main project folder (all subfolders except "incoming"). Default is TRUE.
 #' @param incoming Logical. Whether to return results from the "incoming" project subfolder. Default is TRUE.
 #' @param recursive Logical. Whether to search for and download files in subdirectories. Default is TRUE.
@@ -19,7 +20,8 @@
 download.files <-
   function(pattern,
            project,
-           path,
+           subfolder.path,
+           local.path,
            main,
            incoming,
            recursive,
@@ -28,8 +30,8 @@ download.files <-
     if (missing(pattern)) {
       pattern <- NULL
     }
-    if (missing(path))
-      path <- getwd()
+    if (missing(local.path))
+      local.path <- getwd()
     if (missing(main)) {
       main <- TRUE
     }
@@ -58,11 +60,12 @@ download.files <-
       stop("Project folder name must contain the program prefix (e.g., mbmlb_)")
     }
 
-    file.url <- FWSAkRDRtools::find.files(pattern = pattern,
-                                          project = project,
-                                          main = main,
-                                          incoming = incoming,
-                                          recursive = recursive,
+    file.url <- FWSAkRDRtools::find.files(pattern,
+                                          project,
+                                          subfolder.path,
+                                          main,
+                                          incoming,
+                                          recursive,
                                           full.path = TRUE)
 
     file.list <- gsub(paste0("//ifw7ro-file.fws.doi.net/datamgt/",
@@ -92,13 +95,13 @@ download.files <-
     for (b in 1:length(selected.url)) {
       downloader::download(
         url = paste0("File:", selected.url[b]),
-        destfile = file.path(path, basename(selected.url[b])),
+        destfile = file.path(local.path, basename(selected.url[b])),
         method= download.file.method,
         mode = "wb",
         quiet = FALSE
       )
     }
-    message(cat("\n", "The files were downloaded to: ", "\n", path))
+    message(cat("\n", "The files were downloaded to: ", "\n", local.path))
 
     return(invisible(NULL))
 

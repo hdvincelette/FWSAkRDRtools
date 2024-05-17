@@ -3,6 +3,7 @@
 #' Reads in tabular data file(s) from a specified RDR project folder. Remote users must be connected to one of the Service’s approved remote connection technologies, such as a Virtual Private Network (VPN).
 #' @param pattern Character vector. File name pattern(s). Must be a regular expression; print ?base::regex for help. Default is NULL, which allows a selection from all files.
 #' @param project Character string. Name of the project folder.
+#' @param subfolder.path Character string. Project subfolder path.
 #' @param main Logical. Whether to return results from the main project folder (all subfolders except "incoming"). Default is TRUE.
 #' @param incoming Logical. Whether to return results from the "incoming" project subfolder. Default is TRUE.
 #' @param recursive Logical. Whether to search for and read in files in subdirectories. Default is TRUE.
@@ -17,6 +18,7 @@
 read.tables <-
   function(pattern,
            project,
+           subfolder.path,
            main,
            incoming,
            recursive) {
@@ -50,6 +52,7 @@ read.tables <-
 
     file.url <- FWSAkRDRtools::find.files(pattern,
                                           project,
+                                          subfolder.path,
                                           main,
                                           incoming,
                                           recursive,
