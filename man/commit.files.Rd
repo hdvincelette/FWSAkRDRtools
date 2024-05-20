@@ -23,7 +23,7 @@ Copies local file(s) to the "incoming" subfolder of a specified RDR project and 
 # e.g.commit<- commit.files(project = "mbmlb_010_Grey_headed_chickadee_hybridization", local.folder = getwd(), recursive = TRUE)
 }
 \seealso{
-\code{commit.files()}
+\code{summarize.files()}
 }
 \keyword{USFWS,}
 \keyword{repository}

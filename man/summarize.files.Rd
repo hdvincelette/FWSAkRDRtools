@@ -33,7 +33,7 @@ Summarizes files in a specified RDR project folder. Remote users must be connect
 # e.g.summary<- summarize.files(project = "mbmlb_007_NWR_Alaska_Landbird_Monitoring_Survey", subfolder = c("/", "final_data", "metadata"), incoming = TRUE, main = FALSE, recursive = TRUE)
 }
 \seealso{
-\code{summarize.files()}
+\code{commit.files()}
 }
 \keyword{USFWS,}
 \keyword{repository,}

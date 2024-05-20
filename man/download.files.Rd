@@ -7,7 +7,8 @@
 download.files(
   pattern,
   project,
-  path,
+  subfolder.path,
+  local.path,
   main,
   incoming,
   recursive,
@@ -19,7 +20,9 @@ download.files(
 
 \item{project}{Character string. Name of the project folder.}
 
-\item{path}{Character string. Directory path where the downloaded files will be saved. Default is the working directory, getwd().}
+\item{subfolder.path}{Character string. Project subfolder path.}
+
+\item{local.path}{Character string. Directory path where the downloaded files will be saved. Default is the working directory, getwd().}
 
 \item{main}{Logical. Whether to return results from the main project folder (all subfolders except "incoming"). Default is TRUE.}
 
@@ -39,7 +42,7 @@ Searches for file name patterns in a specified RDR project folder and downloads 
 # download.files(pattern = c("template","dictionary","\\.csv","hello"), project = "mbmlb_007_NWR_Alaska_Landbird_Monitoring_Survey", path = getwd(), incoming = TRUE, main = TRUE, recursive = TRUE, download.file.method = "curl")
 }
 \seealso{
-\code{download.files()}
+\code{read.tables()}
 }
 \keyword{USFWS,}
 \keyword{download,}

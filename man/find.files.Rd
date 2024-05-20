@@ -4,12 +4,22 @@
 \alias{find.files}
 \title{Find the location(s) of project file(s) on the USFWS Alaska Regional Data Repository (RDR)}
 \usage{
-find.files(pattern, project, main, incoming, recursive, full.path)
+find.files(
+  pattern,
+  project,
+  subfolder.path,
+  main,
+  incoming,
+  recursive,
+  full.path
+)
 }
 \arguments{
 \item{pattern}{Character vector. File name pattern(s). Must be a regular expression; print ?base::regex for help. Default is NULL, which returns results for all files.}
 
 \item{project}{Character string. Name of the project folder.}
+
+\item{subfolder.path}{Character string. Project subfolder path.}
 
 \item{main}{Logical. Whether to return results from the main project folder (all subfolders except "incoming"). Default is TRUE.}
 
@@ -29,7 +39,7 @@ Finds data file(s) from a specified RDR project folder. Remote users must be con
 # e.g.file.locs<- find.files(pattern = c("template","dictionary","\\.csv","hello"), project = "mbmlb_007_NWR_Alaska_Landbird_Monitoring_Survey", incoming = TRUE, main = FALSE, recursive = TRUE, full.path = FALSE)
 }
 \seealso{
-\code{find.files()}
+\code{download.files()}
 }
 \keyword{USFWS,}
 \keyword{repository}

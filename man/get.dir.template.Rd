@@ -25,7 +25,7 @@ Creates the RDR project folder structure in a specified location.
 # get.dir.template(project = "mbmlb_909_Eskimo_Curlew_study", path = getwd(), main = TRUE, incoming = TRUE)
 }
 \seealso{
-\code{get.dir.template()}
+\code{clone.project()}
 }
 \keyword{USFWS,}
 \keyword{directory}

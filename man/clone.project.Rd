@@ -25,7 +25,7 @@ Creates a copy of a RDR project folder in a specified location. Remote users mus
 # clone.project(project = "mbmlb_010_Grey_headed_chickadee_hybridization", path = getwd(), main = TRUE, incoming = TRUE)
 }
 \seealso{
-\code{clone.project()}
+\code{get.dir.template()}
 }
 \keyword{USFWS,}
 \keyword{clone}

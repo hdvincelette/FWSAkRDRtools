@@ -4,18 +4,22 @@
 \alias{read.tables}
 \title{Read a tabular project file on the USFWS Alaska Regional Data Repository (RDR) into R}
 \usage{
-read.tables(pattern, project, main, incoming, recursive)
+read.tables(pattern, project, subfolder.path, main, incoming, recursive, all)
 }
 \arguments{
 \item{pattern}{Character vector. File name pattern(s). Must be a regular expression; print ?base::regex for help. Default is NULL, which allows a selection from all files.}
 
 \item{project}{Character string. Name of the project folder.}
 
+\item{subfolder.path}{Character string. Project subfolder path.}
+
 \item{main}{Logical. Whether to return results from the main project folder (all subfolders except "incoming"). Default is TRUE.}
 
 \item{incoming}{Logical. Whether to return results from the "incoming" project subfolder. Default is TRUE.}
 
 \item{recursive}{Logical. Whether to search for and read in files in subdirectories. Default is TRUE.}
+
+\item{all}{Logical. Whether to read in all files in search results. Default is FALSE and a selection menu is presented.}
 }
 \value{
 Returns a data frame of one or more selected tabular data files.
@@ -27,7 +31,7 @@ Reads in tabular data file(s) from a specified RDR project folder. Remote users 
 # e.g.tabular.data<- read.tables(pattern = c("\\.csv","\\.xlsx"), project = "mbmlb_007_NWR_Alaska_Landbird_Monitoring_Survey", incoming = TRUE, main = TRUE, recursive = TRUE)
 }
 \seealso{
-\code{read.tables()}
+\code{find.files()}
 }
 \keyword{USFWS,}
 \keyword{repository}
