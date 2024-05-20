@@ -22,7 +22,8 @@ read.tables <-
            subfolder.path,
            main,
            incoming,
-           recursive) {
+           recursive,
+           all) {
     ## Parameter arguments
     if (missing(pattern)) {
       pattern <- NULL
@@ -63,8 +64,7 @@ read.tables <-
                                           full.path = TRUE)
 
 
-    if(length(file.url)!=0) {
-
+    if (length(file.url) != 0) {
       tabular.formats <- c("\\.csv", "\\.xls")
 
       tabular.list <- c()
@@ -72,23 +72,13 @@ read.tables <-
       for (a in 1:length(tabular.formats)) {
         tabular.files <-
           file.url[grepl(tabular.formats[a], file.url, ignore.case = TRUE)]
+
         tabular.list <- c(tabular.list, tabular.files)
       }
 
-      if (length(tabular.list) == 1 | all == TRUE) {
-        file.choice <- gsub(
-          paste0(
-            "//ifw7ro-file.fws.doi.net/datamgt/",
-            program,
-            "/",
-            project
-          ),
-          "",
-          tabular.list
-        )
-      } else {
-        file.choice <- utils::select.list(
-          c(gsub(
+      if (length(tabular.list) != 0) {
+        if (length(tabular.list) == 1 | all == TRUE) {
+          file.choice <- gsub(
             paste0(
               "//ifw7ro-file.fws.doi.net/datamgt/",
               program,
@@ -97,105 +87,167 @@ read.tables <-
             ),
             "",
             tabular.list
-          )),
-          multiple = TRUE,
-          graphics = TRUE,
-          title = "Read in which file(s)?"
-        )
-      }
-
-      tabular.list <- paste0("//ifw7ro-file.fws.doi.net/datamgt/",
-                             program,
-                             "/",
-                             project,
-                             file.choice)
-
-
-      file.format <- c()
-
-      if (length(file.choice) > 1) {
-        for (a in 1:length(file.choice)) {
-          file.format[a] <- file.choice[a] %>%
-            strsplit(".", fixed = TRUE) %>%
-            unlist %>%
-            dplyr::last()
-        }
-
-        if (length(unique(file.format)) > 1) {
-          stop(paste0(
-            "Files with more than one extension selected: ",
-            unique(file.format)
-          ))
-        } else if (unique(file.format) %in% c("csv", "CSV")) {
-          selected.files = lapply(tabular.list, function(i) {
-            read.csv(i, header = TRUE)
-          })
-
-        } else if (unique(file.format) %in% c("xls", "XLS", "xlsx", "XLSX")) {
-          selected.files = lapply(tabular.list, function(i) {
-            readxl::read_excel(i, header = TRUE)
-          })
-
-        }
-
-        names(selected.files) <-
-          gsub(
-            paste0(
-              "//ifw7ro-file.fws.doi.net/datamgt/",
-              program,
-              "/",
-              project
-            ),
-            "",
-            file.choice
-          )
-        table.output <- plyr::ldply(selected.files)
-        message(
-          cat(
-            "The files have been read into the R Environment.\nIf the files were not read correctly, re-execute import with the file urls: ",
-            "\n",
-            paste0(tabular.list, "\n")
-          )
-        )
-
-      } else {
-        file.format <- file.choice %>%
-          strsplit(".", fixed = TRUE) %>%
-          unlist %>%
-          dplyr::last()
-
-        if (file.format %in% c("csv", "CSV")) {
-          table.output <- utils::read.csv(file = tabular.list)
-          message(
-            cat(
-              "The file has been read into the R Environment.\nIf the file was not read correctly, re-execute import with the file url: ",
-              "\n",
-              paste0(tabular.list)
-            )
-          )
-
-        } else if (file.format %in% c("xls", "xlsx", "XLS", "XLSX")) {
-          table.output <-
-            readxl::read_excel(path = tabular.list)
-          message(
-            cat(
-              "The file has been read into the R Environment.\nIf the file was not read correctly, re-execute import with the file url: ",
-              "\n",
-              paste0(tabular.list)
-            )
           )
         } else {
-          message(
-            cat(
-              "The file format is not supported.\nTry using another function with the file url: ",
-              "\n",
-              paste0(tabular.list)
-            )
+          file.choice <- utils::select.list(
+            c(gsub(
+              paste0(
+                "//ifw7ro-file.fws.doi.net/datamgt/",
+                program,
+                "/",
+                project
+              ),
+              "",
+              tabular.list
+            )),
+            multiple = TRUE,
+            graphics = TRUE,
+            title = "Read in which file(s)?"
           )
         }
+
+        tabular.list <- paste0("//ifw7ro-file.fws.doi.net/datamgt/",
+                               program,
+                               "/",
+                               project,
+                               file.choice)
+
+
+
+        ####
+
+        file.ext <- tools::file_ext(file.choice)
+        import.file.name <- file.choice %>%
+          stringr::str_replace(., paste0(".", file.ext), "") %>%
+          stringr::str_replace(.,
+                               paste0(
+                                 "//ifw7ro-file.fws.doi.net/datamgt/",
+                                 program,
+                                 "/",
+                                 project
+                               ),
+                               "")
+
+        file.list <- list()
+
+        for (a in 1:length(file.ext)) {
+          if (file.ext[a] %in% c("xlsx", "xls")) {
+            import.file <-
+              readxl::read_excel(tabular.list[a], na = "")
+            file.list[[a]] <- import.file
+
+          } else if (file.ext[a] %in% c("csv")) {
+            import.file <-
+              utils::read.csv(tabular.list[a], na.strings = "")
+            file.list[[a]] <- import.file
+
+          }
+        }
+
+
+        table.output <-
+          file.list %>%
+          rlang::set_names(.,  stringr::str_replace(import.file.name,
+                                                    ".*/",
+                                                    "")) %>%
+          purrr::imap(.,
+                      ~ dplyr::mutate(.x, .id = .y,  .before = 1)) %>%
+          plyr::ldply(.)
+
+
+        ####
+
+
+        # file.format <- c()
+
+        # if (length(file.choice) > 1) {
+        # for (a in 1:length(file.choice)) {
+        #   file.format[a] <- file.choice[a] %>%
+        #     strsplit(".", fixed = TRUE) %>%
+        #     unlist %>%
+        #     dplyr::last()
+        # }
+        #
+        # if (length(unique(file.format)) > 1) {
+        #   stop(paste0(
+        #     "Files with more than one extension selected: ",
+        #     unique(file.format)
+        #   ))
+        # } else if (unique(file.format) %in% c("csv", "CSV")) {
+        #   selected.files = lapply(tabular.list, function(i) {
+        #     read.csv(i, header = TRUE)
+        #   })
+        #
+        # } else if (unique(file.format) %in% c("xls", "XLS", "xlsx", "XLSX")) {
+        #   selected.files = lapply(tabular.list, function(i) {
+        #     readxl::read_excel(i, header = TRUE)
+        #   })
+        #
+        # }
+        #
+        # names(selected.files) <-
+        #   gsub(
+        #     paste0(
+        #       "//ifw7ro-file.fws.doi.net/datamgt/",
+        #       program,
+        #       "/",
+        #       project
+        #     ),
+        #     "",
+        #     file.choice
+        #   )
+        # table.output <- plyr::ldply(selected.files)
+
+        #   message(
+        #     cat(
+        #       "The files have been read into the R Environment.\nIf the files were not read correctly, re-execute import with the file urls: ",
+        #       "\n",
+        #       paste0(tabular.list, "\n")
+        #     )
+        #   )
+        #
+        # } else {
+        # file.format <- file.choice %>%
+        #   strsplit(".", fixed = TRUE) %>%
+        #   unlist %>%
+        #   dplyr::last()
+        #
+        # if (file.format %in% c("csv", "CSV")) {
+        #   table.output <- utils::read.csv(file = tabular.list)
+        #
+        #   message(
+        #     cat(
+        #       "The file has been read into the R Environment.\nIf the file was not read correctly, re-execute import with the file url: ",
+        #       "\n",
+        #       paste0(tabular.list)
+        #     )
+        #   )
+        #
+        # } else if (file.format %in% c("xls", "xlsx", "XLS", "XLSX")) {
+        #   table.output <-
+        #     readxl::read_excel(path = tabular.list)
+
+        message(
+          cat(
+            "The file(s) have been read into the R Environment.\nIf the file was not read correctly, re-execute import with the file url: ",
+            "\n",
+            paste0(tabular.list)
+          )
+        )
+        # } else {
+        # message(
+        #   cat(
+        #     "The file format is not supported.\nTry using another function with the file url: ",
+        #     "\n",
+        #     paste0(tabular.list)
+        #   )
+        # )
+        # }
       }
 
       return(table.output)
+    } else {
+      stop("No supported files found. Note, files must be formatted to csv or Excel.")
     }
 
   }
