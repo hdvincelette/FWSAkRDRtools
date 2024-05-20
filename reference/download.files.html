@@ -51,7 +51,8 @@
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">download.files</span><span class="op">(</span></span>
 <span>  <span class="va">pattern</span>,</span>
 <span>  <span class="va">project</span>,</span>
-<span>  <span class="va">path</span>,</span>
+<span>  <span class="va">subfolder.path</span>,</span>
+<span>  <span class="va">local.path</span>,</span>
 <span>  <span class="va">main</span>,</span>
 <span>  <span class="va">incoming</span>,</span>
 <span>  <span class="va">recursive</span>,</span>
@@ -69,7 +70,11 @@
 <dd><p>Character string. Name of the project folder.</p></dd>
 
 
-<dt>path</dt>
+<dt>subfolder.path</dt>
+<dd><p>Character string. Project subfolder path.</p></dd>
+
+
+<dt>local.path</dt>
 <dd><p>Character string. Directory path where the downloaded files will be saved. Default is the working directory, getwd().</p></dd>
 
 
@@ -97,7 +102,7 @@
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
-    <div class="dont-index"><p><code>download.files()</code></p></div>
+    <div class="dont-index"><p><code><a href="read.tables.html">read.tables()</a></code></p></div>
     </div>
 
     <div class="section level2">
