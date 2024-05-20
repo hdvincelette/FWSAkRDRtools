@@ -121,7 +121,7 @@ find.files <-
       }
     } else {
       for (a in 1:length(pattern)) {
-        message(paste0("Searching for files with the pattern '", pattern[a], "'..."))
+        message(paste0("Searching for files in ",project," with the pattern '", pattern[a], "'..."))
 
         file.loc <-
           list.files(
