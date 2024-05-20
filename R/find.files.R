@@ -62,6 +62,18 @@ find.files <-
     }
 
 
+    if (!project %in%  list.dirs(
+      path = paste0("//ifw7ro-file.fws.doi.net/datamgt/",
+                    program,
+                    "/"),
+      full.names = FALSE,
+      recursive = FALSE
+    )) {
+      stop("Project '",project,"' not found.")
+    }
+
+
+
     if (!subfolder.path %in%  list.dirs(
       path = paste0(
         "//ifw7ro-file.fws.doi.net/datamgt/",
@@ -74,7 +86,7 @@ find.files <-
       recursive = TRUE
     )
     ) {
-      stop("Project subfolder path not found.")
+      stop("Subfolder path '",subfolder.path,"' not found.")
     }
 
 
