@@ -7,6 +7,7 @@
 #' @param main Logical. Whether to return results from the main project folder (all subfolders except "incoming"). Default is TRUE.
 #' @param incoming Logical. Whether to return results from the "incoming" project subfolder. Default is TRUE.
 #' @param recursive Logical. Whether to search for and read in files in subdirectories. Default is TRUE.
+#' @param all Logical. Whether to read in all files in search results. Default is FALSE and a selection menu is presented.
 #' @return Returns a data frame of one or more selected tabular data files.
 #' @keywords USFWS, repository
 #' @seealso ```find.files()```
@@ -34,6 +35,9 @@ read.tables <-
     }
     if (missing(recursive)) {
       recursive <- TRUE
+    }
+    if (missing(all)) {
+      all <- FALSE
     }
 
     program.list <- c("^fes", "^mbm", "^nwrs", "^osm", "^sa")
@@ -71,7 +75,7 @@ read.tables <-
         tabular.list <- c(tabular.list, tabular.files)
       }
 
-      if (length(tabular.list) == 1) {
+      if (length(tabular.list) == 1 | all == TRUE) {
         file.choice <- gsub(
           paste0(
             "//ifw7ro-file.fws.doi.net/datamgt/",
