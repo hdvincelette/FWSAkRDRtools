@@ -170,7 +170,7 @@ read.tables <-
         return(table.output)
 
       } else {
-        warning("No supported files found.\nNote, tablar data must be formatted to csv or xls/xlsx")
+        warning("No supported files found.\nNote, tablar data must be formatted to csv or xls/xlsx.")
       }
     }
   }
