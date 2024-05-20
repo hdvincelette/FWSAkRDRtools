@@ -120,12 +120,10 @@ read.tables <-
         import.file.name <- file.choice %>%
           stringr::str_replace(., paste0(".", file.ext), "") %>%
           stringr::str_replace(.,
-                               paste0(
-                                 "//ifw7ro-file.fws.doi.net/datamgt/",
-                                 program,
-                                 "/",
-                                 project
-                               ),
+                               paste0("//ifw7ro-file.fws.doi.net/datamgt/",
+                                      program,
+                                      "/",
+                                      project),
                                "")
 
         file.list <- list()
@@ -231,7 +229,7 @@ read.tables <-
           cat(
             "The file(s) have been read into the R Environment.\nIf the file was not read correctly, re-execute import with the file url: ",
             "\n",
-            paste0(tabular.list)
+            paste0(tabular.list, sep = "\n")
           )
         )
         # } else {
@@ -243,11 +241,11 @@ read.tables <-
         #   )
         # )
         # }
+
+        return(table.output)
+
+      } else {
+        stop("No supported files found. Note, files must be formatted to csv or Excel.")
       }
-
-      return(table.output)
-    } else {
-      stop("No supported files found. Note, files must be formatted to csv or Excel.")
     }
-
   }
