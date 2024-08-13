@@ -4,7 +4,7 @@
 remove.packages("FWSAkRDRtools")
 .rs.restartR()
 
-setwd("C:/Users/hvincelette/OneDrive - DOI/Documents/GitHub/FWSAkRDRtools")
+setwd("~/GitHub/FWSAkRDRtools")
 
 devtools::load_all()
 devtools::document(roclets = c('rd', 'collate', 'namespace'))
