@@ -14,7 +14,6 @@ knitr::opts_chunk$set(
 ```
 
 # FWSAkRDRtools
-
 File Management Tools for the Fish & Wildlife Service Alaska Regional Data Repository
 
 ## Installation
