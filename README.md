@@ -40,5 +40,5 @@ product or activity by FWS or the United States Government.
 Submit a [GitHub
 Issue](https://github.com/hdvincelette/FWSAkRDRtools/issues) to report a
 bug and request a feature or enhancement. Contact the [project
-maintainer](hannah_vincelette@fws.gov) for information about
+maintainer](mailto:hannah_vincelette@fws.gov) for information about
 contributing to this project.
