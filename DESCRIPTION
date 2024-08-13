@@ -5,7 +5,7 @@ Authors@R:
     person("Hannah", "Vincelette", , "hdvincelette@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-6404-0410"))
 Description: 
-License: MIT
+License: CC0
 Suggests: 
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
