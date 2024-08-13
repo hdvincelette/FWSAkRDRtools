@@ -39,4 +39,4 @@ The United States Fish and Wildlife Service (FWS) GitHub project code is provide
 
 ## Getting help
 
-Submit a [GitHub Issue](https://github.com/hdvincelette/FWSAkRDRtools/issues) to report a bug and request a feature or enhancement. Contact the [project maintainer](mailto:hannah_vincelette@fws.gov) for information about contributing to this project.
+Submit a [GitHub Issue](https://github.com/hdvincelette/FWSAkRDRtools/issues) to report a bug and request a feature or enhancement. Contact the [project maintainer](https://github.com/vincelette-usfws) for information about contributing to this project.
