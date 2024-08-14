@@ -85,6 +85,25 @@ help(package = "FWSAkRDRtools")
 ? FWSAkRDRtools::download.files
 vignette("FWSAkRDRtools")
 
+# Add credentials
+keyring::key_set_with_value(service = "FWS-RDR",
+                            username = NULL,
+                            password = "//ifw7ro-file.fws.doi.net/datamgt/")
+
+if(nrow(keyring::key_list(service = "FWS-RDR"))==0) {
+  message("Provide the Regional Data Repository IP address.")
+  ip.address <- readline(prompt =)
+  keyring::key_set_with_value(service = "FWS-RDR",
+                              username = NULL,
+                              password = ip.address)
+
+
+}
+
+keyring::key_get(service = "FWS-RDR")
+keyring::key_delete("FWS-RDR")
+keyring::key_list()
+
 
 # TEST
 setwd("C:/Users/hvincelette/OneDrive - DOI/Documents/Working_files/test")
