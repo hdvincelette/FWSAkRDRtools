@@ -2,7 +2,7 @@
 #'
 #' Creates a copy of a RDR project folder in a specified location. Remote users must be connected to one of the Service’s approved remote connection technologies, such as a Virtual Private Network (VPN).
 #' @param project Character string. Name of the project folder.
-#' @param path  	Character string. Directory path where the cloned project will be located. Default is the working directory, getwd().
+#' @param path Character string. Directory path where the cloned project will be located. Default is the working directory, getwd().
 #' @param main Logical. Whether to return results from the main project folder (all subfolders except "incoming"). Default is TRUE.
 #' @param incoming Logical. Whether to return results from the "incoming" project subfolder. Default is TRUE.
 #' @return Returns a download of the project folder and all its contents.

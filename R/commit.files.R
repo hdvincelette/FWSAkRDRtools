@@ -2,7 +2,7 @@
 #'
 #' Copies local file(s) to the "incoming" subfolder of a specified RDR project and updates the changelog to document changes. Remote users must be connected the Service’s approved remote connection technologies, such as a Virtual Private Network (VPN) AND be granted write permission to the project’s “incoming" subfolder (i.e., be an authorized "data steward").
 #' @param project Character string. Name of the project folder.
-#' @param local.folder  	Character string. Directory name or path where the uncommitted files are located. Default is the working directory, getwd().
+#' @param local.folder Character string. Directory name or path where the uncommitted files are located. Default is the working directory, getwd().
 #' @param recursive Logical. Whether to search for and commit files in subdirectories. Default is TRUE.
 #' @return Returns a vector of the committed files.
 #' @keywords USFWS, repository
