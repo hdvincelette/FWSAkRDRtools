@@ -24,3 +24,7 @@ Official initial release of FWSAkRDRtools.
     Regional Data Repository (RDR) into R
 -   summarize.files: Summarize project files on the USFWS Alaska
     Regional Data Repository (RDR)
+
+# FWSAkRDRtools 0.0.1
+
+Initial release of get.dir.template(), clone.project(), find.files(), download.files(), read.tables(), commit.files(), and summarize.files().
