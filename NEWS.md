@@ -6,7 +6,7 @@ editor_options:
 
 # FWSAkRDRtools 0.1.0
 
-Minor updates to improve function efficiencies.
+Minor updates to improve the efficiency of find.files(), summarize.files() & read.tables().
 
 
 # FWSAkRDRtools 0.0.2
