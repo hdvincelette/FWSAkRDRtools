@@ -19,13 +19,13 @@ You can install the development version of FWSAkRDRtools from
 install.packages("devtools")
 
 # Install FWSAkRDRtools from GitHub
-devtools::install_github("hdvincelette/FWSAkRDRtools")
+devtools::install_github("USFWS/FWSAkRDRtools")
 ```
 
 ## Getting help
 
 Submit a [GitHub
-Issue](https://github.com/hdvincelette/FWSAkRDRtools/issues) to report a
+Issue](https://github.com/USFWS/FWSAkRDRtools/issues) to report a
 bug and request a feature or enhancement. Contact the [project
 maintainer](https://github.com/vincelette-usfws) for information about
 contributing to this project.
