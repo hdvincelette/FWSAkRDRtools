@@ -6,7 +6,7 @@ editor_options:
 
 # FWSAkRDRtools 0.1.0
 
-Official initial release of FWSAkRDRtools.
+Minor updates to improve function efficiencies.
 
 
 # FWSAkRDRtools 0.0.2
