@@ -21,6 +21,12 @@ commit.files <-
     if (missing(recursive)) {
       recursive <- TRUE
     }
+
+    if(dir.exists("//ifw7ro-file.fws.doi.net/datamgt/")==FALSE){
+      stop("Unable to connect to the RDR. Check your network and VPN connection.")
+    }
+
+
     local.path <- local.folder
     ## Determine program prefix
     program.list <- c("^fes", "^mbm", "^nwrs", "^osm", "^sa")

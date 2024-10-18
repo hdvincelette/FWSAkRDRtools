@@ -30,8 +30,9 @@ download.files <-
     if (missing(pattern)) {
       pattern <- NULL
     }
-    if (missing(local.path))
+    if (missing(local.path)) {
       local.path <- getwd()
+    }
     if (missing(main)) {
       main <- TRUE
     }
@@ -41,8 +42,13 @@ download.files <-
     if (missing(recursive)) {
       recursive <- TRUE
     }
-    if (missing(download.file.method))
+    if (missing(download.file.method)) {
       download.file.method <- "auto"
+    }
+
+    if(dir.exists("//ifw7ro-file.fws.doi.net/datamgt/")==FALSE){
+      stop("Unable to connect to the RDR. Check your network and VPN connection.")
+    }
 
     options(download.file.method = download.file.method)
 
