@@ -28,6 +28,9 @@ clone.project <-
       incoming <- TRUE
     }
 
+    if(dir.exists("//ifw7ro-file.fws.doi.net/datamgt/")==FALSE){
+      stop("Unable to connect to the RDR. Check your network and VPN connection and try again.")
+    }
 
     program.list <- c("^fes", "^mbm", "^nwrs", "^osm", "^sa")
 
