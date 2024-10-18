@@ -59,7 +59,7 @@ get.dir.template <- function(project,
     dir.create(paste0(new.path, "/", project))
   }
 
-  dir_template <- get0("dir_template", envir = asNamespace("FWSAkRDRtools"))
+  # dir_template <- get0("dir_template", envir = asNamespace("FWSAkRDRtools"))
 
   for (a in 1:length(dir_template)) {
     subfolder <- dir_template[a]
