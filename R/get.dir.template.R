@@ -45,7 +45,7 @@ get.dir.template <- function(project,
   }
 
 
-  if (dir.exists(paste0(new.path, "/", project))) {
+  if (dir.exists(paste0(new.path, "/", project))==TRUE) {
     selection.overwrite <-
       utils::menu(c("Yes", "No"), title = "Overwrite existing folder?")
 
@@ -58,6 +58,8 @@ get.dir.template <- function(project,
   } else {
     dir.create(paste0(new.path, "/", project))
   }
+
+  dir_template <- get0("dir_template", envir = asNamespace("FWSAkRDRtools"))
 
   for (a in 1:length(dir_template)) {
     subfolder <- dir_template[a]
