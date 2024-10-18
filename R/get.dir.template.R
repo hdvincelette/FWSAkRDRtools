@@ -51,7 +51,7 @@ get.dir.template <- function(project,
 
     if (selection.overwrite == 1) {
       unlink(paste0(new.path, "/", project), recursive = TRUE)
-      dir.create(paste0(new.path, "/", project))
+      suppressWarnings(dir.create(paste0(new.path, "/", project)))
     } else {
       stop("Execution halted")
     }
