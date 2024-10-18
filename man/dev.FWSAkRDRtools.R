@@ -62,6 +62,11 @@ usethis::use_r("summarize.proj.R")
 
 # Save R objects
 usethis::use_data(dir_template)
+usethis::use_data(
+  dir_template,
+  internal = TRUE,
+  overwrite = TRUE
+)
 
 # Create project folders in directory
 usethis::use_directory("docs")
