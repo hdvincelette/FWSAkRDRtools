@@ -155,6 +155,8 @@ find.files <-
       }
     }
 
+    file.url<- unique(file.url)
+
     if (full.path == FALSE) {
       file.list <- gsub(
         paste0(
