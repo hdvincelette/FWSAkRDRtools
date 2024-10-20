@@ -2,7 +2,7 @@
 #'
 #' Copies local file(s) to the "incoming" subfolder of a specified RDR project and updates the changelog to document changes. Remote users must be connected the Service’s approved remote connection technologies, such as a Virtual Private Network (VPN) AND be granted write permission to the project’s “incoming" subfolder (i.e., be an authorized "data steward").
 #' @param project Character string. Name of the project folder.
-#' @param local.folder Character string. Directory name or path where the uncommitted files are located. Default is the working directory, getwd().
+#' @param local.path Character string. Directory name or path where the uncommitted files are located. Default is the working directory, getwd().
 #' @param recursive Logical. Whether to search for and commit files in subdirectories. Default is TRUE.
 #' @return Returns a vector of the committed files.
 #' @keywords USFWS, repository
@@ -15,19 +15,20 @@
 
 commit.files <-
   function(project,
-           local.folder,
+           local.path,
            recursive) {
     ## Parameter arguments
     if (missing(recursive)) {
       recursive <- TRUE
+    }
+    if (missing(local.path)) {
+      local.path <- getwd()
     }
 
     if(dir.exists("//ifw7ro-file.fws.doi.net/datamgt/")==FALSE){
       stop("Unable to connect to the RDR. Check your network and VPN connection.")
     }
 
-
-    local.path <- local.folder
     ## Determine program prefix
     program.list <- c("^fes", "^mbm", "^nwrs", "^osm", "^sa")
     program <- NA
