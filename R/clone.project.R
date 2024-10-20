@@ -2,7 +2,7 @@
 #'
 #' Creates a copy of a RDR project folder in a specified location. Remote users must be connected to one of the Service’s approved remote connection technologies, such as a Virtual Private Network (VPN).
 #' @param project Character string. Name of the project folder.
-#' @param path Character string. Directory path where the cloned project will be located. Default is the working directory, getwd().
+#' @param local.path Character string. Directory path where the cloned project will be located. Default is the working directory, getwd().
 #' @param main Logical. Whether to return results from the main project folder (all subfolders except "incoming"). Default is TRUE.
 #' @param incoming Logical. Whether to return results from the "incoming" project subfolder. Default is TRUE.
 #' @return Returns a download of the project folder and all its contents.
@@ -14,12 +14,12 @@
 
 
 clone.project <-
-  function(project, path, main, incoming) {
+  function(project, local.path, main, incoming) {
     ## Parameter arguments
     if (missing(path)) {
       new.path <- getwd()
     } else {
-      new.path <- path
+      new.path <- local.path
     }
     if (missing(main)) {
       main <- TRUE
