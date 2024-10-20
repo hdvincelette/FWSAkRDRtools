@@ -2,7 +2,7 @@
 #'
 #' Summarizes files in a specified RDR project folder. Remote users must be connected to one of the Service’s approved remote connection technologies, such as a Virtual Private Network (VPN).
 #' @param project Character string. Name of the project folder.
-#' @param subfolder Optional character vector. Name(s) of subfolder(s) to summarize. Default is NULL, which returns results for all subfolders.
+#' @param subfolder Optional character vector. Project subfolder(s) to summarize. Default is NULL, which returns results for all subfolders.
 #' @param main Logical. Whether to return results from the main project folder (all subfolders except incoming). Default is TRUE.
 #' @param incoming Logical. Whether to return results from the "incoming" project subfolder. Default is TRUE.
 #' @param recursive Logical. Whether to search for files in subdirectories. Default is TRUE.
