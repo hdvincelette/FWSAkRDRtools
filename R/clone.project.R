@@ -16,7 +16,7 @@
 clone.project <-
   function(project, local.path, main, incoming) {
     ## Parameter arguments
-    if (missing(path)) {
+    if (missing(local.path)) {
       new.path <- getwd()
     } else {
       new.path <- local.path
