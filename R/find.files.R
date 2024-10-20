@@ -4,7 +4,7 @@
 #' @param pattern Character vector. File name pattern(s). Must be a regular expression; print ?base::regex for help. Default is NULL, which returns results for all files.
 #' @param project Character string. Name of the project folder.
 #' @param subfolder.path Character string. Project subfolder path.
-#' @param main Logical. Whether to return results from the main project folder (all subfolders except "incoming"). Default is TRUE.
+#' @param main Logical. Whether to return results from the "main" project folder (all subfolders except "incoming"). Default is TRUE.
 #' @param incoming Logical. whether to return results from the "incoming" project subfolder. Default is TRUE.
 #' @param recursive Logical. Whether to search for files in subdirectories. Default is TRUE.
 #' @param full.path Logical. Whether to return full file path. Default is FALSE
