@@ -18,7 +18,7 @@ get.dir.template <- function(project,
                              main = TRUE,
                              incoming = TRUE) {
   ## Parameter arguments
-  if (missing(path)) {
+  if (missing(local.path)) {
     new.path <- getwd()
   } else {
     new.path <- local.path
