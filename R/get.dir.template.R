@@ -14,7 +14,7 @@
 
 
 get.dir.template <- function(project,
-                             path,
+                             local.path,
                              main = TRUE,
                              incoming = TRUE) {
   ## Parameter arguments
