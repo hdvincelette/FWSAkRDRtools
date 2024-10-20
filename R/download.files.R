@@ -8,7 +8,7 @@
 #' @param main Logical. Whether to return results from the "main" project folder (all subfolders except "incoming"). Default is TRUE.
 #' @param incoming Logical. Whether to return results from the "incoming" project subfolder. Default is TRUE.
 #' @param recursive Logical. Whether to search for and download files in subdirectories. Default is TRUE.
-#' @param download.file.method Character string. Method to use for downloading files. Print ?options(download.file.method) for available methods. Default is "auto".
+#' @param download.file.method Character string. Method to use for downloading files. Print ?download.file for available methods. Default is "auto".
 #' @return Returns file download(s) which match the search criteria.
 #' @keywords USFWS, repository, download, files
 #' @seealso ```read.tables()```
