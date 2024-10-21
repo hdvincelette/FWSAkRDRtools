@@ -162,12 +162,11 @@ read.tables <-
           }
         }
 
-        if(length(file.list)>1) {
+        if(length(file.list)==1) {
           ## Create dataframe
           output <-
             file.list %>%
             rlang::set_names(., stringr::str_replace(import.file.name, ".*/", "")) %>%
-            purrr::imap(., ~ dplyr::mutate(.x, .id = .y, .before = 1)) %>%
             plyr::ldply(.)
 
         } else {
