@@ -2,15 +2,15 @@
 #'
 #' Creates the RDR project folder structure in a specified location.
 #' @param project Character string. Name of the project folder.
-#' @param local.path  	Character string. Directory path where the project will be located. Default is the working directory, getwd().
-#' @param main Logical. Whether to include the "main" project folder (all subfolders except "incoming"). Default is TRUE.
+#' @param local.path Character string. Directory path where the project will be located. Default is the working directory, getwd().
+#' @param main Logical. Whether to include the main project subfolders (all subfolders except "incoming"). Default is TRUE.
 #' @param incoming Logical. Whether to include the "incoming" project subfolder. Default is TRUE
 #' @return Returns a download of the project directory tree template.
 #' @keywords USFWS, repository, download, directory tree
 #' @seealso ```clone.project()```
 #' @export
 #' @examples
-#' # get.dir.template(project = "mbmlb_909_Eskimo_Curlew_study", path = getwd(), main = TRUE, incoming = TRUE)
+#' # get.dir.template(project = "mbmlb_909_Eskimo_Curlew_study", local.path = getwd(), main = TRUE, incoming = TRUE)
 
 
 get.dir.template <- function(project,
