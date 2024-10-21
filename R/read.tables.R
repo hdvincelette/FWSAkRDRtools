@@ -7,8 +7,11 @@
 #' @param main Logical. Whether to return results from the "main" project folder (all subfolders except "incoming"). Default is TRUE.
 #' @param incoming Logical. Whether to return results from the "incoming" project subfolder. Default is TRUE.
 #' @param recursive Logical. Whether to search for and read in files in subdirectories. Default is TRUE.
-#' @param all Logical. Whether to read in all files in search results. Default is FALSE and a selection menu is presented.
-#' @return Returns a data frame of one or more selected tabular data files.
+#' @param header Logical. Whether the first line contains variable names. Default is TRUE.
+#' @param na.strings Character vector. Strings which are to be interpreted as NA values.
+#' @param sep Character string. The field separator character. Default is "".
+#' @param merge Logical. Whether tables should be merged or kept separate (recommended for "untidy" data). Default is FALSE.
+#' @return Returns a data frame (if merge == TRUE or only one file selected) or list (if merge == FALSE) of selected tabular data file(s).
 #' @keywords USFWS, repository
 #' @seealso ```find.files()```
 #' @export
@@ -23,7 +26,11 @@ read.tables <-
            main,
            incoming,
            recursive,
-           all) {
+           header,
+           na.strings,
+           sep,
+           merge
+           ) {
     ## Parameter arguments
     if (missing(pattern)) {
       pattern <- NULL
@@ -37,8 +44,17 @@ read.tables <-
     if (missing(recursive)) {
       recursive <- TRUE
     }
-    if (missing(all)) {
-      all <- FALSE
+    if (missing(header)) {
+      header <- TRUE
+    }
+    if (missing(na.strings)) {
+      na.strings <- ""
+    }
+    if (missing(sep)) {
+      sep <- ""
+    }
+    if (missing(merge)) {
+      merge <- FALSE
     }
 
     if(dir.exists("//ifw7ro-file.fws.doi.net/datamgt/")==FALSE){
@@ -141,27 +157,29 @@ read.tables <-
         for (a in 1:length(file.ext)) {
           if (file.ext[a] %in% c("xlsx", "xls")) {
             import.file <-
-              readxl::read_excel(tabular.list[a], na = "")
+              readxl::read_excel(tabular.list[a], col_names = header, na = na.strings)
             file.list[[a]] <- import.file
 
           } else if (file.ext[a] %in% c("csv")) {
             import.file <-
-              utils::read.csv(tabular.list[a], na.strings = "")
+              utils::read.csv(tabular.list[a], header = header, na.strings = na.strings, sep = sep)
             file.list[[a]] <- import.file
 
           }
         }
 
-        ## Create dataframe
-        table.output <-
-          file.list %>%
-          rlang::set_names(.,  stringr::str_replace(import.file.name,
-                                                    ".*/",
-                                                    "")) %>%
-          purrr::imap(.,
-                      ~ dplyr::mutate(.x, .id = .y,  .before = 1)) %>%
-          plyr::ldply(.)
+        if(length(file.list)>1 &
+           merge ==TRUE) {
+          ## Create dataframe
+          output <-
+            file.list %>%
+            rlang::set_names(., stringr::str_replace(import.file.name, ".*/", "")) %>%
+            purrr::imap(., ~ dplyr::mutate(.x, .id = .y, .before = 1)) %>%
+            plyr::ldply(.)
 
+        } else {
+          output<- file.list
+        }
 
         message(
           cat(
@@ -171,7 +189,7 @@ read.tables <-
           )
         )
 
-        return(table.output)
+        return(output)
 
       } else {
         warning("No supported files found.\nNote, tablar data must be formatted to csv or xls/xlsx.")
