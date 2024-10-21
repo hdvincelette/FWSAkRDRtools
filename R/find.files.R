@@ -53,30 +53,50 @@ find.files <-
       stop("Unable to connect to the RDR. Check your network and VPN connection.")
     }
 
-    program.list <- c("^fes", "^mbm", "^nwrs", "^osm", "^sa")
 
-    program <- NA
+    project.list <- suppressMessages(find.project(pattern = project, full.path = TRUE))
 
-    for (a in 1:length(program.list)) {
-      if (grepl(program.list[a], project) == TRUE) {
-        program <- sub('.', '', program.list[a])
+    if (length(project.list) == 0) {
+      stop("Project matching", project, "not found.")
+    } else if (length(project.list) > 1) {
+      while (project.choice == 0) {
+        project.choice <- utils::menu(basename(project.list), title  = "Select a project folder.")
       }
     }
 
-    if (is.na(program) == TRUE) {
-      stop("Project folder name must contain the program prefix (e.g., mbmlb_)")
-    }
+    project <- basename(project.list)[project.choice]
+
+    dirname(project.list[project.choice])
+
+    project.list[project.choice]
+
+    program <- sub('.', '', project)
 
 
-    if (!project %in%  list.dirs(
-      path = paste0("//ifw7ro-file.fws.doi.net/datamgt/",
-                    program,
-                    "/"),
-      full.names = FALSE,
-      recursive = FALSE
-    )) {
-      stop("Project '",project,"' not found.")
-    }
+    # program.list <- c("^fes", "^mbm", "^nwrs", "^osm", "^sa")
+    #
+    # program <- NA
+    #
+    # for (a in 1:length(program.list)) {
+    #   if (grepl(program.list[a], project) == TRUE) {
+    #     program <- sub('.', '', program.list[a])
+    #   }
+    # }
+    #
+    # if (is.na(program) == TRUE) {
+    #   stop("Project folder name must contain the program prefix (e.g., mbmlb_)")
+    # }
+    #
+    #
+    # if (!project %in%  list.dirs(
+    #   path = paste0("//ifw7ro-file.fws.doi.net/datamgt/",
+    #                 program,
+    #                 "/"),
+    #   full.names = FALSE,
+    #   recursive = FALSE
+    # )) {
+    #   stop("Project '",project,"' not found.")
+    # }
 
 
     if (!subfolder.path %in%  list.dirs(

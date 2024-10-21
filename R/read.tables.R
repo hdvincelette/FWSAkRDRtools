@@ -55,19 +55,19 @@ read.tables <-
       stop("Unable to connect to the RDR. Check your network and VPN connection.")
     }
 
-    program.list <- c("^fes", "^mbm", "^nwrs", "^osm", "^sa")
-
-    program <- NA
-
-    for (a in 1:length(program.list)) {
-      if (grepl(program.list[a], project) == TRUE) {
-        program <- sub('.', '', program.list[a])
-      }
-    }
-
-    if (is.na(program) == TRUE) {
-      stop("Project folder name must contain the program prefix (e.g., mbmlb_)")
-    }
+    # program.list <- c("^fes", "^mbm", "^nwrs", "^osm", "^sa")
+    #
+    # program <- NA
+    #
+    # for (a in 1:length(program.list)) {
+    #   if (grepl(program.list[a], project) == TRUE) {
+    #     program <- sub('.', '', program.list[a])
+    #   }
+    # }
+    #
+    # if (is.na(program) == TRUE) {
+    #   stop("Project folder name must contain the program prefix (e.g., mbmlb_)")
+    # }
 
     ## Get file urls
     file.url <- FWSAkRDRtools::find.files(pattern,

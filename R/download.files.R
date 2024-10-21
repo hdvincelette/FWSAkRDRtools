@@ -52,19 +52,19 @@ download.files <-
 
     options(download.file.method = download.file.method)
 
-    program.list <- c("^fes", "^mbm", "^nwrs", "^osm", "^sa")
-
-    program <- NA
-
-    for (a in 1:length(program.list)) {
-      if (grepl(program.list[a], project) == TRUE) {
-        program <- sub('.', '', program.list[a])
-      }
-    }
-
-    if (is.na(program) == TRUE) {
-      stop("Project folder name must contain the program prefix (e.g., mbmlb_)")
-    }
+    # program.list <- c("^fes", "^mbm", "^nwrs", "^osm", "^sa")
+    #
+    # program <- NA
+    #
+    # for (a in 1:length(program.list)) {
+    #   if (grepl(program.list[a], project) == TRUE) {
+    #     program <- sub('.', '', program.list[a])
+    #   }
+    # }
+    #
+    # if (is.na(program) == TRUE) {
+    #   stop("Project folder name must contain the program prefix (e.g., mbmlb_)")
+    # }
 
 
 

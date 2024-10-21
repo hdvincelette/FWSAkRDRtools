@@ -39,32 +39,34 @@ commit.files <-
       stop("Unable to connect to the RDR. Check your network and VPN connection.")
     }
 
-    ## Determine program prefix
-    program.list <- c("^fes", "^mbm", "^nwrs", "^osm", "^sa")
-    program <- NA
-    for (a in 1:length(program.list)) {
-      if (grepl(program.list[a], project) == TRUE) {
-        program <- sub('.', '', program.list[a])
-      }
-    }
-    if (is.na(program) == TRUE) {
-      stop("Project folder name must contain the program prefix (e.g., mbmlb_)")
-    }
-    if (dir.exists(path = paste0(
-      "//ifw7ro-file.fws.doi.net/datamgt/",
-      program,
-      "/",
-      project,
-      "/"
-    )) == FALSE) {
-      stop(
-        paste0(
-          "Project folder '",
-          project,
-          "' not found. Check the folder name and network connection."
-        )
-      )
-    }
+    # ## Determine program prefix
+    # program.list <- c("^fes", "^mbm", "^nwrs", "^osm", "^sa")
+    # program <- NA
+    # for (a in 1:length(program.list)) {
+    #   if (grepl(program.list[a], project) == TRUE) {
+    #     program <- sub('.', '', program.list[a])
+    #   }
+    # }
+    # if (is.na(program) == TRUE) {
+    #   stop("Project folder name must contain the program prefix (e.g., mbmlb_)")
+    # }
+    #
+    # if (dir.exists(path = paste0(
+    #   "//ifw7ro-file.fws.doi.net/datamgt/",
+    #   program,
+    #   "/",
+    #   project,
+    #   "/"
+    # )) == FALSE) {
+    #   stop(
+    #     paste0(
+    #       "Project folder '",
+    #       project,
+    #       "' not found. Check the folder name and network connection."
+    #     )
+    #   )
+    # }
+
     ## Find files ####
     local.file.url <- character(0)
     message(paste0("Searching for local files..."))
