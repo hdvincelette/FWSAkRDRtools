@@ -85,6 +85,7 @@ commit.files <-
       RDR.file.url <- FWSAkRDRtools::find.files(
         pattern = NULL,
         project,
+        subfolder.path,
         main = TRUE,
         incoming = TRUE,
         recursive,
