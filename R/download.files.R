@@ -5,7 +5,7 @@
 #' @param project Character string. Name of the project folder.
 #' @param subfolder.path Character string. Project subfolder path.
 #' @param local.path Character string. Directory path where the downloaded files will be saved. Default is the working directory, getwd().
-#' @param main Logical. Whether to return results from the "main" project folder (all subfolders except "incoming"). Default is TRUE.
+#' @param main Logical. Whether to return results from the main project subfolders (all subfolders except "incoming"). Default is TRUE.
 #' @param incoming Logical. Whether to return results from the "incoming" project subfolder. Default is TRUE.
 #' @param recursive Logical. Whether to search for and download files in subdirectories. Default is TRUE.
 #' @param download.file.method Character string. Method to use for downloading files. Print ?download.file for available methods. Default is "auto".
@@ -14,7 +14,7 @@
 #' @seealso ```read.tables()```
 #' @export
 #' @examples
-#' # download.files(pattern = c("template","dictionary","\\.csv","hello"), project = "mbmlb_007_NWR_Alaska_Landbird_Monitoring_Survey", path = getwd(), incoming = TRUE, main = TRUE, recursive = TRUE, download.file.method = "curl")
+#' # download.files(pattern = c("template","dictionary","\\.csv","hello"), project = "mbmlb_007_NWR_Alaska_Landbird_Monitoring_Survey", subfolder.path = "metadata, local.path = getwd(), main = TRUE, incoming = TRUE, recursive = TRUE, download.file.method = "curl")
 
 
 download.files <-
