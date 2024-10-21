@@ -16,6 +16,7 @@
 
 commit.files <-
   function(project,
+           subfolder.path,
            local.path,
            recursive) {
     ## Parameter arguments
