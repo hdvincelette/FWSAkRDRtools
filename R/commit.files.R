@@ -12,6 +12,8 @@
 #' # e.g.commit<- commit.files(project = "mbmlb_010_Grey_headed_chickadee_hybridization", local.folder = getwd(), recursive = TRUE)
 
 # alternative to amatch - compare against RDR paths with same first level folder
+# no files to commit in folder or selected for overwrite
+# option to skip duplicate files
 
 commit.files <-
   function(project,
