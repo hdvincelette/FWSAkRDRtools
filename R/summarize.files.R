@@ -3,7 +3,7 @@
 #' Summarizes files in a specified RDR project folder. Remote users must be connected to one of the Service’s approved remote connection technologies, such as a Virtual Private Network (VPN).
 #' @param project Character string. Name of the project folder.
 #' @param subfolder Optional character vector. Project subfolder(s) to summarize. Default is NULL, which returns results for all subfolders.
-#' @param main Logical. Whether to return results from the "main" project folder (all subfolders except incoming). Default is TRUE.
+#' @param main Logical. Whether to return results from the main project subfolders (all subfolders except incoming). Default is TRUE.
 #' @param incoming Logical. Whether to return results from the "incoming" project subfolder. Default is TRUE.
 #' @param recursive Logical. Whether to search for files in subdirectories. Default is TRUE.
 #' @return Returns a data frame summarizing subfolder contents.
@@ -11,7 +11,7 @@
 #' @seealso ```commit.files()```
 #' @export
 #' @examples
-#' # e.g.summary<- summarize.files(project = "mbmlb_007_NWR_Alaska_Landbird_Monitoring_Survey", subfolder = c("/", "final_data", "metadata"), incoming = TRUE, main = FALSE, recursive = TRUE)
+#' # e.g.summary<- summarize.files(project = "mbmlb_007_NWR_Alaska_Landbird_Monitoring_Survey", subfolder = c("/", "final_data", "metadata"), main = FALSE, incoming = TRUE, recursive = TRUE)
 
 # progress bar digiart
 
