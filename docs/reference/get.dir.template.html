@@ -21,6 +21,12 @@
       <ul class="navbar-nav me-auto"><li class="active nav-item">
   <a class="nav-link" href="../reference/index.html">Reference</a>
 </li>
+<li class="nav-item dropdown">
+  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
+  <div class="dropdown-menu" aria-labelledby="dropdown-articles">
+    <a class="dropdown-item" href="../articles/01_FWSAkRDRtools_Tutorial.html">FWSAkRDRtools Tutorial</a>
+  </div>
+</li>
 <li class="nav-item">
   <a class="nav-link" href="../news/index.html">Changelog</a>
 </li>
@@ -51,7 +57,7 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">get.dir.template</span><span class="op">(</span><span class="va">project</span>, <span class="va">path</span>, main <span class="op">=</span> <span class="cn">TRUE</span>, incoming <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">get.dir.template</span><span class="op">(</span><span class="va">project</span>, <span class="va">local.path</span>, main <span class="op">=</span> <span class="cn">TRUE</span>, incoming <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -60,12 +66,12 @@
 <dd><p>Character string. Name of the project folder.</p></dd>
 
 
-<dt>path</dt>
+<dt>local.path</dt>
 <dd><p>Character string. Directory path where the project will be located. Default is the working directory, getwd().</p></dd>
 
 
 <dt>main</dt>
-<dd><p>Logical. Whether to include the main project folder (all subfolders except "incoming"). Default is TRUE.</p></dd>
+<dd><p>Logical. Whether to include the main project subfolders (all subfolders except "incoming"). Default is TRUE.</p></dd>
 
 
 <dt>incoming</dt>
@@ -85,7 +91,7 @@
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="co"># get.dir.template(project = "mbmlb_909_Eskimo_Curlew_study", path = getwd(), main = TRUE, incoming = TRUE)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="co"># get.dir.template(project = "mbmlb_909_Eskimo_Curlew_study", local.path = getwd(), main = TRUE, incoming = TRUE)</span></span></code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside></div>

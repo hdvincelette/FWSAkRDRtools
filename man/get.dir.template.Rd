@@ -4,14 +4,14 @@
 \alias{get.dir.template}
 \title{Copy the USFWS Alaska Regional Data Repository (RDR) project directory tree template.}
 \usage{
-get.dir.template(project, path, main = TRUE, incoming = TRUE)
+get.dir.template(project, local.path, main = TRUE, incoming = TRUE)
 }
 \arguments{
 \item{project}{Character string. Name of the project folder.}
 
-\item{path}{Character string. Directory path where the project will be located. Default is the working directory, getwd().}
+\item{local.path}{Character string. Directory path where the project will be located. Default is the working directory, getwd().}
 
-\item{main}{Logical. Whether to include the main project folder (all subfolders except "incoming"). Default is TRUE.}
+\item{main}{Logical. Whether to include the main project subfolders (all subfolders except "incoming"). Default is TRUE.}
 
 \item{incoming}{Logical. Whether to include the "incoming" project subfolder. Default is TRUE}
 }
@@ -22,7 +22,7 @@ Returns a download of the project directory tree template.
 Creates the RDR project folder structure in a specified location.
 }
 \examples{
-# get.dir.template(project = "mbmlb_909_Eskimo_Curlew_study", path = getwd(), main = TRUE, incoming = TRUE)
+# get.dir.template(project = "mbmlb_909_Eskimo_Curlew_study", local.path = getwd(), main = TRUE, incoming = TRUE)
 }
 \seealso{
 \code{clone.project()}

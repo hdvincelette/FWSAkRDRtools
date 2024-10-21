@@ -21,6 +21,12 @@
       <ul class="navbar-nav me-auto"><li class="active nav-item">
   <a class="nav-link" href="../reference/index.html">Reference</a>
 </li>
+<li class="nav-item dropdown">
+  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
+  <div class="dropdown-menu" aria-labelledby="dropdown-articles">
+    <a class="dropdown-item" href="../articles/01_FWSAkRDRtools_Tutorial.html">FWSAkRDRtools Tutorial</a>
+  </div>
+</li>
 <li class="nav-item">
   <a class="nav-link" href="../news/index.html">Changelog</a>
 </li>
@@ -82,7 +88,7 @@
 
 
 <dt>main</dt>
-<dd><p>Logical. Whether to return results from the main project folder (all subfolders except "incoming"). Default is TRUE.</p></dd>
+<dd><p>Logical. Whether to return results from the main project subfolders (all subfolders except "incoming"). Default is TRUE.</p></dd>
 
 
 <dt>incoming</dt>
@@ -94,7 +100,7 @@
 
 
 <dt>download.file.method</dt>
-<dd><p>Character string. Method to be used for downloading files. Print ?options for available methods. Default is "auto".</p></dd>
+<dd><p>Character string. Method to use for downloading files. Print ?download.file for available methods. Default is "auto".</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -110,7 +116,7 @@
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="co"># download.files(pattern = c("template","dictionary","\.csv","hello"), project = "mbmlb_007_NWR_Alaska_Landbird_Monitoring_Survey", path = getwd(), incoming = TRUE, main = TRUE, recursive = TRUE, download.file.method = "curl")</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="co"># download.files(pattern = c("template","dictionary","\.csv","hello"), project = "mbmlb_007_NWR_Alaska_Landbird_Monitoring_Survey", subfolder.path = "metadata, local.path = getwd(), main = TRUE, incoming = TRUE, recursive = TRUE, download.file.method = "curl")</span></span></code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside></div>

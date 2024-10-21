@@ -24,13 +24,13 @@ download.files(
 
 \item{local.path}{Character string. Directory path where the downloaded files will be saved. Default is the working directory, getwd().}
 
-\item{main}{Logical. Whether to return results from the main project folder (all subfolders except "incoming"). Default is TRUE.}
+\item{main}{Logical. Whether to return results from the main project subfolders (all subfolders except "incoming"). Default is TRUE.}
 
 \item{incoming}{Logical. Whether to return results from the "incoming" project subfolder. Default is TRUE.}
 
 \item{recursive}{Logical. Whether to search for and download files in subdirectories. Default is TRUE.}
 
-\item{download.file.method}{Character string. Method to be used for downloading files. Print ?options for available methods. Default is "auto".}
+\item{download.file.method}{Character string. Method to use for downloading files. Print ?download.file for available methods. Default is "auto".}
 }
 \value{
 Returns file download(s) which match the search criteria.
@@ -39,7 +39,7 @@ Returns file download(s) which match the search criteria.
 Searches for file name patterns in a specified RDR project folder and downloads all matching files. Remote users must be connected to one of the Service’s approved remote connection technologies, such as a Virtual Private Network (VPN).
 }
 \examples{
-# download.files(pattern = c("template","dictionary","\\.csv","hello"), project = "mbmlb_007_NWR_Alaska_Landbird_Monitoring_Survey", path = getwd(), incoming = TRUE, main = TRUE, recursive = TRUE, download.file.method = "curl")
+# download.files(pattern = c("template","dictionary","\\.csv","hello"), project = "mbmlb_007_NWR_Alaska_Landbird_Monitoring_Survey", subfolder.path = "metadata, local.path = getwd(), main = TRUE, incoming = TRUE, recursive = TRUE, download.file.method = "curl")
 }
 \seealso{
 \code{read.tables()}

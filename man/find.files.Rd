@@ -21,7 +21,7 @@ find.files(
 
 \item{subfolder.path}{Character string. Project subfolder path.}
 
-\item{main}{Logical. Whether to return results from the main project folder (all subfolders except "incoming"). Default is TRUE.}
+\item{main}{Logical. Whether to return results from the main project subfolders (all subfolders except "incoming"). Default is TRUE.}
 
 \item{incoming}{Logical. whether to return results from the "incoming" project subfolder. Default is TRUE.}
 
@@ -36,7 +36,7 @@ Returns a vector of paths to files which match the search criteria.
 Finds data file(s) from a specified RDR project folder. Remote users must be connected to one of the Service’s approved remote connection technologies, such as a Virtual Private Network (VPN).
 }
 \examples{
-# e.g.file.locs<- find.files(pattern = c("template","dictionary","\\.csv","hello"), project = "mbmlb_007_NWR_Alaska_Landbird_Monitoring_Survey", incoming = TRUE, main = FALSE, recursive = TRUE, full.path = FALSE)
+# e.g.file.locs<- find.files(pattern = c("template","dictionary","\\.csv","hello"), project = "mbmlb_007_NWR_Alaska_Landbird_Monitoring_Survey", subfolder.path = "", main = FALSE, incoming = TRUE, recursive = TRUE, full.path = FALSE)
 }
 \seealso{
 \code{download.files()}

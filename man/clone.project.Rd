@@ -4,14 +4,14 @@
 \alias{clone.project}
 \title{Clone a project from the USFWS Alaska Regional Data Repository (RDR)}
 \usage{
-clone.project(project, path, main, incoming)
+clone.project(project, local.path, main, incoming)
 }
 \arguments{
 \item{project}{Character string. Name of the project folder.}
 
-\item{path}{Character string. Directory path where the cloned project will be located. Default is the working directory, getwd().}
+\item{local.path}{Character string. Directory path where the cloned project will be located. Default is the working directory, getwd().}
 
-\item{main}{Logical. Whether to return results from the main project folder (all subfolders except "incoming"). Default is TRUE.}
+\item{main}{Logical. Whether to return results from the main project subfolders (all subfolders except "incoming"). Default is TRUE.}
 
 \item{incoming}{Logical. Whether to return results from the "incoming" project subfolder. Default is TRUE.}
 }
@@ -22,7 +22,7 @@ Returns a download of the project folder and all its contents.
 Creates a copy of a RDR project folder in a specified location. Remote users must be connected to one of the Service’s approved remote connection technologies, such as a Virtual Private Network (VPN).
 }
 \examples{
-# clone.project(project = "mbmlb_010_Grey_headed_chickadee_hybridization", path = getwd(), main = TRUE, incoming = TRUE)
+# clone.project(project = "mbmlb_010_Grey_headed_chickadee_hybridization", local.path = getwd(), main = TRUE, incoming = TRUE)
 }
 \seealso{
 \code{get.dir.template()}

@@ -4,6 +4,12 @@
     <loc>https://hdvincelette.github.io/FWSAkRDRtools/404.html</loc>
   </url>
   <url>
+    <loc>https://hdvincelette.github.io/FWSAkRDRtools/articles/01_FWSAkRDRtools_Tutorial.html</loc>
+  </url>
+  <url>
+    <loc>https://hdvincelette.github.io/FWSAkRDRtools/articles/index.html</loc>
+  </url>
+  <url>
     <loc>https://hdvincelette.github.io/FWSAkRDRtools/authors.html</loc>
   </url>
   <url>
@@ -32,6 +38,9 @@
   </url>
   <url>
     <loc>https://hdvincelette.github.io/FWSAkRDRtools/reference/find.files.html</loc>
+  </url>
+  <url>
+    <loc>https://hdvincelette.github.io/FWSAkRDRtools/reference/find.project.html</loc>
   </url>
   <url>
     <loc>https://hdvincelette.github.io/FWSAkRDRtools/reference/get.dir.template.html</loc>

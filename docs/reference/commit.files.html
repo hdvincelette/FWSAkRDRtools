@@ -21,6 +21,12 @@
       <ul class="navbar-nav me-auto"><li class="active nav-item">
   <a class="nav-link" href="../reference/index.html">Reference</a>
 </li>
+<li class="nav-item dropdown">
+  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
+  <div class="dropdown-menu" aria-labelledby="dropdown-articles">
+    <a class="dropdown-item" href="../articles/01_FWSAkRDRtools_Tutorial.html">FWSAkRDRtools Tutorial</a>
+  </div>
+</li>
 <li class="nav-item">
   <a class="nav-link" href="../news/index.html">Changelog</a>
 </li>
@@ -51,7 +57,7 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">commit.files</span><span class="op">(</span><span class="va">project</span>, <span class="va">local.folder</span>, <span class="va">recursive</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">commit.files</span><span class="op">(</span><span class="va">project</span>, <span class="va">local.path</span>, <span class="va">recursive</span>, <span class="va">review.duplicate</span>, <span class="va">rdr.overwrite</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -60,12 +66,20 @@
 <dd><p>Character string. Name of the project folder.</p></dd>
 
 
-<dt>local.folder</dt>
+<dt>local.path</dt>
 <dd><p>Character string. Directory name or path where the uncommitted files are located. Default is the working directory, getwd().</p></dd>
 
 
 <dt>recursive</dt>
 <dd><p>Logical. Whether to search for and commit files in subdirectories. Default is TRUE.</p></dd>
+
+
+<dt>review.duplicate</dt>
+<dd><p>Logical. Whether to review local duplicate files (identical file name and extension, different subfolder path). Default is TRUE, and duplicate files are reviewed and selected individually. If FALSE, all files are automatically selected for commit.</p></dd>
+
+
+<dt>rdr.overwrite</dt>
+<dd><p>Logical. Whether to overwrite rdr files (identical file name, extension, and subfolder path) betweent local and RDR folders. Default is FALSE. If TRUE, overwrites must be reviewed and approved individually. Only files in the "incoming" subfolder of the RDR may be immediately overwritten, while those in the main project subfolders will only be overwritten at the discretion of the Data Manager.</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -81,7 +95,7 @@
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="co"># e.g.commit&lt;- commit.files(project = "mbmlb_010_Grey_headed_chickadee_hybridization", local.folder = getwd(), recursive = TRUE)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="co"># e.g.commit&lt;- commit.files(project = "mbmlb_010_Grey_headed_chickadee_hybridization", local.path = getwd(), recursive = TRUE, review.duplicate = TRUE, rdr.overwrite = FALSE)</span></span></code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside></div>

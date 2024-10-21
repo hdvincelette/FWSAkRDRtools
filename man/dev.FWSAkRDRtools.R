@@ -13,9 +13,7 @@ devtools::install()
 
 # Write markdown
 pkgdown::build_articles()
-rmarkdown::render('vignettes/01_Intro_FWSAkRDRtools.Rmd')
-rmarkdown::render('vignettes/02_Setup_FWSAkRDRtools.Rmd')
-rmarkdown::render('vignettes/03_FWSAkRDRtools_Tutorial.Rmd')
+rmarkdown::render('vignettes/01_FWSAkRDRtools_Tutorial.Rmd')
 
 # Update site
 pkgdown::build_site(examples = FALSE)
