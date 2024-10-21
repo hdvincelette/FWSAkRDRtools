@@ -102,7 +102,7 @@ read.tables <-
       if (length(tabular.list) != 0) {
         ## Select files
 
-        if (length(tabular.list) == 1 | all == TRUE) {
+        if (length(tabular.list) == 1) {
           file.choice <- gsub(
             paste0(
               "//ifw7ro-file.fws.doi.net/datamgt/",
