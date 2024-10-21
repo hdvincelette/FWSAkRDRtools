@@ -30,6 +30,7 @@ get.dir.template <- function(project,
     incoming <- TRUE
   }
 
+  ## Check program code ####
   program.list <- c("^fes", "^mbm", "^nwrs", "^osm", "^sa")
 
   program <- NA
@@ -45,6 +46,7 @@ get.dir.template <- function(project,
   }
 
 
+  ## Create local directory ####
   if (dir.exists(paste0(new.path, "/", project))==TRUE) {
     selection.overwrite <-
       utils::menu(c("Yes", "No"), title = "Overwrite existing folder?")
@@ -59,6 +61,7 @@ get.dir.template <- function(project,
     dir.create(paste0(new.path, "/", project))
   }
 
+  ## Copy directory template ####
   dir_template <- get0("dir_template", envir = asNamespace("FWSAkRDRtools"))
 
   for (a in 1:length(dir_template)) {
@@ -80,6 +83,7 @@ get.dir.template <- function(project,
     }
   }
 
+  ## Create changelogs ####
   if (main == TRUE) {
     write(
       c(

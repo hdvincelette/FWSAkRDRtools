@@ -51,25 +51,30 @@ read.tables <-
       sep <- ""
     }
 
+    ## Test connection ####
     if(dir.exists("//ifw7ro-file.fws.doi.net/datamgt/")==FALSE){
       stop("Unable to connect to the RDR. Check your network and VPN connection.")
     }
 
-    # program.list <- c("^fes", "^mbm", "^nwrs", "^osm", "^sa")
-    #
-    # program <- NA
-    #
-    # for (a in 1:length(program.list)) {
-    #   if (grepl(program.list[a], project) == TRUE) {
-    #     program <- sub('.', '', program.list[a])
-    #   }
-    # }
-    #
-    # if (is.na(program) == TRUE) {
-    #   stop("Project folder name must contain the program prefix (e.g., mbmlb_)")
-    # }
+    ## Find project folder ####
+    project.list <- suppressMessages(find.projects(pattern = project, full.path = TRUE))
 
-    ## Get file urls
+    project.choice <- 0
+
+    if (length(project.list) == 0) {
+      stop("Project matching '", project, "' not found.")
+    } else if (length(project.list) > 1) {
+      while (project.choice == 0) {
+        project.choice <- utils::menu(basename(project.list), title  = "Select a project folder.")
+      }
+    }
+
+    project <- basename(project.list)[project.choice]
+
+    program <- basename(dirname(project.list[project.choice]))
+
+
+    ## Get file urls ####
     file.url <- FWSAkRDRtools::find.files(pattern,
                                           project,
                                           subfolder.path,
@@ -94,8 +99,8 @@ read.tables <-
       }
 
       if (length(tabular.list) != 0) {
-        ## Select files
 
+        ## Select files ####
         if (length(tabular.list) == 1) {
           file.choice <- gsub(
             paste0(
@@ -132,7 +137,7 @@ read.tables <-
                                file.choice)
 
 
-        ## Import files as list
+        ## Import files ####
         file.ext <- tools::file_ext(file.choice)
 
         import.file.name <- file.choice %>%

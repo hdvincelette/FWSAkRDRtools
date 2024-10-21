@@ -35,37 +35,28 @@ commit.files <-
       rdr.overwrite <- FALSE
     }
 
+    ## Test connection ####
     if(dir.exists("//ifw7ro-file.fws.doi.net/datamgt/")==FALSE){
       stop("Unable to connect to the RDR. Check your network and VPN connection.")
     }
 
-    # ## Determine program prefix
-    # program.list <- c("^fes", "^mbm", "^nwrs", "^osm", "^sa")
-    # program <- NA
-    # for (a in 1:length(program.list)) {
-    #   if (grepl(program.list[a], project) == TRUE) {
-    #     program <- sub('.', '', program.list[a])
-    #   }
-    # }
-    # if (is.na(program) == TRUE) {
-    #   stop("Project folder name must contain the program prefix (e.g., mbmlb_)")
-    # }
-    #
-    # if (dir.exists(path = paste0(
-    #   "//ifw7ro-file.fws.doi.net/datamgt/",
-    #   program,
-    #   "/",
-    #   project,
-    #   "/"
-    # )) == FALSE) {
-    #   stop(
-    #     paste0(
-    #       "Project folder '",
-    #       project,
-    #       "' not found. Check the folder name and network connection."
-    #     )
-    #   )
-    # }
+    ## Find project folder ####
+    project.list <- suppressMessages(find.projects(pattern = project, full.path = TRUE))
+
+    project.choice <- 0
+
+    if (length(project.list) == 0) {
+      stop("Project matching '", project, "' not found.")
+    } else if (length(project.list) > 1) {
+      while (project.choice == 0) {
+        project.choice <- utils::menu(basename(project.list), title  = "Select a project folder.")
+      }
+    }
+
+    project <- basename(project.list)[project.choice]
+
+    program <- basename(dirname(project.list[project.choice]))
+
 
     ## Find files ####
     local.file.url <- character(0)

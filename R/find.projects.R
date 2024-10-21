@@ -1,7 +1,7 @@
-#' Find a project on the USFWS Alaska Regional Data Repository (RDR)
+#' Find projects on the USFWS Alaska Regional Data Repository (RDR)
 #'
-#' Finds an RDR project name. Remote users must be connected to one of the Service’s approved remote connection technologies, such as a Virtual Private Network (VPN).
-#' @param pattern Character vector. Project name pattern(s). Must be a regular expression; print ?base::regex for help. Default is NULL, which returns results for all files.
+#' Finds RDR project name(s). Remote users must be connected to one of the Service’s approved remote connection technologies, such as a Virtual Private Network (VPN).
+#' @param pattern Character vector. Project name pattern(s). Must be a regular expression; print ?base::regex for help. Not case-sensitive. Default is NULL, which returns results for all project folders.
 #' @param program Optional character string. Program prefix to help narrow search results. Options include "fes", "mbm", "nwrs", "osm", and "sa".
 #' @param full.path Logical. Whether to return full folder path. Default is FALSE, and only the folder name is returned.
 #' @return Returns a vector of paths or names of project folders which match the search criteria.
@@ -9,11 +9,11 @@
 #' @seealso ```find.files()```
 #' @export
 #' @examples
-#' # e.g.project.names<- find.project(pattern = c("red.*knot","alaska"), full.path = FALSE)
+#' # e.g.project.names<- find.projects(pattern = c("red.*knot","alaska"), full.path = FALSE)
 
 
 
-find.project <-
+find.projects <-
   function(pattern, program, full.path) {
     if (missing(pattern)) {
       pattern <- NULL
@@ -25,10 +25,12 @@ find.project <-
       full.path <- FALSE
     }
 
+    ## Test connection ####
     if (dir.exists("//ifw7ro-file.fws.doi.net/datamgt/") == FALSE) {
       stop("Unable to connect to the RDR. Check your network and VPN connection.\n")
     }
 
+    ## Check program code ####
     if(is.null(program)==FALSE) {
       if (!program %in% c("fes", "mbm", "nwrs", "osm", "sa")) {
         message(cat(
@@ -45,7 +47,10 @@ find.project <-
       program <- c("fes", "mbm", "nwrs", "osm", "sa")
     }
 
+    ## Search directory ####
     folder.url <- c()
+
+    pattern<- sub(" ",".*", pattern)
 
     for (a in pattern) {
       for (b in program) {
