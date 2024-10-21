@@ -1,20 +1,20 @@
 #' Read a tabular project file on the USFWS Alaska Regional Data Repository (RDR) into R
 #'
-#' Reads in tabular data file(s) from a specified RDR project folder. Currently supports xls/xlsx and csv table formats. Remote users must be connected to one of the Service’s approved remote connection technologies, such as a Virtual Private Network (VPN).
+#' Reads in tabular data file(s) from a specified RDR project folder. Currently reads xls/xlsx (via readxl::read_excel) and csv (via utils::read.csv) table formats. Remote users must be connected to one of the Service’s approved remote connection technologies, such as a Virtual Private Network (VPN).
 #' @param pattern Character vector. File name pattern(s). Must be a regular expression; print ?base::regex for help. Default is NULL, which allows a selection from all files.
 #' @param project Character string. Name of the project folder.
 #' @param subfolder.path Character string. Project subfolder path.
-#' @param main Logical. Whether to return results from the "main" project folder (all subfolders except "incoming"). Default is TRUE.
+#' @param main Logical. Whether to return results from the main project subolders (all subfolders except "incoming"). Default is TRUE.
 #' @param incoming Logical. Whether to return results from the "incoming" project subfolder. Default is TRUE.
 #' @param recursive Logical. Whether to search for and read in files in subdirectories. Default is TRUE.
-#' @param header Logical. Whether the first line contains variable names. Default is TRUE.
+#' @param header Logical. Whether the first line contains variable names. Default is TRUE. Only applies to csv files.
 #' @param na.strings Character vector. Strings which are to be interpreted as NA values.
 #' @return Returns a data frame (if only one file selected), or list of selected tabular data files.
 #' @keywords USFWS, repository
 #' @seealso ```find.files()```
 #' @export
 #' @examples
-#' # e.g.tabular.data<- read.tables(pattern = c("\\.csv","\\.xlsx"), project = "mbmlb_007_NWR_Alaska_Landbird_Monitoring_Survey", incoming = TRUE, main = TRUE, recursive = TRUE)
+#' # e.g.tabular.data<- read.tables(pattern = c("\\.csv","\\.xlsx"), project = "mbmlb_007_NWR_Alaska_Landbird_Monitoring_Survey", subfolder.path = "", main = TRUE, incoming = TRUE, recursive = TRUE, header = TRUE, na.strings = "")
 
 
 read.tables <-
