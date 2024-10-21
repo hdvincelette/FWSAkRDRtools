@@ -1,0 +1,204 @@
+---
+title: "FWSAkRDRtools Tutorial"
+author: "Hannah Vincelette"
+date: "2024-10-18"
+output:
+  knitr:::html_vignette:
+    toc: true
+  pdf_document:
+    highlight: null
+    number_sections: yes
+vignette: >
+  %\VignetteIndexEntry{mdJSONdictio}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options:
+  markdown:
+    wrap: sentence
+---
+
+```{=html}
+<style type="text/css">
+  body{
+  font-size: 12pt;
+}
+</style>
+```
+```{css, echo=FALSE}
+# .main-container {
+#     max-width: 600px !important;
+# }
+
+pre {
+  max-height: 350px !important;
+  overflow-y: auto !important;
+  overflow-x: scroll !important;
+}
+pre code {
+  white-space: pre
+}
+```
+
+# Workspace
+
+## Uninstall
+
+Run the following to uninstall FWSAkRDRtools.
+
+```{r, eval=FALSE}
+remove.packages("FWSAkRDRtools")
+.rs.restartR()
+```
+
+## Install
+
+Run the following to install the development version of FWSAkRDRtools.
+If you already have an older version of FWSAkRDRtools installed in your library, run the code above to uninstall before proceeding.
+
+```{r, eval=FALSE}
+if (!require("remotes")) install.packages("remotes")
+
+Sys.setenv(R_REMOTES_STANDALONE="true")
+remotes::install_github("hdvincelette/FWSAkRDRtools")
+
+```
+
+## Load
+
+Run setup code.
+
+```{r setup, eval=FALSE}
+options(width = 9999)
+
+knitr::opts_chunk$set(
+  echo = TRUE,
+  collapse = TRUE,
+  comment = "#>",
+  error=TRUE
+)
+
+```
+
+Load FWSAkRDRtools into the library and set the working directory (where you would like files to be saved and/or copied from).
+
+```{r, eval=FALSE}
+library(FWSAkRDRtools)
+
+wd<- "C:/Users/hvincelette/OneDrive - DOI/Documents/Data_management/Test"
+
+```
+
+# Functions
+
+## `get.dir.template()`
+
+```{r, eval=FALSE}
+
+get.dir.template(
+  project = "mbmlb_909_Eskimo_Curlew_study",
+  local.path = wd,
+  main = TRUE,
+  incoming = FALSE
+)
+
+```
+
+## `clone.project()`
+
+```{r, eval=FALSE}
+
+clone.project(
+  project = "mbmlb_010_Grey_headed_chickadee_hybridization",
+  local.path = wd,
+  main = TRUE,
+  incoming = TRUE
+  )
+
+```
+
+## `find.files()`
+
+```{r, eval=FALSE}
+
+find.files(
+  pattern = c("template", "dictionary", "\\.csv", "hello"),
+  project = "mbmlb_010_Grey_headed_chickadee_hybridization",
+  subfolder.path = "metadata",
+  main = TRUE,
+  incoming = FALSE,
+  recursive = TRUE,
+  full.path = FALSE
+)
+
+```
+
+## `download.files()`
+
+```{r, eval=FALSE}
+
+download.files(
+  pattern = c("banding", "dictionary"),
+  project = "mbmlb_010_Grey_headed_chickadee_hybridization",
+  subfolder.path = "",
+  local.path = wd,
+  main = TRUE,
+  incoming = FALSE,
+  recursive = TRUE,
+  download.file.method = "auto"
+)
+
+```
+
+## `read.tables()`
+
+```{r, eval=FALSE}
+
+df <- read.tables(
+  pattern = c("dictionary"),
+  project = "mbmlb_010_Grey_headed_chickadee_hybridization",
+  subfolder.path = "metadata",
+  main = TRUE,
+  incoming = FALSE,
+  recursive = TRUE,
+  header = TRUE,
+  na.strings = ""
+)
+
+df.list <- read.tables(
+  pattern = c("\\.csv", "\\.xlsx"),
+  project = "mbmlb_010_Grey_headed_chickadee_hybridization",
+  subfolder.path = "",
+  main = TRUE,
+  incoming = FALSE,
+  recursive = TRUE,
+  header = TRUE,
+  na.strings = ""
+)
+
+```
+
+## `summarize.files()`
+
+```{r, eval=FALSE}
+
+file.summary<- summarize.files(
+  project = "mbmlb_010_Grey_headed_chickadee_hybridization",
+  subfolder = "",
+  main = TRUE,
+  incoming = TRUE,
+  recursive = TRUE
+)
+```
+
+## `commit.files()`
+
+```{r, eval=FALSE}
+# Note files will only be committed if you are the data steward of the project. Refer to the Data Manager to understand your project roles.
+
+commit.summary<- commit.files(
+  project = "mbmlb_010_Grey_headed_chickadee_hybridization",
+  local.path = paste0(wd,"/mbmlb_010_Grey_headed_chickadee_hybridization"),
+  recursive = TRUE
+  )
+
+```
