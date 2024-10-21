@@ -163,14 +163,13 @@ read.tables <-
         }
 
         if(length(file.list)==1) {
-          ## Create dataframe
           output <-
             file.list %>%
-            rlang::set_names(., stringr::str_replace(import.file.name, ".*/", "")) %>%
-            plyr::ldply(.)
+            plyr::ldply(., .id = NULL)
 
         } else {
-          output<- file.list
+          names(file.list) <- basename(tabular.list)
+          output <- file.list
         }
 
         message(
