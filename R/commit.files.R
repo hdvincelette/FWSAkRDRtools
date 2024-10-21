@@ -4,27 +4,35 @@
 #' @param project Character string. Name of the project folder.
 #' @param local.path Character string. Directory name or path where the uncommitted files are located. Default is the working directory, getwd().
 #' @param recursive Logical. Whether to search for and commit files in subdirectories. Default is TRUE.
+#' @param review.duplicate Logical. Whether to review local duplicate files (identical file name and extension, different subfolder path). Default is TRUE, and duplicate files are reviewed and selected individually. If FALSE, all files are automatically selected for commit.
+#' @param rdr.overwrite Logical. Whether to overwrite rdr files (identical file name, extension, and subfolder path) betweent local and RDR folders. Default is FALSE. If TRUE, overwrites must be reviewed and approved individually. Only files in the "incoming" subfolder of the RDR may be immediately overwritten, while those in the main project subfolders will only be overwritten at the discretion of the Data Manager.
 #' @return Returns a vector of the committed files.
 #' @keywords USFWS, repository
 #' @seealso ```summarize.files()```
 #' @export
 #' @examples
-#' # e.g.commit<- commit.files(project = "mbmlb_010_Grey_headed_chickadee_hybridization", local.folder = getwd(), recursive = TRUE)
+#' # e.g.commit<- commit.files(project = "mbmlb_010_Grey_headed_chickadee_hybridization", local.path = getwd(), recursive = TRUE, review.duplicate = TRUE, rdr.overwrite = FALSE)
 
 # alternative to amatch - compare against RDR paths with same first level folder
-# no files to commit in folder or selected for overwrite
-# option to skip duplicate files
 
 commit.files <-
   function(project,
            local.path,
-           recursive) {
+           recursive,
+           review.duplicate,
+           rdr.overwrite) {
     ## Parameter arguments
     if (missing(local.path)) {
       local.path <- getwd()
     }
     if (missing(recursive)) {
       recursive <- TRUE
+    }
+    if (missing(review.duplicate)) {
+      review.duplicate <- TRUE
+    }
+    if (missing(rdr.overwrite)) {
+      rdr.overwrite <- FALSE
     }
 
     if(dir.exists("//ifw7ro-file.fws.doi.net/datamgt/")==FALSE){
@@ -181,61 +189,66 @@ commit.files <-
             local.dup.locs[d] <- "/"
           }
         }
-        file.choice <- utils::select.list(
-          c(local.dup.locs, "Skip these files"),
-          multiple = TRUE,
-          graphics = TRUE,
-          title = cat(
-            paste0(
-              "\n[INPUT NEEDED]\nMultiple copies of '",
-              duplicate.files[a],
-              "' were found in the local folder.\nWhich file(s) should be commited to the RDR project folder?"
+
+        if (review.duplicate == TRUE) {
+          file.choice <- utils::select.list(
+            c(local.dup.locs, "Skip these files"),
+            multiple = TRUE,
+            graphics = TRUE,
+            title = cat(
+              paste0(
+                "\n[INPUT NEEDED]\nMultiple copies of '",
+                duplicate.files[a],
+                "' were found in the local folder.\nWhich file(s) should be commited to the RDR project folder?"
+              )
             )
           )
-        )
-        for (d in 1:length(local.dup.locs)) {
-          if (local.dup.locs[d] == "/") {
-            local.dup.locs[d] <- ""
-          }
-        }
-        for (d in 1:length(file.choice)) {
-          if (file.choice[d] == "/") {
-            file.choice[d] <- ""
-          }
-        }
-        if ("Skip these files" %in% file.choice) {
-          new.local.file.elements <- c()
-          for (d in 1:length(local.file.elements)) {
-            if (local.file.elements[[d]][4] != duplicate.files[a]) {
-              new.local.file.elements <-
-                c(new.local.file.elements, local.file.elements[d])
+          for (d in 1:length(local.dup.locs)) {
+            if (local.dup.locs[d] == "/") {
+              local.dup.locs[d] <- ""
             }
           }
-          local.file.elements <- new.local.file.elements
-        } else if (identical(file.choice, local.dup.locs) == FALSE) {
-          remove.locs <-
-            local.dup.locs[!local.dup.locs %in% file.choice]
-          for (c in 1:length(remove.locs)) {
+          for (d in 1:length(file.choice)) {
+            if (file.choice[d] == "/") {
+              file.choice[d] <- ""
+            }
+          }
+          if ("Skip these files" %in% file.choice) {
             new.local.file.elements <- c()
             for (d in 1:length(local.file.elements)) {
-              if (local.file.elements[[d]][4] == duplicate.files[a] &
-                  local.file.elements[[d]][2] == remove.locs[c]) {
-                next
-              } else {
+              if (local.file.elements[[d]][4] != duplicate.files[a]) {
                 new.local.file.elements <-
                   c(new.local.file.elements, local.file.elements[d])
               }
             }
             local.file.elements <- new.local.file.elements
+          } else if (identical(file.choice, local.dup.locs) == FALSE) {
+            remove.locs <-
+              local.dup.locs[!local.dup.locs %in% file.choice]
+            for (c in 1:length(remove.locs)) {
+              new.local.file.elements <- c()
+              for (d in 1:length(local.file.elements)) {
+                if (local.file.elements[[d]][4] == duplicate.files[a] &
+                    local.file.elements[[d]][2] == remove.locs[c]) {
+                  next
+                } else {
+                  new.local.file.elements <-
+                    c(new.local.file.elements, local.file.elements[d])
+                }
+              }
+              local.file.elements <- new.local.file.elements
+            }
           }
         }
       }
     }
     message(cat(""))
     local.files <- sapply(local.file.elements, "[", 4)
+
     ## Check for duplicate files between local folder and RDR folder ####
     duplicate.files <- intersect(local.files, RDR.files)
     if (length(duplicate.files) != 0) {
+
       for (a in 1:length(duplicate.files)) {
         local.dup.elements <- c()
         for (b in 1:length(local.file.elements)) {
@@ -254,26 +267,31 @@ commit.files <-
         }
         RDR.dup.locs <-
           sapply(RDR.dup.elements, "[", 2)
-        file.choice <- utils::menu(
-          c("Yes", "No"),
-          title =
-            cat(
-              paste0(
-                "\n[INPUT NEEDED]\n'",
-                duplicate.files[a],
-                "' already exists in the following RDR subfolder(s):\n"
-              ),
-              paste0(RDR.dup.locs, sep = "\n"),
-              "\nDo you still want to commit this file?"
-            )
-        )
-        if (file.choice == 2) {
+        if (rdr.overwrite == TRUE) {
+          file.choice <- utils::menu(c("Yes", "No"),
+                                     title =
+                                       cat(
+                                         paste0(
+                                           "\n[INPUT NEEDED]\n'",
+                                           duplicate.files[a],
+                                           "' already exists in the following RDR subfolder(s):\n"
+                                         ),
+                                         paste0(RDR.dup.locs, sep = "\n"),
+                                         "\nDo you still want to commit this file?"
+                                       ))
+          if (file.choice == 2) {
+            local.file.elements <-
+              local.file.elements[!local.file.elements %in% local.dup.elements]
+          }
+        } else if (rdr.overwrite == FALSE){
           local.file.elements <-
             local.file.elements[!local.file.elements %in% local.dup.elements]
         }
       }
     }
     local.files <- sapply(local.file.elements, "[", 4)
+
+    if(length(local.files)!=0){
 
 
     ## Check if local subfolders match existing RDR incoming subfolders ####
@@ -662,5 +680,25 @@ commit.files <-
       file = paste0(RDR.path, "/incoming/changelog.txt"),
       sep = "\n"
     )
+
+    message(cat(paste0("\nFile commit to '",project,"' is complete.")))
+
+
+    if (Sys.info()["sysname"] == "Windows") {
+      shell.exec(
+        paste0(
+          "file:////ifw7ro-file.fws.doi.net/datamgt/",
+          program,
+          "/",
+          project,
+          "/incoming/changelog.txt"
+        )
+      )
+    }
+
     return(subset(commit.summary, select = -c(message)))
+
+    } else {
+      message(cat("\nExecution halted: No files to commit."))
+    }
   }
