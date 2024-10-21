@@ -1,6 +1,6 @@
 #' Read a tabular project file on the USFWS Alaska Regional Data Repository (RDR) into R
 #'
-#' Reads in tabular data file(s) from a specified RDR project folder. Remote users must be connected to one of the Service’s approved remote connection technologies, such as a Virtual Private Network (VPN).
+#' Reads in tabular data file(s) from a specified RDR project folder. Currently supports xls/xlsx and csv table formats. Remote users must be connected to one of the Service’s approved remote connection technologies, such as a Virtual Private Network (VPN).
 #' @param pattern Character vector. File name pattern(s). Must be a regular expression; print ?base::regex for help. Default is NULL, which allows a selection from all files.
 #' @param project Character string. Name of the project folder.
 #' @param subfolder.path Character string. Project subfolder path.
@@ -9,9 +9,7 @@
 #' @param recursive Logical. Whether to search for and read in files in subdirectories. Default is TRUE.
 #' @param header Logical. Whether the first line contains variable names. Default is TRUE.
 #' @param na.strings Character vector. Strings which are to be interpreted as NA values.
-#' @param sep Character string. The field separator character. Default is "".
-#' @param merge Logical. Whether tables should be merged or kept separate (recommended for "untidy" data). Default is FALSE.
-#' @return Returns a data frame (if merge == TRUE or only one file selected) or list (if merge == FALSE) of selected tabular data file(s).
+#' @return Returns a data frame (if only one file selected), or list of selected tabular data files.
 #' @keywords USFWS, repository
 #' @seealso ```find.files()```
 #' @export
@@ -28,8 +26,7 @@ read.tables <-
            recursive,
            header,
            na.strings,
-           sep,
-           merge
+           sep
            ) {
     ## Parameter arguments
     if (missing(pattern)) {
@@ -52,9 +49,6 @@ read.tables <-
     }
     if (missing(sep)) {
       sep <- ""
-    }
-    if (missing(merge)) {
-      merge <- FALSE
     }
 
     if(dir.exists("//ifw7ro-file.fws.doi.net/datamgt/")==FALSE){
@@ -162,14 +156,13 @@ read.tables <-
 
           } else if (file.ext[a] %in% c("csv")) {
             import.file <-
-              utils::read.csv(tabular.list[a], header = header, na.strings = na.strings, sep = sep)
+              utils::read.csv(tabular.list[a], header = header, na.strings = na.strings)
             file.list[[a]] <- import.file
 
           }
         }
 
-        if(length(file.list)>1 &
-           merge ==TRUE) {
+        if(length(file.list)>1) {
           ## Create dataframe
           output <-
             file.list %>%
