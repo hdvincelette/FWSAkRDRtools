@@ -77,7 +77,6 @@ find.files <-
     }
 
 
-
     if (!subfolder.path %in%  list.dirs(
       path = paste0(
         "//ifw7ro-file.fws.doi.net/datamgt/",
