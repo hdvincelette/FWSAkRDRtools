@@ -146,7 +146,7 @@ commit.files <-
         ),
         title = cat(
           paste0(
-            "\n[INPUT NEEDED]\nThe local folder has files in an 'incoming' subfolder. Which files do you want to commit?"
+            "\n[INPUT NEEDED]\nThe local folder has files in an 'incoming' subfolder.\nWhich files do you want to commit?"
           )
         )
       )
@@ -187,7 +187,7 @@ commit.files <-
             paste0(
               "\n[INPUT NEEDED]\nMultiple copies of '",
               duplicate.files[a],
-              "' were found in the local folder. Which file(s) should be commited to the RDR project folder?"
+              "' were found in the local folder.\nWhich file(s) should be commited to the RDR project folder?"
             )
           )
         )
@@ -618,7 +618,7 @@ commit.files <-
       ))
     }
     ## Update incoming changelog ####
-    message(cat("\n[INPUT NEEDED\nProvide an email for the changelog:"))
+    message(cat("\n[INPUT NEEDED]\nProvide an email for the changelog:"))
     user.email <-
       readline(prompt =)
     date <- format(Sys.Date(), format = "%Y%m%d")
