@@ -102,9 +102,9 @@ get.dir.template(
 ```
 
 ## `find.projects()`
-```{r}
+```{r, eval=FALSE}
 
-print(find.projects(pattern = c("red.*knot","alaska"), program = "mbm", full.path = FALSE))
+find.projects(pattern = c("red.*knot","alaska"), program = "mbm", full.path = FALSE)
 
 ```
 
