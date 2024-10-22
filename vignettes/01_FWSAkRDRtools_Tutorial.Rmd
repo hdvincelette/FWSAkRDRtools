@@ -37,11 +37,23 @@ pre code {
 }
 ```
 
+The 'FWSAkRDRtools' R package is meant to help users access and manage files on the U.S.
+Fish & Wildlife Service Alaska Regional Data Repository (RDR).
+The RDR is a "network drive serving as a central location for authoritative project data and deliverables".
+Currently, the RDR is internally maintained and can only be accessed by FWS employees connected to the Service’s network onsite or through approved remote connection technologies, such as a [Virtual Private Network (VPN)](https://doimspp.sharepoint.com/sites/fws-FF10T00000/SitePages/GlobalProtect-Secure-Technology-Application.aspx).
+Connected users can navigate to the RDR by pasting the link <file://ifw7ro-file.fws.doi.net/datamgt/> in File Explorer or a web browser (e.g., Microsoft Edge or Chrome) as shown below.
+Please refer to the [Draft Regional Data Repository Guidance Document](https://ecos.fws.gov/ServCat/DownloadFile/227696) on ServCat for more information on the overall organization and management of the RDR.
+
+```{r, echo = FALSE, out.width = "40%", out.height = "20%", fig.cap = "The Alaska Regional Data Repository in File Explorer (left) and Microsoft Edge (right).", fig.show = 'hold', fig.align = 'center'}
+knitr::include_graphics(c("images/RDR_file_explorer.png", "images/RDR_web_browser.png"))
+```
+
 # Workspace
 
 ## Uninstall
 
-Run the following to uninstall FWSAkRDRtools.
+If you have installed 'FWSAkRDRtools' previously and want to update to the latest version, you may need to uninstall the package first.
+Occasionally R hits a roadblock and needs you to manually remove a package before it can proceed.
 
 ```{r, eval=FALSE}
 remove.packages("FWSAkRDRtools")
@@ -50,8 +62,8 @@ remove.packages("FWSAkRDRtools")
 
 ## Install
 
-Run the following to install the development version of FWSAkRDRtools.
-If you already have an older version of FWSAkRDRtools installed in your library, run the code above to uninstall before proceeding.
+Install the development version of 'FWSAkRDRtools' from GitHub.
+The R package 'remotes' (demonstrated here) or 'devtools' is required to install packages from GitHub.
 
 ```{r, eval=FALSE}
 if (!require("remotes")) install.packages("remotes")
@@ -63,7 +75,7 @@ remotes::install_github("hdvincelette/FWSAkRDRtools")
 
 ## Load
 
-Run setup code.
+Run the following housekeeping code to set chunk behavior within this document.
 
 ```{r setup, eval=FALSE}
 options(width = 9999)
@@ -77,12 +89,21 @@ knitr::opts_chunk$set(
 
 ```
 
-Load FWSAkRDRtools into the library and set the working directory (where you would like files to be saved and/or copied from).
+Load 'FWSAkRDRtools' into the R library and set the working directory (where you would like files to be saved and/or copied from).
 
 ```{r, eval=FALSE}
 library(FWSAkRDRtools)
 
 wd<- "C:/Users/hvincelette/OneDrive - DOI/Documents/Data_management/Test"
+
+```
+
+Run the following to access information about 'FWSAkRDRtools' in the Help pane, including documentation pages for each function.
+You can use this as a quick reference for function usage, arguments, and expected output.
+
+```{r}
+
+help(package = "FWSAkRDRtools")
 
 ```
 
@@ -102,6 +123,7 @@ get.dir.template(
 ```
 
 ## `find.projects()`
+
 ```{r, eval=FALSE}
 
 find.projects(pattern = c("red.*knot","alaska"), program = "mbm", full.path = FALSE)
