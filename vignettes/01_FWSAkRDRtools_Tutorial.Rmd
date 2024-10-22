@@ -101,19 +101,6 @@ get.dir.template(
 
 ```
 
-## `clone.project()`
-
-```{r, eval=FALSE}
-
-clone.project(
-  project = "mbmlb_010_Grey_headed_chickadee_hybridization",
-  local.path = wd,
-  main = TRUE,
-  incoming = TRUE
-  )
-
-```
-
 ## `find.projects()`
 ```{r}
 
@@ -179,6 +166,19 @@ df.list <- read.tables(
   header = TRUE,
   na.strings = ""
 )
+
+```
+
+## `clone.project()`
+
+```{r, eval=FALSE}
+
+clone.project(
+  project = "mbmlb_010_Grey_headed_chickadee_hybridization",
+  local.path = wd,
+  main = TRUE,
+  incoming = TRUE
+  )
 
 ```
 
