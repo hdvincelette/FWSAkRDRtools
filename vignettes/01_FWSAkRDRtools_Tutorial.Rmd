@@ -114,6 +114,13 @@ clone.project(
 
 ```
 
+## `find.projects()`
+```{r}
+
+print(find.projects(pattern = c("red.*knot","alaska"), program = "mbm", full.path = FALSE))
+
+```
+
 ## `find.files()`
 
 ```{r, eval=FALSE}
