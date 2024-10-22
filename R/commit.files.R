@@ -6,7 +6,7 @@
 #' @param recursive Logical. Whether to search for and commit files in subdirectories. Default is TRUE.
 #' @param review.duplicate Logical. Whether to review local duplicate files (identical file name and extension, different subfolder path). Default is TRUE, and duplicate files are reviewed and selected individually. If FALSE, all files are automatically selected for commit.
 #' @param rdr.overwrite Logical. Whether to overwrite RDR files (identical file name, extension, and subfolder path) betweent local and RDR folders. Default is FALSE. If TRUE, overwrites must be reviewed and approved individually. Only files in the "incoming" subfolder of the RDR may be immediately overwritten, while those in the main project subfolders will only be overwritten at the discretion of the Data Manager.
-#' @return Returns a vector of the committed files.
+#' @return Returns a data frame summarizing the committed files.
 #' @keywords USFWS, repository
 #' @seealso ```summarize.files()```
 #' @export
