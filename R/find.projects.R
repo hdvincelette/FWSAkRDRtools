@@ -1,7 +1,7 @@
 #' Find projects on the USFWS Alaska Regional Data Repository (RDR)
 #'
 #' Finds RDR project name(s). Remote users must be connected to one of the Service’s approved remote connection technologies, such as a Virtual Private Network (VPN).
-#' @param pattern Character vector. Project name pattern(s). Must be a regular expression; print ?base::regex for help. Not case-sensitive. Default is NULL, which returns results for all project folders.
+#' @param pattern Character vector. Project folder name pattern(s). Must be a regular expression; print ?base::regex for help. Not case-sensitive. Spaces are automatically replaced with ".*?" to improve search results. Default is NULL, which returns results for all project folders.
 #' @param program Optional character string. Program prefix to help narrow search results. Options include "fes", "mbm", "nwrs", "osm", and "sa".
 #' @param full.path Logical. Whether to return full folder path. Default is FALSE, and only the folder name is returned.
 #' @return Returns a vector of paths or names of project folders which match the search criteria.
@@ -9,7 +9,7 @@
 #' @seealso ```find.files()```
 #' @export
 #' @examples
-#' # e.g.project.names<- find.projects(pattern = c("red.*knot","alaska"), full.path = FALSE)
+#' # e.g.project.names<- find.projects(pattern = c("red.*knot","alaska"), program = "mbm", full.path = FALSE)
 
 
 
@@ -50,7 +50,7 @@ find.projects <-
     ## Search directory ####
     folder.url <- c()
 
-    pattern<- sub(" ",".*", pattern)
+    pattern<- sub(" ",".*?", pattern)
 
     for (a in pattern) {
       for (b in program) {
@@ -60,7 +60,7 @@ find.projects <-
             b,
             "' with the pattern '",
             a,
-            "'...\n"
+            "'..."
           )
         )
 
