@@ -2,12 +2,12 @@
 % Please edit documentation in R/find.projects.R
 \name{find.projects}
 \alias{find.projects}
-\title{Find a project on the USFWS Alaska Regional Data Repository (RDR)}
+\title{Find projects on the USFWS Alaska Regional Data Repository (RDR)}
 \usage{
 find.projects(pattern, program, full.path)
 }
 \arguments{
-\item{pattern}{Character vector. Project name pattern(s). Must be a regular expression; print ?base::regex for help. Default is NULL, which returns results for all files.}
+\item{pattern}{Character vector. Project folder name pattern(s). Must be a regular expression; print ?base::regex for help. Not case-sensitive. Spaces are automatically replaced with ".*?" to improve search results. Default is NULL, which returns results for all project folders.}
 
 \item{program}{Optional character string. Program prefix to help narrow search results. Options include "fes", "mbm", "nwrs", "osm", and "sa".}
 
@@ -17,10 +17,10 @@ find.projects(pattern, program, full.path)
 Returns a vector of paths or names of project folders which match the search criteria.
 }
 \description{
-Finds an RDR project name. Remote users must be connected to one of the Service’s approved remote connection technologies, such as a Virtual Private Network (VPN).
+Finds RDR project name(s). Remote users must be connected to one of the Service’s approved remote connection technologies, such as a Virtual Private Network (VPN).
 }
 \examples{
-# e.g.project.names<- find.project(pattern = c("red.*knot","alaska"), full.path = FALSE)
+# e.g.project.names<- find.projects(pattern = c("red.*knot","alaska"), program = "mbm", full.path = FALSE)
 }
 \seealso{
 \code{find.files()}
