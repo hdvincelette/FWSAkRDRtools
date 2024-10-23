@@ -1,7 +1,0 @@
-<insert project name> Project Repository
-
-
-yyyymmdd (hilmar_maier@fws.gov)
-  - Created project repository
-  - Assigned Custodians <user name> (<user email>) write permissions to repository
-  - Assigned <user name> (<user email>) write permissions to "incoming"
