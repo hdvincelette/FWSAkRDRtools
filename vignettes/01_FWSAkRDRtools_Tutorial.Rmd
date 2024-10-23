@@ -50,7 +50,7 @@ Most 'FWSAkRDRtools' functions require an FWS network connection, and one functi
 
 ##### [The Alaska Regional Data Repository in File Explorer (left) and Microsoft Edge (right)]{style="color: grey;"}
 
-<img src="https://github.com/hdvincelette/FWSAkRDRtools/raw/main/vignettes/images/RDR_file_explorer.png" width="300"/> <img src="https://github.com/hdvincelette/FWSAkRDRtools/raw/main/vignettes/images/RDR_web_browser.png" width="300"/>
+<img src="https://github.com/hdvincelette/FWSAkRDRtools/raw/main/vignettes/images/RDR_file_explorer.png" width="350"/> <img src="https://github.com/hdvincelette/FWSAkRDRtools/raw/main/vignettes/images/RDR_web_browser.png" width="350"/>
 
 ##### [Function requirements]{style="color: grey;"}
 
