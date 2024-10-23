@@ -65,7 +65,7 @@ kable(
   ) %>%  `colnames<-`(c("function","FWS network connection","write permission")),
   escape = F,
   align = "lcc"
-)  %>% kable_styling(full_width = F, position = "left") 
+)  %>% kable_styling(full_width = F, position = "left", font_size = 12) 
 
   
 ```
