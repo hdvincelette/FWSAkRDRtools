@@ -4,7 +4,7 @@
 #' @param project Character string. Name of the project folder.
 #' @param local.path Character string. Directory path where the project will be located. Default is the working directory, getwd().
 #' @param main Logical. Whether to include the main project subfolders (all subfolders except "incoming"). Default is TRUE.
-#' @param incoming Logical. Whether to include the "incoming" project subfolder. Default is TRUE
+#' @param incoming Logical. Whether to include the "incoming" project subfolder. Default is FALSE.
 #' @return Returns a download of the project directory tree template.
 #' @keywords USFWS, repository, download, directory tree
 #' @seealso ```clone.project()```
@@ -16,7 +16,7 @@
 get.dir.template <- function(project,
                              local.path,
                              main = TRUE,
-                             incoming = TRUE) {
+                             incoming = FALSE) {
   ## Parameter arguments
   if (missing(local.path)) {
     new.path <- getwd()
@@ -27,7 +27,7 @@ get.dir.template <- function(project,
     main <- TRUE
   }
   if (missing(incoming)) {
-    incoming <- TRUE
+    incoming <- FALSE
   }
 
   ## Check program code ####
