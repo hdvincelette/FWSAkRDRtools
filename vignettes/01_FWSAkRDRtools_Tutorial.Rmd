@@ -45,7 +45,6 @@ Currently, the RDR is internally maintained and can only be accessed by FWS empl
 Connected users can navigate to the RDR by pasting the link <file://ifw7ro-file.fws.doi.net/datamgt/> in File Explorer or a web browser (e.g., Microsoft Edge or Chrome) as shown below.
 Please refer to the [Draft Regional Data Repository Guidance Document](https://ecos.fws.gov/ServCat/Reference/Profile/150400) on ServCat for more information on the overall organization and management of the RDR.
 
-
 ```{r, echo = FALSE, out.width = "50%", out.height = "20%", fig.cap = "*The Alaska Regional Data Repository in File Explorer (left) and Microsoft Edge (right).*", fig.show = 'hold', fig.align = 'left'}
 knitr::include_graphics(
   c(
@@ -55,8 +54,6 @@ knitr::include_graphics(
 )
 
 ```
-
-
 
 # Workspace
 
@@ -119,7 +116,7 @@ help(package = "FWSAkRDRtools")
 
 # Functions
 
-## `get.dir.template()`
+## `get.dir.template()`: get the directory tree template
 
 ```{r, eval=FALSE}
 
@@ -132,7 +129,7 @@ get.dir.template(
 
 ```
 
-## `find.projects()`
+## `find.projects()`: find RDR projects
 
 ```{r, eval=FALSE}
 
@@ -140,7 +137,7 @@ find.projects(pattern = c("red.*knot","alaska"), program = "mbm", full.path = FA
 
 ```
 
-## `find.files()`
+## `find.files()`: find RDR project files
 
 ```{r, eval=FALSE}
 
@@ -156,7 +153,7 @@ find.files(
 
 ```
 
-## `download.files()`
+## `download.files()`: download RDR project files
 
 ```{r, eval=FALSE}
 
@@ -173,7 +170,7 @@ download.files(
 
 ```
 
-## `read.tables()`
+## `read.tables()`: read RDR project tables into R
 
 ```{r, eval=FALSE}
 
@@ -201,7 +198,7 @@ df.list <- read.tables(
 
 ```
 
-## `clone.project()`
+## `clone.project()`: clone an RDR project
 
 ```{r, eval=FALSE}
 
@@ -214,7 +211,7 @@ clone.project(
 
 ```
 
-## `summarize.files()`
+## `summarize.files()`: summarize files in an RDR project
 
 ```{r, eval=FALSE}
 
@@ -227,7 +224,7 @@ file.summary<- summarize.files(
 )
 ```
 
-## `commit.files()`
+## `commit.files()`: commit files to an RDR project
 
 ```{r, eval=FALSE}
 # Note files will only be committed if you are the data steward of the project. Refer to the Data Manager to understand your project roles.

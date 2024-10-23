@@ -2,7 +2,7 @@
 % Please edit documentation in R/get.dir.template.R
 \name{get.dir.template}
 \alias{get.dir.template}
-\title{Copy the USFWS Alaska Regional Data Repository (RDR) project directory tree template.}
+\title{Get the USFWS Alaska Regional Data Repository (RDR) project directory tree template.}
 \usage{
 get.dir.template(project, local.path, main = TRUE, incoming = TRUE)
 }

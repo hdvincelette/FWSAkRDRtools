@@ -1,4 +1,4 @@
-#' Copy the USFWS Alaska Regional Data Repository (RDR) project directory tree template.
+#' Get the USFWS Alaska Regional Data Repository (RDR) project directory tree template.
 #'
 #' Creates the RDR project folder structure in a specified location.
 #' @param project Character string. Name of the project folder.
