@@ -161,7 +161,7 @@ cat(unlist(lapply(fad_subbed_out, paste, collapse = "")), sep = "\n")
 
 ```
 
-You may use this to start organizing a files to be archived in the RDR, or to locally manage an existing RDR project.
+You may use this to start organizing files to be archived in the RDR, or to locally manage an existing RDR project.
 The project name (`project`) is unrestricted, but you will be prompted to approve an overwrite if a folder with that name already exists at the local path.
 You may want to include the project subprogram code and number as a prefix before the project name to align with RDR folder naming conventions (i.e., mbmlb_909).
 The local path (`local.path`) is where the new directory will be created.
