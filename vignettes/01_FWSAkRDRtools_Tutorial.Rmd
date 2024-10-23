@@ -44,12 +44,10 @@ Currently, the RDR is internally maintained and can only be accessed by FWS empl
 Connected users can navigate to the RDR by pasting the link <file://ifw7ro-file.fws.doi.net/datamgt/> in File Explorer or a web browser (e.g., Microsoft Edge or Chrome) as shown below.
 Please refer to the [Draft Regional Data Repository Guidance Document](https://ecos.fws.gov/ServCat/Reference/Profile/150400) on ServCat for more information on the overall organization and management of the RDR.
 
-```{r, echo = FALSE, out.width = "50%", out.height = "20%", fig.cap = "The Alaska Regional Data Repository in File Explorer (left) and Microsoft Edge (right).", fig.show = 'hold', fig.align = 'center'}
-knitr::include_graphics(c(
-  "https://github.com/hdvincelette/FWSAkRDRtools/tree/main/vignettes/images/RDR_file_explorer.png",
-  "https://github.com/hdvincelette/FWSAkRDRtools/tree/main/vignettes/images/RDR_web_browser.png")
-  , error = FALSE, rel_path = FALSE)
-```
+##### [Alaska Regional Data Repository in File Explorer]{style="color: grey;"}
+
+![](https://github.com/hdvincelette/FWSAkRDRtools/raw/main/vignettes/images/RDR_file_explorer.png) \##### [Alaska Regional Data Repository in File Explorer]{style="color: grey;"}
+![](https://github.com/hdvincelette/FWSAkRDRtools/raw/main/vignettes/images/RDR_web_browser.png)
 
 # Workspace
 
