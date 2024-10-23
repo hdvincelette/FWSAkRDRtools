@@ -57,14 +57,22 @@ knitr::include_graphics(
 ```
 
 ```{r, echo=FALSE}
-utils::read.csv(
-  "https://github.com/hdvincelette/FWSAkRDRtools/blob/main/vignettes/data/function_requirements.csv",
-  sep = ",",
-  header = TRUE,
-  quote = "",
-  stringsAsFactors = FALSE
-)
 
+library(magrittr)
+library(kableExtra)
+
+kable(
+  utils::read.csv(
+    "https://raw.githubusercontent.com/hdvincelette/FWSAkRDRtools/refs/heads/main/vignettes/data/function_requirements.csv"
+  ) %>%  `colnames<-`(c("Function","FWS network connection","Write permission")),
+  escape = F,
+  align = "lcc"
+)  %>% kable_styling(full_width = F, position = "left") 
+
+#   column_spec(1, width_min = '2in') %>%
+#   column_spec(2, width_min = '3.5in') %>%
+#   column_spec(3:7, width_min = '1in')
+  
 ```
 
 # Workspace
@@ -85,6 +93,7 @@ Install the development version of 'FWSAkRDRtools' from GitHub.
 The R package 'remotes' (demonstrated here) or 'devtools' is required to install packages from GitHub.
 
 ```{r, eval=FALSE}
+
 if (!require("remotes")) install.packages("remotes")
 
 Sys.setenv(R_REMOTES_STANDALONE="true")
