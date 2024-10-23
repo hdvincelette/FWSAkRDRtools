@@ -4,7 +4,7 @@
 \alias{get.dir.template}
 \title{Get the USFWS Alaska Regional Data Repository (RDR) project directory tree template.}
 \usage{
-get.dir.template(project, local.path, main = TRUE, incoming = TRUE)
+get.dir.template(project, local.path, main = TRUE, incoming = FALSE)
 }
 \arguments{
 \item{project}{Character string. Name of the project folder.}
@@ -13,7 +13,7 @@ get.dir.template(project, local.path, main = TRUE, incoming = TRUE)
 
 \item{main}{Logical. Whether to include the main project subfolders (all subfolders except "incoming"). Default is TRUE.}
 
-\item{incoming}{Logical. Whether to include the "incoming" project subfolder. Default is TRUE}
+\item{incoming}{Logical. Whether to include the "incoming" project subfolder. Default is FALSE.}
 }
 \value{
 Returns a download of the project directory tree template.
