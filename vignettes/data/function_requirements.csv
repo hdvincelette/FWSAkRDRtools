@@ -1,4 +1,4 @@
-﻿Function,FWS network connection,Write permission
+﻿function,FWS network connection,write permission
 get.dir.template,,
 find.projects,X,
 find.files,X,
