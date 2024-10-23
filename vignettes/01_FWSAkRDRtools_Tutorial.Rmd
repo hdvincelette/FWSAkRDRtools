@@ -42,10 +42,11 @@ The 'FWSAkRDRtools' R package is meant to help users access and manage files on 
 Fish & Wildlife Service Alaska Regional Data Repository (RDR).
 The RDR is a "network drive serving as a central location for authoritative project data and deliverables".
 Currently, the RDR is internally maintained and can only be accessed by FWS employees connected to the Service’s network onsite or through approved remote connection technologies, such as a [Virtual Private Network (VPN)](https://doimspp.sharepoint.com/sites/fws-FF10T00000/SitePages/GlobalProtect-Secure-Technology-Application.aspx).
-Connected users can navigate to the RDR by pasting the link <file://ifw7ro-file.fws.doi.net/datamgt/> in File Explorer or a web browser (e.g., Microsoft Edge or Chrome) as shown below.
+Connected users can navigate to the RDR by pasting the link <file://ifw7ro-file.fws.doi.net/datamgt/> in File Explorer or a web browser (e.g., Microsoft Edge or Chrome) (Figure 1).
 Please refer to the [Draft Regional Data Repository Guidance Document](https://ecos.fws.gov/ServCat/Reference/Profile/150400) on ServCat for more information on the overall organization and management of the RDR.
+Most 'FWSAkRDRtools' functions require an FWS network connection, and one function also requires write permission to the relevant 'incoming' project folder (Table 1).
 
-```{r, echo = FALSE, out.width = "50%", out.height = "20%", fig.cap = "*The Alaska Regional Data Repository in File Explorer (left) and Microsoft Edge (right).*", fig.show = 'hold', fig.align = 'left'}
+```{r, echo = FALSE, out.width = "50%", out.height = "20%", fig.cap = "Figure 1. *The Alaska Regional Data Repository in File Explorer (left) and Microsoft Edge (right).*", fig.show = 'hold', fig.align = 'left'}
 knitr::include_graphics(
   c(
     "https://github.com/hdvincelette/FWSAkRDRtools/raw/main/vignettes/images/RDR_file_explorer.png",
@@ -118,6 +119,8 @@ help(package = "FWSAkRDRtools")
 
 ## `get.dir.template()`: get the directory tree template
 
+Connection to the FWS network is *not* required.
+
 ```{r, eval=FALSE}
 
 get.dir.template(
@@ -131,6 +134,10 @@ get.dir.template(
 
 ## `find.projects()`: find RDR projects
 
+Requirements:
+
+-   none
+
 ```{r, eval=FALSE}
 
 find.projects(pattern = c("red.*knot","alaska"), program = "mbm", full.path = FALSE)
@@ -138,6 +145,12 @@ find.projects(pattern = c("red.*knot","alaska"), program = "mbm", full.path = FA
 ```
 
 ## `find.files()`: find RDR project files
+
+Requirements:
+
+-   connection to the FWS network
+
+-   write access to the applicable RDR project "incoming" folder (i.e., Data Steward or Data Manager)
 
 ```{r, eval=FALSE}
 
