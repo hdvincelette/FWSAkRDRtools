@@ -46,7 +46,9 @@ Please refer to the [Draft Regional Data Repository Guidance Document](https://e
 
 ##### [Alaska Regional Data Repository in File Explorer]{style="color: grey;"}
 
-![](https://github.com/hdvincelette/FWSAkRDRtools/raw/main/vignettes/images/RDR_file_explorer.png) \##### [Alaska Regional Data Repository in File Explorer]{style="color: grey;"}
+![](https://github.com/hdvincelette/FWSAkRDRtools/raw/main/vignettes/images/RDR_file_explorer.png) 
+##### [Alaska Regional Data Repository in File Explorer]{style="color: grey;"}
+
 ![](https://github.com/hdvincelette/FWSAkRDRtools/raw/main/vignettes/images/RDR_web_browser.png)
 
 # Workspace
