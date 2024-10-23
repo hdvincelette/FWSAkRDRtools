@@ -48,7 +48,8 @@ Most 'FWSAkRDRtools' functions require an FWS network connection, and one functi
 
 ##### [The Alaska Regional Data Repository in File Explorer (left) and Microsoft Edge (right)]{style="color: grey;"}
 
-```{r, echo = FALSE, out.width = "50%", out.height = "20%", fig.cap = "", fig.show = 'hold', fig.align = 'left'}
+```{r, echo = FALSE, out.width = "45%"}
+
 knitr::include_graphics(
   c(
     "https://github.com/hdvincelette/FWSAkRDRtools/raw/main/vignettes/images/RDR_file_explorer.png",
