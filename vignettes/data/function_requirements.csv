@@ -1,0 +1,9 @@
+﻿Function,FWS network connection,Write permission
+get.dir.template,,
+find.projects,x,
+find.files,x,
+download.files,x,
+read.tables,x,
+clone.project,x,
+summarize.files,x,
+commit.files,x,x
