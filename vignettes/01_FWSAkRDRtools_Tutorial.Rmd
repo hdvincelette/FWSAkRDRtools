@@ -64,7 +64,7 @@ library(kableExtra)
 kable(
   utils::read.csv(
     "https://raw.githubusercontent.com/hdvincelette/FWSAkRDRtools/refs/heads/main/vignettes/data/function_requirements.csv"
-  ) %>%  `colnames<-`(c("Function","FWS network connection","Write permission")),
+  ) %>%  `colnames<-`(c("function","FWS network connection","write permission")),
   escape = F,
   align = "lcc"
 )  %>% kable_styling(full_width = F, position = "left") 
