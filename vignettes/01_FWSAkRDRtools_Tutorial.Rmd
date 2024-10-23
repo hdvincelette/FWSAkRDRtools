@@ -57,15 +57,14 @@ Most 'FWSAkRDRtools' functions require an FWS network connection, and one functi
 ```{r, echo=FALSE}
 
 library(magrittr)
-library(kableExtra)
 
-kable(
+kableExtra::kable(
   utils::read.csv(
     "https://raw.githubusercontent.com/hdvincelette/FWSAkRDRtools/refs/heads/main/vignettes/data/function_requirements.csv"
   ) %>%  `colnames<-`(c("function","FWS network connection","write permission")),
   escape = F,
   align = "lcc"
-)  %>% kable_styling(full_width = F, position = "left", font_size = 12) 
+)  %>% kableExtra::kable_styling(full_width = F, position = "left", font_size = 12) 
 
   
 ```
@@ -134,11 +133,42 @@ help(package = "FWSAkRDRtools")
 
 ## `get.dir.template()`: get the directory tree template
 
-This function helps you establish a local directory using the RDR folder structure.
+This function establishes a new directory using the standardized RDR project folder structure:
 
-```{r,e cho=FALSE}
-fs::dir_tree("file://ifw7ro-file.fws.doi.net/datamgt/_dir_template/")
+```{r, echo=FALSE, comment=NA}
+
+rdr_folders <- c("admin", "changelog.txt", "code", "data", "data/final_data", "data/raw_data", "documents", "documents/posters", "documents/protocols", "documents/publications", "documents/reports", "documents/talks", "incoming", "metadata")        
+
+fad_split_up <- strsplit(rdr_folders, "/")
+
+fad_split_up[lapply(fad_split_up, length) > Inf] <- NULL
+
+fad_subbed_out <- lapply(fad_split_up, function(x){
+  n <- length(x)
+  if (n > 1)
+    x[n - 1] <- "|__"
+  if (n > 2)
+    x[1:(n - 2)] <- "   "
+  x <- if (n == 1)
+    c("-- ", x)
+  else
+    c("   ", x)
+  x
+})
+
+cat(unlist(lapply(fad_subbed_out, paste, collapse = "")), sep = "\n")
+
+
 ```
+
+You may use this to start organizing a files to be archived in the RDR, or to locally manage an existing RDR project.
+The project name (`project`) is unrestricted, but you will be prompted to approve an overwrite if a folder with that name already exists at the local path.
+You may want to include the project subprogram code and number as a prefix before the project name to align with RDR folder naming conventions (i.e., mbmlb_909).
+The local path (`local.path`) is where the new directory will be created.
+By default, only main project folders are included (`main = TRUE` & `incoming = FALSE`) .
+Normally, data stewards only have write permission to the 'incoming' folder of an RDR project, while data managers have write and modify permissions to all folders.
+This helps ensure files are not accidentally overwritten and/or lost.
+If you desire to have an "incoming" folder in the new directory, use `incoming = TRUE`.
 
 ```{r, eval=FALSE}
 
@@ -153,10 +183,6 @@ get.dir.template(
 
 ## `find.projects()`: find RDR projects
 
-Requirements:
-
--   none
-
 ```{r, eval=FALSE}
 
 find.projects(pattern = c("red.*knot","alaska"), program = "mbm", full.path = FALSE)
@@ -164,12 +190,6 @@ find.projects(pattern = c("red.*knot","alaska"), program = "mbm", full.path = FA
 ```
 
 ## `find.files()`: find RDR project files
-
-Requirements:
-
--   connection to the FWS network
-
--   write access to the applicable RDR project "incoming" folder (i.e., Data Steward or Data Manager)
 
 ```{r, eval=FALSE}
 
