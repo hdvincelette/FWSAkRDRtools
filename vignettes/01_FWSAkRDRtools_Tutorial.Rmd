@@ -45,7 +45,7 @@ Connected users can navigate to the RDR by pasting the link <file://ifw7ro-file.
 Please refer to the [Draft Regional Data Repository Guidance Document](https://ecos.fws.gov/ServCat/DownloadFile/227696) on ServCat for more information on the overall organization and management of the RDR.
 
 ```{r, echo = FALSE, out.width = "40%", out.height = "20%", fig.cap = "The Alaska Regional Data Repository in File Explorer (left) and Microsoft Edge (right).", fig.show = 'hold', fig.align = 'center'}
-knitr::include_graphics(c("man/figures/RDR_file_explorer.png", "man/figures/RDR_web_browser.png"))
+knitr::include_graphics(c("figures/RDR_file_explorer.png", "figures/RDR_web_browser.png"))
 ```
 
 # Workspace
