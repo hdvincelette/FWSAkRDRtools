@@ -12,7 +12,7 @@ devtools::build_readme()
 devtools::install()
 
 # Write markdown
-pkgdown::build_articles()
+# pkgdown::build_articles()
 # rmarkdown::render('vignettes/01_FWSAkRDRtools_Tutorial.Rmd')
 
 
@@ -30,12 +30,13 @@ pkgdown::deploy_to_branch(
 )
 
 pkgdown::clean_site()
-# pkgdown::build_reference(examples = FALSE)
-# pkgdown::build_site_github_pages(examples = FALSE)
-# usethis::use_github_action("pkgdown")
-# usethis::use_pkgdown_github_pages()
-# usethis::browse_github_actions()
-# "pages build and deployment"
+pkgdown::init_site()
+pkgdown::build_reference(examples = FALSE)
+pkgdown::build_site_github_pages(examples = FALSE)
+usethis::use_github_action("pkgdown")
+usethis::use_pkgdown_github_pages()
+usethis::browse_github_actions()
+"pages build and deployment"
 
 # Install required packages
 renv::snapshot()
