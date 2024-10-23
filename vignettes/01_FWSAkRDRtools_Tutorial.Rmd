@@ -134,7 +134,11 @@ help(package = "FWSAkRDRtools")
 
 ## `get.dir.template()`: get the directory tree template
 
-Connection to the FWS network is *not* required.
+This function helps you establish a local directory using the RDR folder structure.
+
+```{r,e cho=FALSE}
+fs::dir_tree("file://ifw7ro-file.fws.doi.net/datamgt/_dir_template/")
+```
 
 ```{r, eval=FALSE}
 
