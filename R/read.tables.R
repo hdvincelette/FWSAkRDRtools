@@ -56,6 +56,25 @@ read.tables <-
       stop("Unable to connect to the RDR. Check your network and VPN connection.")
     }
 
+    ## Find project folder ####
+    project.list <- suppressMessages(find.projects(pattern = project, full.path = TRUE))
+
+    project.choice <- 0
+
+    if (length(project.list) == 0) {
+      stop("Project matching '", project, "' not found.")
+    } else if (length(project.list) > 1) {
+      while (project.choice == 0) {
+        project.choice <- utils::menu(basename(project.list), title  = "Select a project folder.")
+      }
+    } else {
+      project.choice<- 1
+    }
+
+    project <- basename(project.list)[project.choice]
+
+    program <- basename(dirname(project.list[project.choice]))
+
 
     ## Get file urls ####
     file.url <- FWSAkRDRtools::find.files(pattern,
