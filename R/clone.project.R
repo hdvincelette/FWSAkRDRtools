@@ -44,6 +44,8 @@ clone.project <-
       while (project.choice == 0) {
         project.choice <- utils::menu(basename(project.list), title  = "Select a project folder.")
       }
+    } else {
+      project.choice <- 1
     }
 
     project <- basename(project.list)[project.choice]

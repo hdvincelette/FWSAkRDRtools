@@ -1,7 +1,7 @@
 #' Find the location(s) of project file(s) on the USFWS Alaska Regional Data Repository (RDR)
 #'
 #' Finds data file(s) from a specified RDR project folder. Remote users must be connected to one of the Service’s approved remote connection technologies, such as a Virtual Private Network (VPN).
-#' @param pattern Character vector. File name pattern(s). Must be a regular expression; print ?base::regex for help. Not case-sensitive. Default is NULL, which returns results for all files.
+#' @param pattern Character vector. File name pattern(s). Must be a regular expression; print ?base::regex for help. Not case-sensitive. Spaces are automatically replaced with ".*?" to improve search results. Default is NULL, which returns results for all files.
 #' @param project Character string. Project folder name. Can be a partial name formatted as a regular expression. Not case-sensitive.
 #' @param subfolder.path Character string. Project subfolder path.
 #' @param main Logical. Whether to return results from the main project subfolders (all subfolders except "incoming"). Default is TRUE.
@@ -65,6 +65,8 @@ find.files <-
       while (project.choice == 0) {
         project.choice <- utils::menu(basename(project.list), title  = "Select a project folder.")
       }
+    } else {
+      project.choice<- 1
     }
 
     project <- basename(project.list)[project.choice]
@@ -92,6 +94,8 @@ find.files <-
     file.url <- character(0)
 
     if (is.null(pattern) == TRUE) {
+      pattern<- sub(" ",".*?", pattern)
+
       message(paste0("Searching for files in ",project,"..."))
 
       file.loc <-
