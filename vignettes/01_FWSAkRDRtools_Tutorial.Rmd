@@ -195,11 +195,11 @@ The output will either be the full folder path (`full.path = TRUE`) or just the 
 
 ?base::regex
 
-find.projects(
-  pattern = c("red.*knot","alaska"), 
-              program = "mbm", 
-              full.path = FALSE
-              )
+project.folders <- find.projects(
+  pattern = c("red.*knot", "alaska"),
+  program = "mbm",
+  full.path = FALSE
+)
 
 ```
 
@@ -223,7 +223,7 @@ The output will either be the full file path (`full.path = TRUE`) or just the su
 
 ?base::regex
 
-find.files(
+file.locs <- find.files(
   pattern = c("template", "dictionary", "\\.csv", "hello"),
   project = "mbmlb_010_Grey_headed_chickadee_hybridization",
   subfolder.path = "metadata",
@@ -241,7 +241,7 @@ find.files(
 Arguments for `download.files()` operate in the same way as [`find.files()`](https://hdvincelette.github.io/FWSAkRDRtools/articles/01_FWSAkRDRtools_Tutorial.html#find-files-find-rdr-project-files), with a few additions.
 The local path (`local.path`) is where the files will be saved.
 `download.file.method` is the method for downloading files.
-The default (`"auto"`) chooses an appropriate method for the operating system, but the method may need to be specified if the download fails (e.g., `"internal"`, `"libcurl"`, `"wget"`, `"curl"`, `"wininet"`).
+The default (`"auto"`) chooses an appropriate method for the operating system, but the method may need to be specified if the download fails (e.g., `"internal"`, `"libcurl"`, `"wget"`, `"curl"`, `"wininet"`).
 Print `?download.file` for more details on download file methods.
 Print `browseURL(wd)` to view the downloaded files.
 
