@@ -214,10 +214,10 @@ Print `?base::regex` to view the regular expressions R documentation.
 A project name or pattern (`project`) is required.
 If a pattern is provided and more than one project is found, a menu will ask for a selection.
 You can specify the subfolder path (`subfolder.path`) to fine-tune the search results (i.e., search in the "metadata" subfolder for a file name containing "dictionary").
-You can restrict the search to the top level of a specified subfolder path (`recursive = FALSE`).
+The search can be restricted to the top level of a specified subfolder path (`recursive = FALSE`).
 Otherwise, the function will search subsequent subfolders (`recursive = TRUE`).
-Both the main (`main = TRUE`) and "incoming" (`incoming = TRUE`) folders will be searched unless you exclude one or the other by changing the argument to `FALSE`.
-You can also specify whether results include the full file path (`full.path = TRUE`) or just the subfolder path(s) and file name(s) (`full.path = FALSE`).
+The search will include both the main (`main = TRUE`) and "incoming" (`incoming = TRUE`) folders unless one or the other is excluded by changing the argument to `FALSE`.
+The output will either be the full file path (`full.path = TRUE`) or just the subfolder path(s) and file name(s) (`full.path = FALSE`).
 
 ```{r, eval=FALSE}
 
@@ -240,9 +240,10 @@ find.files(
 `download.files()` enables you to download files from specified RDR project folder onto your local drive.
 Arguments for `download.files()` operate in the same way as [`find.files()`](https://hdvincelette.github.io/FWSAkRDRtools/articles/01_FWSAkRDRtools_Tutorial.html#find-files-find-rdr-project-files), with a few additions.
 The local path (`local.path`) is where the files will be saved.
-`download.file.method)` is the method for downloading files.
+`download.file.method` is the method for downloading files.
 The default (`"auto"`) chooses an appropriate method for the operating system, but the method may need to be specified if the download fails (e.g., `"internal"`, `"libcurl"`, `"wget"`, `"curl"`, `"wininet"`).
 Print `?download.file` for more details on download file methods.
+Print `browseURL(wd)` to view the downloaded files.
 
 ```{r, eval=FALSE}
 
@@ -259,9 +260,20 @@ download.files(
   download.file.method = "auto"
 )
 
+browseURL(wd)
 ```
 
 ## `read.tables()`: read RDR project tables into R
+
+`read.tables()` enables you to read tabular data files from a specified RDR project folder directly into R.
+Arguments for `read.tables()` operate in the same way as [`find.files()`](https://hdvincelette.github.io/FWSAkRDRtools/articles/01_FWSAkRDRtools_Tutorial.html#find-files-find-rdr-project-files), with a few additions.
+`read.tables()` currently only reads XLS/XLSX (via readxl::read_excel) and CSV (via utils::read.csv) table formats.
+`na.strings` are any strings that are to be interpreted as NA values.
+`header` indicates whether the first line contains variable names.
+`header` only applies to CSV formats, and the default is `TRUE`.
+`read.tables()` should be used cautiously as most arguments in the dependent functions are set to default values.
+Tables should be reviewed for errors and re-imported as needed using the file URLs printed with the output.
+`read.tables()` will return a data frame if only one file is selected or a list of data frames if multiple files are selected.
 
 ```{r, eval=FALSE}
 
