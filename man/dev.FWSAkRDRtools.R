@@ -17,9 +17,6 @@ devtools::install()
 
 
 # Update site
-# pkgdown::build_site(examples = FALSE)
-# pkgdown::build_site_github_pages(examples = FALSE)
-
 pkgdown::deploy_to_branch(
   clean = TRUE,
   branch = "gh-pages",
@@ -28,6 +25,9 @@ pkgdown::deploy_to_branch(
   subdir = NULL,
   examples = FALSE
 )
+
+# pkgdown::build_site(examples = FALSE)
+# pkgdown::build_site_github_pages(examples = FALSE)
 
 # pkgdown::clean_site()
 # pkgdown::init_site()
