@@ -123,7 +123,7 @@ wd<- "C:/Users/hvincelette/OneDrive - DOI/Documents/Data_management/Test"
 Run the following to access information about 'FWSAkRDRtools' in the Help pane, including documentation pages for each function.
 This is a useful quick reference for function usage, arguments, and expected output.
 
-```{r}
+```{r, eval=FALSE}
 
 help(package = "FWSAkRDRtools")
 
