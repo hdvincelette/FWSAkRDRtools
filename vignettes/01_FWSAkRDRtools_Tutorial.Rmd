@@ -69,6 +69,9 @@ kableExtra::kable(
   
 ```
 
+<br>
+<br>
+
 # Workspace
 
 ## Uninstall
@@ -129,6 +132,9 @@ help(package = "FWSAkRDRtools")
 
 ```
 
+<br>
+<br>
+
 # Functions
 
 ## `get.dir.template()`: get the directory tree template
@@ -180,6 +186,8 @@ get.dir.template(
 
 ```
 
+<br>
+
 ## `find.projects()`: find RDR projects
 
 `find.projects()` queries the RDR for existing project folder names.
@@ -202,6 +210,8 @@ project.folders <- find.projects(
 )
 
 ```
+
+<br>
 
 ## `find.files()`: find RDR project files
 
@@ -235,6 +245,8 @@ file.locs <- find.files(
 
 ```
 
+<br>
+
 ## `download.files()`: download RDR project files
 
 `download.files()` enables you to download files from specified RDR project folder onto your local drive.
@@ -262,6 +274,8 @@ download.files(
 
 browseURL(wd)
 ```
+
+<br>
 
 ## `read.tables()`: read RDR project tables into R
 
@@ -301,6 +315,8 @@ df.list <- read.tables(
 
 ```
 
+<br>
+
 ## `clone.project()`: clone an RDR project
 
 ```{r, eval=FALSE}
@@ -314,6 +330,8 @@ clone.project(
 
 ```
 
+<br>
+
 ## `summarize.files()`: summarize files in an RDR project
 
 ```{r, eval=FALSE}
@@ -326,6 +344,8 @@ file.summary<- summarize.files(
   recursive = TRUE
 )
 ```
+
+<br>
 
 ## `commit.files()`: commit files to an RDR project
 
