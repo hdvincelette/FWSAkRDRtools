@@ -17,7 +17,7 @@ devtools::install()
 
 
 # Update site
-pkgdown::build_site(examples = FALSE)
+# pkgdown::build_site(examples = FALSE)
 # pkgdown::build_site_github_pages(examples = FALSE)
 
 pkgdown::deploy_to_branch(
@@ -29,14 +29,14 @@ pkgdown::deploy_to_branch(
   examples = FALSE
 )
 
-pkgdown::clean_site()
-pkgdown::init_site()
-pkgdown::build_reference(examples = FALSE)
-pkgdown::build_site_github_pages(examples = FALSE)
-usethis::use_github_action("pkgdown")
-usethis::use_pkgdown_github_pages()
-usethis::browse_github_actions()
-"pages build and deployment"
+# pkgdown::clean_site()
+# pkgdown::init_site()
+# pkgdown::build_reference(examples = FALSE)
+# pkgdown::build_site_github_pages(examples = FALSE)
+# usethis::use_github_action("pkgdown")
+# usethis::use_pkgdown_github_pages()
+# usethis::browse_github_actions()
+# "pages build and deployment"
 
 # Install required packages
 renv::snapshot()
