@@ -15,7 +15,7 @@ find.files(
 )
 }
 \arguments{
-\item{pattern}{Character vector. File name pattern(s). Must be a regular expression; print ?base::regex for help. Not case-sensitive. Default is NULL, which returns results for all files.}
+\item{pattern}{Character vector. File name pattern(s). Must be a regular expression; print ?base::regex for help. Not case-sensitive. Spaces are automatically replaced with ".*?" to improve search results. Default is NULL, which returns results for all files.}
 
 \item{project}{Character string. Project folder name. Can be a partial name formatted as a regular expression. Not case-sensitive.}
 
