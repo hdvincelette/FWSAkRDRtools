@@ -255,11 +255,11 @@ document.</p>
 <span></span>
 <span><span class="va">wd</span><span class="op">&lt;-</span> <span class="st">"C:/Users/hvincelette/OneDrive - DOI/Documents/Data_management/Test"</span></span></code></pre></div>
 <p>Run the following to access information about ‘FWSAkRDRtools’ in the
-Help pane, including documentation pages for each function. You can use
-this as a quick reference for function usage, arguments, and expected
+Help pane, including documentation pages for each function. This is a
+useful quick reference for function usage, arguments, and expected
 output.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/help.html" class="external-link">help</a></span><span class="op">(</span>package <span class="op">=</span> <span class="st">"FWSAkRDRtools"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># help(package = "FWSAkRDRtools")</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
@@ -286,21 +286,18 @@ project folder structure:</p>
    |__talks
 -- incoming
 -- metadata</code></pre>
-<p>You may use this to start organizing files to be archived in the RDR,
-or to locally manage an existing RDR project. The project name
-(<code>project</code>) is unrestricted, but you will be prompted to
-approve an overwrite if a folder with that name already exists at the
-local path. You may want to include the project subprogram code and
-number as a prefix before the project name to align with RDR folder
-naming conventions (i.e., mbmlb_909). The local path
+<p><code><a href="../reference/get.dir.template.html">get.dir.template()</a></code> can help organize a local project to
+be archived in the RDR. The project name (<code>project</code>) is
+unrestricted, but a prompt requests approval to overwrite an existing
+folder with the same name at the local path. The local path
 (<code>local.path</code>) is where the new directory will be created. By
 default, only main project folders are included
 (<code>main = TRUE</code> &amp; <code>incoming = FALSE</code>) .
-Normally, data stewards only have write permission to the ‘incoming’
+Normally, only data stewards have write permission to the ‘incoming’
 folder of an RDR project, while data managers have write and modify
 permissions to all folders. This helps ensure files are not accidentally
-overwritten and/or lost. If you desire to have an “incoming” folder in
-the new directory, use <code>incoming = TRUE</code>.</p>
+overwritten and/or lost. Use <code>incoming = TRUE</code> to include the
+“incoming” folder in the new directory.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/get.dir.template.html">get.dir.template</a></span><span class="op">(</span></span>
 <span>  project <span class="op">=</span> <span class="st">"mbmlb_909_Eskimo_Curlew_study"</span>,</span>
@@ -313,15 +310,58 @@ the new directory, use <code>incoming = TRUE</code>.</p>
 <h3 id="find-projects-find-rdr-projects">
 <code>find.projects()</code>: find RDR projects<a class="anchor" aria-label="anchor" href="#find-projects-find-rdr-projects"></a>
 </h3>
+<p><code><a href="../reference/find.projects.html">find.projects()</a></code> queries the RDR for existing project
+folder names. Pattern(s) (<code>pattern)</code> can be a character
+string or vector of search term(s). The default is
+<code>pattern = NULL</code>, which returns results for all project
+folders. Patterns must be formatted as “regular expressions”, but spaces
+within a string (e.g., “red knot”) are automatically replaced with “.*?”
+(e.g., “red.*?knot”) to improve search results. Patterns are not
+case-sensitive. Print <code><a href="https://rdrr.io/r/base/regex.html" class="external-link">?base::regex</a></code> to view the regular
+expressions R documentation. The program code (<code>program</code>) is
+an optional argument to fine-tune search results within RDR program
+folders (fes, mbm, nwrs, osm, sa). The output will either be the full
+folder path (<code>full.path = TRUE</code>) or just the project folder
+name(s) (<code>full.path = FALSE</code>).</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/find.projects.html">find.projects</a></span><span class="op">(</span>pattern <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"red.*knot"</span>,<span class="st">"alaska"</span><span class="op">)</span>, program <span class="op">=</span> <span class="st">"mbm"</span>, full.path <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="op">?</span><span class="fu">base</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/r/base/regex.html" class="external-link">regex</a></span></span>
+<span></span>
+<span><span class="fu"><a href="../reference/find.projects.html">find.projects</a></span><span class="op">(</span></span>
+<span>  pattern <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"red.*knot"</span>,<span class="st">"alaska"</span><span class="op">)</span>, </span>
+<span>              program <span class="op">=</span> <span class="st">"mbm"</span>, </span>
+<span>              full.path <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span>              <span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="find-files-find-rdr-project-files">
 <code>find.files()</code>: find RDR project files<a class="anchor" aria-label="anchor" href="#find-files-find-rdr-project-files"></a>
 </h3>
+<p><code><a href="../reference/find.files.html">find.files()</a></code> allows you to query a specific RDR project
+folder for individual files. Pattern(s) (<code>pattern)</code> can be a
+character string or vector of search term(s). The default is
+<code>pattern = NULL</code>, which returns results for all files.
+Patterns must be formatted as “regular expressions”, but spaces within a
+string (e.g., “data dictionary”) are automatically replaced with “.*?”
+(e.g., “data.*?dictionary”) to improve search results. Patterns are not
+case-sensitive. Print <code><a href="https://rdrr.io/r/base/regex.html" class="external-link">?base::regex</a></code> to view the regular
+expressions R documentation. A project name or pattern
+(<code>project</code>) is required. If a pattern is provided and more
+than one project is found, a menu will ask for a selection. You can
+specify the subfolder path (<code>subfolder.path</code>) to fine-tune
+the search results (i.e., search in the “metadata” subfolder for a file
+name containing “dictionary”). The search can be restricted to the top
+level of a specified subfolder path (<code>recursive = FALSE</code>).
+Otherwise, the function will search subsequent subfolders
+(<code>recursive = TRUE</code>). The search will include both the main
+(<code>main = TRUE</code>) and “incoming” (<code>incoming = TRUE</code>)
+folders unless one or the other is excluded by changing the argument to
+<code>FALSE</code>. The output will either be the full file path
+(<code>full.path = TRUE</code>) or just the subfolder path(s) and file
+name(s) (<code>full.path = FALSE</code>).</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/find.files.html">find.files</a></span><span class="op">(</span></span>
+<code class="sourceCode R"><span><span class="op">?</span><span class="fu">base</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/r/base/regex.html" class="external-link">regex</a></span></span>
+<span></span>
+<span><span class="fu"><a href="../reference/find.files.html">find.files</a></span><span class="op">(</span></span>
 <span>  pattern <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"template"</span>, <span class="st">"dictionary"</span>, <span class="st">"\\.csv"</span>, <span class="st">"hello"</span><span class="op">)</span>,</span>
 <span>  project <span class="op">=</span> <span class="st">"mbmlb_010_Grey_headed_chickadee_hybridization"</span>,</span>
 <span>  subfolder.path <span class="op">=</span> <span class="st">"metadata"</span>,</span>
@@ -335,8 +375,22 @@ the new directory, use <code>incoming = TRUE</code>.</p>
 <h3 id="download-files-download-rdr-project-files">
 <code>download.files()</code>: download RDR project files<a class="anchor" aria-label="anchor" href="#download-files-download-rdr-project-files"></a>
 </h3>
+<p><code><a href="../reference/download.files.html">download.files()</a></code> enables you to download files from
+specified RDR project folder onto your local drive. Arguments for
+<code><a href="../reference/download.files.html">download.files()</a></code> operate in the same way as <a href="https://hdvincelette.github.io/FWSAkRDRtools/articles/01_FWSAkRDRtools_Tutorial.html#find-files-find-rdr-project-files"><code>find.files()</code></a>,
+with a few additions. The local path (<code>local.path</code>) is where
+the files will be saved. <code>download.file.method</code> is the method
+for downloading files. The default (<code>"auto"</code>) chooses an
+appropriate method for the operating system, but the method may need to
+be specified if the download fails (e.g.,
+<code>"internal"</code>, <code>"libcurl"</code>, <code>"wget"</code>, <code>"curl"</code>,
+<code>"wininet"</code>). Print <code><a href="https://rdrr.io/r/utils/download.file.html" class="external-link">?download.file</a></code> for more
+details on download file methods. Print <code>browseURL(wd)</code> to
+view the downloaded files.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/download.files.html">download.files</a></span><span class="op">(</span></span>
+<code class="sourceCode R"><span><span class="op">?</span><span class="va">download.file</span></span>
+<span></span>
+<span><span class="fu"><a href="../reference/download.files.html">download.files</a></span><span class="op">(</span></span>
 <span>  pattern <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"banding"</span>, <span class="st">"dictionary"</span><span class="op">)</span>,</span>
 <span>  project <span class="op">=</span> <span class="st">"mbmlb_010_Grey_headed_chickadee_hybridization"</span>,</span>
 <span>  subfolder.path <span class="op">=</span> <span class="st">""</span>,</span>
@@ -345,12 +399,29 @@ the new directory, use <code>incoming = TRUE</code>.</p>
 <span>  incoming <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  recursive <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  download.file.method <span class="op">=</span> <span class="st">"auto"</span></span>
-<span><span class="op">)</span></span></code></pre></div>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/browseURL.html" class="external-link">browseURL</a></span><span class="op">(</span><span class="va">wd</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="read-tables-read-rdr-project-tables-into-r">
 <code>read.tables()</code>: read RDR project tables into R<a class="anchor" aria-label="anchor" href="#read-tables-read-rdr-project-tables-into-r"></a>
 </h3>
+<p><code><a href="../reference/read.tables.html">read.tables()</a></code> enables you to read tabular data files
+from a specified RDR project folder directly into R. Arguments for
+<code><a href="../reference/read.tables.html">read.tables()</a></code> operate in the same way as <a href="https://hdvincelette.github.io/FWSAkRDRtools/articles/01_FWSAkRDRtools_Tutorial.html#find-files-find-rdr-project-files"><code>find.files()</code></a>,
+with a few additions. <code><a href="../reference/read.tables.html">read.tables()</a></code> currently only reads
+XLS/XLSX (via readxl::read_excel) and CSV (via utils::read.csv) table
+formats. <code>na.strings</code> are any strings that are to be
+interpreted as NA values. <code>header</code> indicates whether the
+first line contains variable names. <code>header</code> only applies to
+CSV formats, and the default is <code>TRUE</code>.
+<code><a href="../reference/read.tables.html">read.tables()</a></code> should be used cautiously as most arguments
+in the dependent functions are set to default values. Tables should be
+reviewed for errors and re-imported as needed using the file URLs
+printed with the output. <code><a href="../reference/read.tables.html">read.tables()</a></code> will return a data
+frame if only one file is selected or a list of data frames if multiple
+files are selected.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read.tables.html">read.tables</a></span><span class="op">(</span></span>
 <span>  pattern <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"dictionary"</span><span class="op">)</span>,</span>
