@@ -56,7 +56,9 @@ Most 'FWSAkRDRtools' functions require an FWS network connection, and one functi
 
 ```{r, echo=FALSE}
 
-library(magrittr)
+if (!require("pacman")) install.packages("pacman")
+
+pacman::p_load(kableExtra, magrittr) 
 
 kableExtra::kable(
   utils::read.csv(
@@ -111,6 +113,7 @@ knitr::opts_chunk$set(
   comment = "#>",
   error=TRUE
 )
+
 
 ```
 
