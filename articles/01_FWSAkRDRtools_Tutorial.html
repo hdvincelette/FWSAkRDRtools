@@ -221,7 +221,8 @@ X
 <p><br><br></p>
 </div>
 <div class="section level2">
-<h2 id="workspace">Workspace<a class="anchor" aria-label="anchor" href="#workspace"></a>
+<h2 id="workspace">
+<strong>Workspace</strong><a class="anchor" aria-label="anchor" href="#workspace"></a>
 </h2>
 <div class="section level3">
 <h3 id="uninstall">Uninstall<a class="anchor" aria-label="anchor" href="#uninstall"></a>
@@ -276,15 +277,15 @@ output.</p>
 </div>
 </div>
 <div class="section level2">
-<h2 id="functions">Functions<a class="anchor" aria-label="anchor" href="#functions"></a>
+<h2 id="functions">
+<strong>Functions</strong><a class="anchor" aria-label="anchor" href="#functions"></a>
 </h2>
 <div class="section level3">
 <h3 id="get-dir-template-get-the-directory-tree-template">
-<code>get.dir.template()</code>: get the directory tree
-template<a class="anchor" aria-label="anchor" href="#get-dir-template-get-the-directory-tree-template"></a>
+<code>get.dir.template()</code>: <span style="color: grey;font-size: 12pt">get the directory tree
+template</span><a class="anchor" aria-label="anchor" href="#get-dir-template-get-the-directory-tree-template"></a>
 </h3>
-<p>This function establishes a new directory using the standardized RDR
-project folder structure:</p>
+<p>RDR project folders follow a standardized folder structure:</p>
 <pre><code>-- admin
 -- changelog.txt
 -- code
@@ -302,15 +303,15 @@ project folder structure:</p>
 <p><code><a href="../reference/get.dir.template.html">get.dir.template()</a></code> can help organize a local project to
 be archived in the RDR. The project name (<code>project</code>) is
 unrestricted, but a prompt requests approval to overwrite an existing
-folder with the same name at the local path. The local path
-(<code>local.path</code>) is where the new directory will be created. By
-default, only main project folders are included
-(<code>main = TRUE</code> &amp; <code>incoming = FALSE</code>) .
-Normally, only data stewards have write permission to the ‘incoming’
-folder of an RDR project, while data managers have write and modify
-permissions to all folders. This helps ensure files are not accidentally
-overwritten and/or lost. Use <code>incoming = TRUE</code> to include the
-“incoming” folder in the new directory.</p>
+folder with the same name in the local path. The new directory will be
+created in the local path (<code>local.path</code>). By default, only
+main project folders are included (<code>main = TRUE</code> &amp;
+<code>incoming = FALSE</code>) . Normally, only data stewards have write
+permission to the ‘incoming’ folder of an RDR project, while data
+managers have write and modify permissions to all folders. This helps
+ensure files are not accidentally overwritten and/or lost. Use
+<code>incoming = TRUE</code> to include the “incoming” folder in the new
+directory.</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/get.dir.template.html">get.dir.template</a></span><span class="op">(</span></span>
 <span>  project <span class="op">=</span> <span class="st">"mbmlb_909_Eskimo_Curlew_study"</span>,</span>
@@ -322,7 +323,7 @@ overwritten and/or lost. Use <code>incoming = TRUE</code> to include the
 </div>
 <div class="section level3">
 <h3 id="find-projects-find-rdr-projects">
-<code>find.projects()</code>: find RDR projects<a class="anchor" aria-label="anchor" href="#find-projects-find-rdr-projects"></a>
+<code>find.projects()</code>: <span style="color: grey;font-size: 12pt">find RDR projects</span><a class="anchor" aria-label="anchor" href="#find-projects-find-rdr-projects"></a>
 </h3>
 <p><code><a href="../reference/find.projects.html">find.projects()</a></code> queries the RDR for existing project
 folder names. Pattern(s) (<code>pattern)</code> can be a character
@@ -349,7 +350,7 @@ name(s) (<code>full.path = FALSE</code>).</p>
 </div>
 <div class="section level3">
 <h3 id="find-files-find-rdr-project-files">
-<code>find.files()</code>: find RDR project files<a class="anchor" aria-label="anchor" href="#find-files-find-rdr-project-files"></a>
+<code>find.files()</code>: <span style="color: grey;font-size: 12pt">find RDR project files</span><a class="anchor" aria-label="anchor" href="#find-files-find-rdr-project-files"></a>
 </h3>
 <p><code><a href="../reference/find.files.html">find.files()</a></code> allows you to query a specific RDR project
 folder for individual files. Pattern(s) (<code>pattern)</code> can be a
@@ -361,18 +362,18 @@ string (e.g., “data dictionary”) are automatically replaced with “.*?”
 case-sensitive. Print <code><a href="https://rdrr.io/r/base/regex.html" class="external-link">?base::regex</a></code> to view the regular
 expressions R documentation. A project name or pattern
 (<code>project</code>) is required. If a pattern is provided and more
-than one project is found, a menu will ask for a selection. You can
-specify the subfolder path (<code>subfolder.path</code>) to fine-tune
-the search results (i.e., search in the “metadata” subfolder for a file
-name containing “dictionary”). The search can be restricted to the top
-level of a specified subfolder path (<code>recursive = FALSE</code>).
-Otherwise, the function will search subsequent subfolders
-(<code>recursive = TRUE</code>). The search will include both the main
-(<code>main = TRUE</code>) and “incoming” (<code>incoming = TRUE</code>)
-folders unless one or the other is excluded by changing the argument to
-<code>FALSE</code>. The output will either be the full file path
-(<code>full.path = TRUE</code>) or just the subfolder path(s) and file
-name(s) (<code>full.path = FALSE</code>).</p>
+than one project is found, a menu will ask for a selection. The
+subfolder path (<code>subfolder.path</code>) can be specified to
+fine-tune search results (e.g., search in the “metadata” subfolder for a
+file name containing “dictionary”). The search can be restricted to the
+top level of a specified subfolder path
+(<code>recursive = FALSE</code>). Otherwise, the function will search
+subsequent subfolders (<code>recursive = TRUE</code>). The search will
+include both the main (<code>main = TRUE</code>) and “incoming”
+(<code>incoming = TRUE</code>) folders unless one or the other is
+excluded by changing the argument to <code>FALSE</code>. The output will
+either be the full file path (<code>full.path = TRUE</code>) or just the
+subfolder path(s) and file name(s) (<code>full.path = FALSE</code>).</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">?</span><span class="fu">base</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/r/base/regex.html" class="external-link">regex</a></span></span>
 <span></span>
@@ -389,16 +390,17 @@ name(s) (<code>full.path = FALSE</code>).</p>
 </div>
 <div class="section level3">
 <h3 id="download-files-download-rdr-project-files">
-<code>download.files()</code>: download RDR project files<a class="anchor" aria-label="anchor" href="#download-files-download-rdr-project-files"></a>
+<code>download.files()</code>: <span style="color: grey;font-size: 12pt">download RDR project
+files</span><a class="anchor" aria-label="anchor" href="#download-files-download-rdr-project-files"></a>
 </h3>
 <p><code><a href="../reference/download.files.html">download.files()</a></code> enables you to download files from
 specified RDR project folder onto your local drive. Arguments for
 <code><a href="../reference/download.files.html">download.files()</a></code> operate in the same way as <a href="https://hdvincelette.github.io/FWSAkRDRtools/articles/01_FWSAkRDRtools_Tutorial.html#find-files-find-rdr-project-files"><code>find.files()</code></a>,
-with a few additions. The local path (<code>local.path</code>) is where
-the files will be saved. <code>download.file.method</code> is the method
-for downloading files. The default (<code>"auto"</code>) chooses an
-appropriate method for the operating system, but the method may need to
-be specified if the download fails (e.g., <code>"internal"</code>,
+with a few additions. The files will be saved to the local path
+(<code>local.path</code>). <code>download.file.method</code> is the
+method for downloading files. The default (<code>"auto"</code>) chooses
+an appropriate method for the operating system, but the method may need
+to be specified if the download fails (e.g., <code>"internal"</code>,
 <code>"libcurl"</code>, <code>"wget"</code>, <code>"curl"</code>,
 <code>"wininet"</code>). Print <code><a href="https://rdrr.io/r/utils/download.file.html" class="external-link">?download.file</a></code> for more
 details on download file methods. Print <code>browseURL(wd)</code> to
@@ -422,23 +424,23 @@ view the downloaded files.</p>
 </div>
 <div class="section level3">
 <h3 id="read-tables-read-rdr-project-tables-into-r">
-<code>read.tables()</code>: read RDR project tables into R<a class="anchor" aria-label="anchor" href="#read-tables-read-rdr-project-tables-into-r"></a>
+<code>read.tables()</code>: <span style="color: grey;font-size: 12pt">read RDR project tables into
+R</span><a class="anchor" aria-label="anchor" href="#read-tables-read-rdr-project-tables-into-r"></a>
 </h3>
 <p><code><a href="../reference/read.tables.html">read.tables()</a></code> enables you to read tabular data files
 from a specified RDR project folder directly into R. Arguments for
 <code><a href="../reference/read.tables.html">read.tables()</a></code> operate in the same way as <a href="https://hdvincelette.github.io/FWSAkRDRtools/articles/01_FWSAkRDRtools_Tutorial.html#find-files-find-rdr-project-files"><code>find.files()</code></a>,
 with a few additions. <code><a href="../reference/read.tables.html">read.tables()</a></code> currently only reads
 XLS/XLSX (via readxl::read_excel) and CSV (via utils::read.csv) table
-formats. <code>na.strings</code> are any strings that are to be
-interpreted as NA values. <code>header</code> indicates whether the
-first line contains variable names. <code>header</code> only applies to
-CSV formats, and the default is <code>TRUE</code>.
-<code><a href="../reference/read.tables.html">read.tables()</a></code> should be used cautiously as most arguments
-in the dependent functions are set to default values. Tables should be
-reviewed for errors and re-imported as needed using the file URLs
-printed with the output. <code><a href="../reference/read.tables.html">read.tables()</a></code> will return a data
-frame if only one file is selected or a list of data frames if multiple
-files are selected.</p>
+formats. <code>na.strings</code> are any strings to be interpreted as NA
+values. <code>header</code> indicates whether the first line contains
+variable names. <code>header</code> only applies to CSV formats, and the
+default is <code>TRUE</code>. <code><a href="../reference/read.tables.html">read.tables()</a></code> should be used
+cautiously as most arguments in the dependent functions are set to
+default values. Tables should be reviewed for errors and re-imported as
+needed using the file URLs printed with the output.
+<code><a href="../reference/read.tables.html">read.tables()</a></code> will return a data frame if only one file is
+selected or a list of data frames if multiple files are selected.</p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read.tables.html">read.tables</a></span><span class="op">(</span></span>
 <span>  pattern <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"dictionary"</span><span class="op">)</span>,</span>
@@ -465,8 +467,16 @@ files are selected.</p>
 </div>
 <div class="section level3">
 <h3 id="clone-project-clone-an-rdr-project">
-<code>clone.project()</code>: clone an RDR project<a class="anchor" aria-label="anchor" href="#clone-project-clone-an-rdr-project"></a>
+<code>clone.project()</code>: <span style="color: grey;font-size: 12pt">clone an RDR project</span><a class="anchor" aria-label="anchor" href="#clone-project-clone-an-rdr-project"></a>
 </h3>
+<p><code><a href="../reference/clone.project.html">clone.project()</a></code> creates an exact copy of an RDR project
+on your local drive. A project name or pattern (<code>project</code>) is
+required. If a pattern is provided and more than one project is found, a
+menu will ask for a selection. The cloned folders will be saved to the
+local path (<code>local.path</code>). Both the main
+(<code>main = TRUE</code>) and “incoming” (<code>incoming = TRUE</code>)
+folders will be cloned unless one or the other is excluded by changing
+the argument to <code>FALSE</code>.</p>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/clone.project.html">clone.project</a></span><span class="op">(</span></span>
 <span>  project <span class="op">=</span> <span class="st">"mbmlb_010_Grey_headed_chickadee_hybridization"</span>,</span>
@@ -478,30 +488,83 @@ files are selected.</p>
 </div>
 <div class="section level3">
 <h3 id="summarize-files-summarize-files-in-an-rdr-project">
-<code>summarize.files()</code>: summarize files in an RDR
-project<a class="anchor" aria-label="anchor" href="#summarize-files-summarize-files-in-an-rdr-project"></a>
+<code>summarize.files()</code>: <span style="color: grey;font-size: 12pt">summarize files in an RDR
+project</span><a class="anchor" aria-label="anchor" href="#summarize-files-summarize-files-in-an-rdr-project"></a>
 </h3>
+<p><code><a href="../reference/summarize.files.html">summarize.files()</a></code> provides a summary of a specific RDR
+project folder. A project name or pattern (<code>project</code>) is
+required. If a pattern is provided and more than one project is found, a
+menu will ask for a selection. One or more subfolders
+(<code>subfolder</code>) can be specified to fine-tune and speed up
+summary results (e.g., summarize only the “raw_data” and “final_data”
+subfolders). The summary can be restricted to the top level of a
+specified subfolder (<code>recursive = FALSE</code>). Otherwise, the
+function will summarize subsequent subfolders
+(<code>recursive = TRUE</code>). The summary will include both the main
+(<code>main = TRUE</code>) and “incoming” (<code>incoming = TRUE</code>)
+folders unless one or the other is excluded by changing the argument to
+<code>FALSE</code>.</p>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">file.summary</span><span class="op">&lt;-</span> <span class="fu"><a href="../reference/summarize.files.html">summarize.files</a></span><span class="op">(</span></span>
+<code class="sourceCode R"><span><span class="va">all.summary</span><span class="op">&lt;-</span> <span class="fu"><a href="../reference/summarize.files.html">summarize.files</a></span><span class="op">(</span></span>
 <span>  project <span class="op">=</span> <span class="st">"mbmlb_010_Grey_headed_chickadee_hybridization"</span>,</span>
 <span>  subfolder <span class="op">=</span> <span class="st">""</span>,</span>
 <span>  main <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  incoming <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  recursive <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">data.summary</span><span class="op">&lt;-</span> <span class="fu"><a href="../reference/summarize.files.html">summarize.files</a></span><span class="op">(</span></span>
+<span>  project <span class="op">=</span> <span class="st">"mbmlb_010_Grey_headed_chickadee_hybridization"</span>,</span>
+<span>  subfolder <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"raw_data"</span>,<span class="st">"final_data"</span><span class="op">)</span>,</span>
+<span>  main <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  incoming <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  recursive <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <p><br></p>
 </div>
 <div class="section level3">
 <h3 id="commit-files-commit-files-to-an-rdr-project">
-<code>commit.files()</code>: commit files to an RDR project<a class="anchor" aria-label="anchor" href="#commit-files-commit-files-to-an-rdr-project"></a>
+<code>commit.files()</code>: <span style="color: grey;font-size: 12pt">commit files to an RDR
+project</span><a class="anchor" aria-label="anchor" href="#commit-files-commit-files-to-an-rdr-project"></a>
 </h3>
+<p><code><a href="../reference/commit.files.html">commit.files()</a></code> helps you submit files to the RDR. Note,
+you must be the data steward of the relevant RDR project and/or have
+write permission to the “incoming” folder. Refer to the program data
+manager to understand your project roles and permissions. A project name
+or pattern (<code>project</code>) is required. If a pattern is provided
+and more than one project is found, a menu will ask for a selection. The
+local path (<code>local.path</code>) should contain files to commit in
+the same folder structure as the RDR project folder. Therefore, it is
+recommended to create an local directory using <a href="https://hdvincelette.github.io/FWSAkRDRtools/articles/01_FWSAkRDRtools_Tutorial.html#get-dir-template-get-the-directory-tree-template"><code>get.dir.template()</code></a>
+or clone the RDR project folder to the local drive with <a href="https://hdvincelette.github.io/FWSAkRDRtools/articles/01_FWSAkRDRtools_Tutorial.html#clone-project-clone-an-rdr-project"><code>clone.project()</code></a>
+before managing file additions. The local file search will include
+subfolders in the local path (<code>recursive = TRUE</code>) unless
+otherwise specified (<code>recursive = FALSE</code>). If a local file is
+contained in an unfamiliar subfolder path, <code><a href="../reference/commit.files.html">commit.files()</a></code>
+will attempt to find the closest matching RDR subfolder path. If
+incorrect, a new subfolder path can be created.
+<code><a href="../reference/commit.files.html">commit.files()</a></code> runs numerous tests to ensure files are
+committed to the correct “incoming” folder. You can run
+<code><a href="../reference/commit.files.html">commit.files()</a></code> more prudently by reviewing local duplicate
+files (<code>review.duplicate = TRUE</code>) and prohibiting the
+overwrite of RDR files (<code>rdr.overwrite = FALSE</code>). These are
+the recommended defaults. File overwrites
+(<code>rdr.overwrite = TRUE</code>) must be individually reviewed and
+approved. Only files in the “incoming” folder of the RDR may be
+immediately overwritten, while those in the main folders will only be
+overwritten at the discretion of the data manager.
+<code><a href="../reference/commit.files.html">commit.files()</a></code> will provide an overview of the files to
+commit. If approved, a summary of the commit is printed to the R Console
+and sent to the changelog in the RDR project “incoming” folder. You may
+want to add additional details to the changelog, including the contents
+of each file.</p>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Note files will only be committed if you are the data steward of the project. Refer to the Data Manager to understand your project roles.</span></span>
-<span></span>
-<span><span class="va">commit.summary</span><span class="op">&lt;-</span> <span class="fu"><a href="../reference/commit.files.html">commit.files</a></span><span class="op">(</span></span>
+<code class="sourceCode R"><span><span class="va">commit.summary</span><span class="op">&lt;-</span> <span class="fu"><a href="../reference/commit.files.html">commit.files</a></span><span class="op">(</span></span>
 <span>  project <span class="op">=</span> <span class="st">"mbmlb_010_Grey_headed_chickadee_hybridization"</span>,</span>
 <span>  local.path <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">wd</span>,<span class="st">"/mbmlb_010_Grey_headed_chickadee_hybridization"</span><span class="op">)</span>,</span>
-<span>  recursive <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span>  recursive <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  review.duplicate <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  rdr.overwrite <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
 </div>
 </div>
