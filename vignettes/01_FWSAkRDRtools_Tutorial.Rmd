@@ -104,9 +104,7 @@ remotes::install_github("hdvincelette/FWSAkRDRtools")
 
 ## Load
 
-Run the following housekeeping code to set chunk behavior within this document.
-
-```{r setup, eval=FALSE}
+```{r setup, eval=FALSE, include=FALSE}
 options(width = 9999)
 
 knitr::opts_chunk$set(
