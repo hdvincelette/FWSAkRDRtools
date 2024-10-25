@@ -32,7 +32,7 @@ editor_options:
 # }
 
 pre {
-  max-height: 500px !important;
+  max-height: 550px !important;
   overflow-y: auto !important;
   overflow-x: scroll !important;
 }
@@ -55,7 +55,7 @@ Most 'FWSAkRDRtools' functions require an FWS network connection, and one functi
 
 ##### [Function requirements]{style="color: grey;"}
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, include=FALSE}
 
 if (!require("pacman")) install.packages("pacman")
 
