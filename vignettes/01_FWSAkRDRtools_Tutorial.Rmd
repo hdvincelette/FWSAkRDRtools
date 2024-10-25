@@ -32,7 +32,7 @@ editor_options:
 # }
 
 pre {
-  max-height: 350px !important;
+  max-height: 500px !important;
   overflow-y: auto !important;
   overflow-x: scroll !important;
 }
