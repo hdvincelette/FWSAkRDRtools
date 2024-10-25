@@ -804,27 +804,17 @@ install packages from GitHub.</p>
 </div>
 <div id="load" class="section level2">
 <h2>Load</h2>
-<p>Run the following housekeeping code to set chunk behavior within this
-document.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">options</span>(<span class="at">width =</span> <span class="dv">9999</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(</span>
-<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a>  <span class="at">echo =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a>  <span class="at">collapse =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a>  <span class="at">comment =</span> <span class="st">&quot;#&gt;&quot;</span>,</span>
-<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a>  <span class="at">error=</span><span class="cn">TRUE</span></span>
-<span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a>)</span></code></pre></div>
 <p>Load ‘FWSAkRDRtools’ into the R library and set the working directory
 (where you would like files to be saved and/or copied from).</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="fu">library</span>(FWSAkRDRtools)</span>
-<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a>wd<span class="ot">&lt;-</span> <span class="st">&quot;C:/Users/hvincelette/OneDrive - DOI/Documents/Data_management/Test&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">library</span>(FWSAkRDRtools)</span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>wd<span class="ot">&lt;-</span> <span class="st">&quot;C:/Users/hvincelette/OneDrive - DOI/Documents/Data_management/Test&quot;</span></span></code></pre></div>
 <p>Run the following to access information about ‘FWSAkRDRtools’ in the
 Help pane, including documentation pages for each function. This is a
 useful quick reference for function usage, arguments, and expected
 output.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a></span>
-<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="fu">help</span>(<span class="at">package =</span> <span class="st">&quot;FWSAkRDRtools&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a></span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="fu">help</span>(<span class="at">package =</span> <span class="st">&quot;FWSAkRDRtools&quot;</span>)</span></code></pre></div>
 <p><br> <br></p>
 </div>
 </div>
@@ -860,13 +850,13 @@ managers have write and modify permissions to all folders. This helps
 ensure files are not accidentally overwritten and/or lost. Use
 <code>incoming = TRUE</code> to include the “incoming” folder in the new
 directory.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a></span>
-<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="fu">get.dir.template</span>(</span>
-<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a>  <span class="at">project =</span> <span class="st">&quot;mbmlb_909_Eskimo_Curlew_study&quot;</span>,</span>
-<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a>  <span class="at">local.path =</span> wd,</span>
-<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a>  <span class="at">main =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a>  <span class="at">incoming =</span> <span class="cn">FALSE</span></span>
-<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a></span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a><span class="fu">get.dir.template</span>(</span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a>  <span class="at">project =</span> <span class="st">&quot;mbmlb_909_Eskimo_Curlew_study&quot;</span>,</span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a>  <span class="at">local.path =</span> wd,</span>
+<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a>  <span class="at">main =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a>  <span class="at">incoming =</span> <span class="cn">FALSE</span></span>
+<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a>)</span></code></pre></div>
 <p><br></p>
 </div>
 <div id="find.projects-find-rdr-projects" class="section level2">
@@ -884,14 +874,14 @@ an optional argument to fine-tune search results within RDR program
 folders (fes, mbm, nwrs, osm, sa). The output will either be the full
 folder path (<code>full.path = TRUE</code>) or just the project folder
 name(s) (<code>full.path = FALSE</code>).</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a></span>
-<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>?base<span class="sc">::</span>regex</span>
-<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a></span>
-<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a>project.folders <span class="ot">&lt;-</span> <span class="fu">find.projects</span>(</span>
-<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a>  <span class="at">pattern =</span> <span class="fu">c</span>(<span class="st">&quot;red.*knot&quot;</span>, <span class="st">&quot;alaska&quot;</span>),</span>
-<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a>  <span class="at">program =</span> <span class="st">&quot;mbm&quot;</span>,</span>
-<span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a>  <span class="at">full.path =</span> <span class="cn">FALSE</span></span>
-<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a></span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>?base<span class="sc">::</span>regex</span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a>project.folders <span class="ot">&lt;-</span> <span class="fu">find.projects</span>(</span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a>  <span class="at">pattern =</span> <span class="fu">c</span>(<span class="st">&quot;red.*knot&quot;</span>, <span class="st">&quot;alaska&quot;</span>),</span>
+<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a>  <span class="at">program =</span> <span class="st">&quot;mbm&quot;</span>,</span>
+<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a>  <span class="at">full.path =</span> <span class="cn">FALSE</span></span>
+<span id="cb7-8"><a href="#cb7-8" tabindex="-1"></a>)</span></code></pre></div>
 <p><br></p>
 </div>
 <div id="find.files-find-rdr-project-files" class="section level2">
@@ -918,18 +908,18 @@ include both the main (<code>main = TRUE</code>) and “incoming”
 excluded by changing the argument to <code>FALSE</code>. The output will
 either be the full file path (<code>full.path = TRUE</code>) or just the
 subfolder path(s) and file name(s) (<code>full.path = FALSE</code>).</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a></span>
-<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a>?base<span class="sc">::</span>regex</span>
-<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a></span>
-<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a>file.locs <span class="ot">&lt;-</span> <span class="fu">find.files</span>(</span>
-<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a>  <span class="at">pattern =</span> <span class="fu">c</span>(<span class="st">&quot;template&quot;</span>, <span class="st">&quot;dictionary&quot;</span>, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">.csv&quot;</span>, <span class="st">&quot;hello&quot;</span>),</span>
-<span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a>  <span class="at">project =</span> <span class="st">&quot;mbmlb_010_Grey_headed_chickadee_hybridization&quot;</span>,</span>
-<span id="cb9-7"><a href="#cb9-7" tabindex="-1"></a>  <span class="at">subfolder.path =</span> <span class="st">&quot;metadata&quot;</span>,</span>
-<span id="cb9-8"><a href="#cb9-8" tabindex="-1"></a>  <span class="at">main =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb9-9"><a href="#cb9-9" tabindex="-1"></a>  <span class="at">incoming =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb9-10"><a href="#cb9-10" tabindex="-1"></a>  <span class="at">recursive =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb9-11"><a href="#cb9-11" tabindex="-1"></a>  <span class="at">full.path =</span> <span class="cn">FALSE</span></span>
-<span id="cb9-12"><a href="#cb9-12" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a></span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>?base<span class="sc">::</span>regex</span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a>file.locs <span class="ot">&lt;-</span> <span class="fu">find.files</span>(</span>
+<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a>  <span class="at">pattern =</span> <span class="fu">c</span>(<span class="st">&quot;template&quot;</span>, <span class="st">&quot;dictionary&quot;</span>, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">.csv&quot;</span>, <span class="st">&quot;hello&quot;</span>),</span>
+<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a>  <span class="at">project =</span> <span class="st">&quot;mbmlb_010_Grey_headed_chickadee_hybridization&quot;</span>,</span>
+<span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a>  <span class="at">subfolder.path =</span> <span class="st">&quot;metadata&quot;</span>,</span>
+<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a>  <span class="at">main =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb8-9"><a href="#cb8-9" tabindex="-1"></a>  <span class="at">incoming =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb8-10"><a href="#cb8-10" tabindex="-1"></a>  <span class="at">recursive =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb8-11"><a href="#cb8-11" tabindex="-1"></a>  <span class="at">full.path =</span> <span class="cn">FALSE</span></span>
+<span id="cb8-12"><a href="#cb8-12" tabindex="-1"></a>)</span></code></pre></div>
 <p><br></p>
 </div>
 <div id="download.files-download-rdr-project-files" class="section level2">
@@ -947,21 +937,21 @@ to be specified if the download fails (e.g., <code>&quot;internal&quot;</code>,
 <code>&quot;wininet&quot;</code>). Print <code>?download.file</code> for more
 details on download file methods. Print <code>browseURL(wd)</code> to
 view the downloaded files.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a></span>
-<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>?download.file</span>
-<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a></span>
-<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a><span class="fu">download.files</span>(</span>
-<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a>  <span class="at">pattern =</span> <span class="fu">c</span>(<span class="st">&quot;banding&quot;</span>, <span class="st">&quot;dictionary&quot;</span>),</span>
-<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a>  <span class="at">project =</span> <span class="st">&quot;mbmlb_010_Grey_headed_chickadee_hybridization&quot;</span>,</span>
-<span id="cb10-7"><a href="#cb10-7" tabindex="-1"></a>  <span class="at">subfolder.path =</span> <span class="st">&quot;&quot;</span>,</span>
-<span id="cb10-8"><a href="#cb10-8" tabindex="-1"></a>  <span class="at">local.path =</span> wd,</span>
-<span id="cb10-9"><a href="#cb10-9" tabindex="-1"></a>  <span class="at">main =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb10-10"><a href="#cb10-10" tabindex="-1"></a>  <span class="at">incoming =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb10-11"><a href="#cb10-11" tabindex="-1"></a>  <span class="at">recursive =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb10-12"><a href="#cb10-12" tabindex="-1"></a>  <span class="at">download.file.method =</span> <span class="st">&quot;auto&quot;</span></span>
-<span id="cb10-13"><a href="#cb10-13" tabindex="-1"></a>)</span>
-<span id="cb10-14"><a href="#cb10-14" tabindex="-1"></a></span>
-<span id="cb10-15"><a href="#cb10-15" tabindex="-1"></a><span class="fu">browseURL</span>(wd)</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a></span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a>?download.file</span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a><span class="fu">download.files</span>(</span>
+<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a>  <span class="at">pattern =</span> <span class="fu">c</span>(<span class="st">&quot;banding&quot;</span>, <span class="st">&quot;dictionary&quot;</span>),</span>
+<span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a>  <span class="at">project =</span> <span class="st">&quot;mbmlb_010_Grey_headed_chickadee_hybridization&quot;</span>,</span>
+<span id="cb9-7"><a href="#cb9-7" tabindex="-1"></a>  <span class="at">subfolder.path =</span> <span class="st">&quot;&quot;</span>,</span>
+<span id="cb9-8"><a href="#cb9-8" tabindex="-1"></a>  <span class="at">local.path =</span> wd,</span>
+<span id="cb9-9"><a href="#cb9-9" tabindex="-1"></a>  <span class="at">main =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb9-10"><a href="#cb9-10" tabindex="-1"></a>  <span class="at">incoming =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb9-11"><a href="#cb9-11" tabindex="-1"></a>  <span class="at">recursive =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb9-12"><a href="#cb9-12" tabindex="-1"></a>  <span class="at">download.file.method =</span> <span class="st">&quot;auto&quot;</span></span>
+<span id="cb9-13"><a href="#cb9-13" tabindex="-1"></a>)</span>
+<span id="cb9-14"><a href="#cb9-14" tabindex="-1"></a></span>
+<span id="cb9-15"><a href="#cb9-15" tabindex="-1"></a><span class="fu">browseURL</span>(wd)</span></code></pre></div>
 <p><br></p>
 </div>
 <div id="read.tables-read-rdr-project-tables-into-r" class="section level2">
@@ -981,28 +971,28 @@ default values. Tables should be reviewed for errors and re-imported as
 needed using the file URLs printed with the output.
 <code>read.tables()</code> will return a data frame if only one file is
 selected or a list of data frames if multiple files are selected.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a></span>
-<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.tables</span>(</span>
-<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a>  <span class="at">pattern =</span> <span class="fu">c</span>(<span class="st">&quot;dictionary&quot;</span>),</span>
-<span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a>  <span class="at">project =</span> <span class="st">&quot;mbmlb_010_Grey_headed_chickadee_hybridization&quot;</span>,</span>
-<span id="cb11-5"><a href="#cb11-5" tabindex="-1"></a>  <span class="at">subfolder.path =</span> <span class="st">&quot;metadata&quot;</span>,</span>
-<span id="cb11-6"><a href="#cb11-6" tabindex="-1"></a>  <span class="at">main =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb11-7"><a href="#cb11-7" tabindex="-1"></a>  <span class="at">incoming =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb11-8"><a href="#cb11-8" tabindex="-1"></a>  <span class="at">recursive =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb11-9"><a href="#cb11-9" tabindex="-1"></a>  <span class="at">header =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb11-10"><a href="#cb11-10" tabindex="-1"></a>  <span class="at">na.strings =</span> <span class="st">&quot;&quot;</span></span>
-<span id="cb11-11"><a href="#cb11-11" tabindex="-1"></a>)</span>
-<span id="cb11-12"><a href="#cb11-12" tabindex="-1"></a></span>
-<span id="cb11-13"><a href="#cb11-13" tabindex="-1"></a>df.list <span class="ot">&lt;-</span> <span class="fu">read.tables</span>(</span>
-<span id="cb11-14"><a href="#cb11-14" tabindex="-1"></a>  <span class="at">pattern =</span> <span class="fu">c</span>(<span class="st">&quot;</span><span class="sc">\\</span><span class="st">.csv&quot;</span>, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">.xlsx&quot;</span>),</span>
-<span id="cb11-15"><a href="#cb11-15" tabindex="-1"></a>  <span class="at">project =</span> <span class="st">&quot;mbmlb_010_Grey_headed_chickadee_hybridization&quot;</span>,</span>
-<span id="cb11-16"><a href="#cb11-16" tabindex="-1"></a>  <span class="at">subfolder.path =</span> <span class="st">&quot;&quot;</span>,</span>
-<span id="cb11-17"><a href="#cb11-17" tabindex="-1"></a>  <span class="at">main =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb11-18"><a href="#cb11-18" tabindex="-1"></a>  <span class="at">incoming =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb11-19"><a href="#cb11-19" tabindex="-1"></a>  <span class="at">recursive =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb11-20"><a href="#cb11-20" tabindex="-1"></a>  <span class="at">header =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb11-21"><a href="#cb11-21" tabindex="-1"></a>  <span class="at">na.strings =</span> <span class="st">&quot;&quot;</span></span>
-<span id="cb11-22"><a href="#cb11-22" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a></span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.tables</span>(</span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a>  <span class="at">pattern =</span> <span class="fu">c</span>(<span class="st">&quot;dictionary&quot;</span>),</span>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a>  <span class="at">project =</span> <span class="st">&quot;mbmlb_010_Grey_headed_chickadee_hybridization&quot;</span>,</span>
+<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a>  <span class="at">subfolder.path =</span> <span class="st">&quot;metadata&quot;</span>,</span>
+<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a>  <span class="at">main =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb10-7"><a href="#cb10-7" tabindex="-1"></a>  <span class="at">incoming =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb10-8"><a href="#cb10-8" tabindex="-1"></a>  <span class="at">recursive =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb10-9"><a href="#cb10-9" tabindex="-1"></a>  <span class="at">header =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb10-10"><a href="#cb10-10" tabindex="-1"></a>  <span class="at">na.strings =</span> <span class="st">&quot;&quot;</span></span>
+<span id="cb10-11"><a href="#cb10-11" tabindex="-1"></a>)</span>
+<span id="cb10-12"><a href="#cb10-12" tabindex="-1"></a></span>
+<span id="cb10-13"><a href="#cb10-13" tabindex="-1"></a>df.list <span class="ot">&lt;-</span> <span class="fu">read.tables</span>(</span>
+<span id="cb10-14"><a href="#cb10-14" tabindex="-1"></a>  <span class="at">pattern =</span> <span class="fu">c</span>(<span class="st">&quot;</span><span class="sc">\\</span><span class="st">.csv&quot;</span>, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">.xlsx&quot;</span>),</span>
+<span id="cb10-15"><a href="#cb10-15" tabindex="-1"></a>  <span class="at">project =</span> <span class="st">&quot;mbmlb_010_Grey_headed_chickadee_hybridization&quot;</span>,</span>
+<span id="cb10-16"><a href="#cb10-16" tabindex="-1"></a>  <span class="at">subfolder.path =</span> <span class="st">&quot;&quot;</span>,</span>
+<span id="cb10-17"><a href="#cb10-17" tabindex="-1"></a>  <span class="at">main =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb10-18"><a href="#cb10-18" tabindex="-1"></a>  <span class="at">incoming =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb10-19"><a href="#cb10-19" tabindex="-1"></a>  <span class="at">recursive =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb10-20"><a href="#cb10-20" tabindex="-1"></a>  <span class="at">header =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb10-21"><a href="#cb10-21" tabindex="-1"></a>  <span class="at">na.strings =</span> <span class="st">&quot;&quot;</span></span>
+<span id="cb10-22"><a href="#cb10-22" tabindex="-1"></a>)</span></code></pre></div>
 <p><br></p>
 </div>
 <div id="clone.project-clone-an-rdr-project" class="section level2">
@@ -1015,13 +1005,13 @@ local path (<code>local.path</code>). Both the main
 (<code>main = TRUE</code>) and “incoming” (<code>incoming = TRUE</code>)
 folders will be cloned unless one or the other is excluded by changing
 the argument to <code>FALSE</code>.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a></span>
-<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a><span class="fu">clone.project</span>(</span>
-<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a>  <span class="at">project =</span> <span class="st">&quot;mbmlb_010_Grey_headed_chickadee_hybridization&quot;</span>,</span>
-<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a>  <span class="at">local.path =</span> wd,</span>
-<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a>  <span class="at">main =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb12-6"><a href="#cb12-6" tabindex="-1"></a>  <span class="at">incoming =</span> <span class="cn">TRUE</span></span>
-<span id="cb12-7"><a href="#cb12-7" tabindex="-1"></a>  )</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a></span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a><span class="fu">clone.project</span>(</span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a>  <span class="at">project =</span> <span class="st">&quot;mbmlb_010_Grey_headed_chickadee_hybridization&quot;</span>,</span>
+<span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a>  <span class="at">local.path =</span> wd,</span>
+<span id="cb11-5"><a href="#cb11-5" tabindex="-1"></a>  <span class="at">main =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb11-6"><a href="#cb11-6" tabindex="-1"></a>  <span class="at">incoming =</span> <span class="cn">TRUE</span></span>
+<span id="cb11-7"><a href="#cb11-7" tabindex="-1"></a>  )</span></code></pre></div>
 <p><br></p>
 </div>
 <div id="summarize.files-summarize-files-in-an-rdr-project" class="section level2">
@@ -1040,22 +1030,22 @@ function will summarize subsequent subfolders
 (<code>main = TRUE</code>) and “incoming” (<code>incoming = TRUE</code>)
 folders unless one or the other is excluded by changing the argument to
 <code>FALSE</code>.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a></span>
-<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a>all.summary<span class="ot">&lt;-</span> <span class="fu">summarize.files</span>(</span>
-<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a>  <span class="at">project =</span> <span class="st">&quot;mbmlb_010_Grey_headed_chickadee_hybridization&quot;</span>,</span>
-<span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a>  <span class="at">subfolder =</span> <span class="st">&quot;&quot;</span>,</span>
-<span id="cb13-5"><a href="#cb13-5" tabindex="-1"></a>  <span class="at">main =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb13-6"><a href="#cb13-6" tabindex="-1"></a>  <span class="at">incoming =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb13-7"><a href="#cb13-7" tabindex="-1"></a>  <span class="at">recursive =</span> <span class="cn">TRUE</span></span>
-<span id="cb13-8"><a href="#cb13-8" tabindex="-1"></a>)</span>
-<span id="cb13-9"><a href="#cb13-9" tabindex="-1"></a></span>
-<span id="cb13-10"><a href="#cb13-10" tabindex="-1"></a>data.summary<span class="ot">&lt;-</span> <span class="fu">summarize.files</span>(</span>
-<span id="cb13-11"><a href="#cb13-11" tabindex="-1"></a>  <span class="at">project =</span> <span class="st">&quot;mbmlb_010_Grey_headed_chickadee_hybridization&quot;</span>,</span>
-<span id="cb13-12"><a href="#cb13-12" tabindex="-1"></a>  <span class="at">subfolder =</span> <span class="fu">c</span>(<span class="st">&quot;raw_data&quot;</span>,<span class="st">&quot;final_data&quot;</span>),</span>
-<span id="cb13-13"><a href="#cb13-13" tabindex="-1"></a>  <span class="at">main =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb13-14"><a href="#cb13-14" tabindex="-1"></a>  <span class="at">incoming =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb13-15"><a href="#cb13-15" tabindex="-1"></a>  <span class="at">recursive =</span> <span class="cn">TRUE</span></span>
-<span id="cb13-16"><a href="#cb13-16" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a></span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a>all.summary<span class="ot">&lt;-</span> <span class="fu">summarize.files</span>(</span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a>  <span class="at">project =</span> <span class="st">&quot;mbmlb_010_Grey_headed_chickadee_hybridization&quot;</span>,</span>
+<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a>  <span class="at">subfolder =</span> <span class="st">&quot;&quot;</span>,</span>
+<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a>  <span class="at">main =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb12-6"><a href="#cb12-6" tabindex="-1"></a>  <span class="at">incoming =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb12-7"><a href="#cb12-7" tabindex="-1"></a>  <span class="at">recursive =</span> <span class="cn">TRUE</span></span>
+<span id="cb12-8"><a href="#cb12-8" tabindex="-1"></a>)</span>
+<span id="cb12-9"><a href="#cb12-9" tabindex="-1"></a></span>
+<span id="cb12-10"><a href="#cb12-10" tabindex="-1"></a>data.summary<span class="ot">&lt;-</span> <span class="fu">summarize.files</span>(</span>
+<span id="cb12-11"><a href="#cb12-11" tabindex="-1"></a>  <span class="at">project =</span> <span class="st">&quot;mbmlb_010_Grey_headed_chickadee_hybridization&quot;</span>,</span>
+<span id="cb12-12"><a href="#cb12-12" tabindex="-1"></a>  <span class="at">subfolder =</span> <span class="fu">c</span>(<span class="st">&quot;raw_data&quot;</span>,<span class="st">&quot;final_data&quot;</span>),</span>
+<span id="cb12-13"><a href="#cb12-13" tabindex="-1"></a>  <span class="at">main =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb12-14"><a href="#cb12-14" tabindex="-1"></a>  <span class="at">incoming =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb12-15"><a href="#cb12-15" tabindex="-1"></a>  <span class="at">recursive =</span> <span class="cn">TRUE</span></span>
+<span id="cb12-16"><a href="#cb12-16" tabindex="-1"></a>)</span></code></pre></div>
 <p><br></p>
 </div>
 <div id="commit.files-commit-files-to-an-rdr-project" class="section level2">
@@ -1092,14 +1082,14 @@ commit. If approved, a summary of the commit is printed to the R Console
 and sent to the changelog in the RDR project “incoming” folder. You may
 want to add additional details to the changelog, including the contents
 of each file.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a></span>
-<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a>commit.summary<span class="ot">&lt;-</span> <span class="fu">commit.files</span>(</span>
-<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a>  <span class="at">project =</span> <span class="st">&quot;mbmlb_010_Grey_headed_chickadee_hybridization&quot;</span>,</span>
-<span id="cb14-4"><a href="#cb14-4" tabindex="-1"></a>  <span class="at">local.path =</span> <span class="fu">paste0</span>(wd,<span class="st">&quot;/mbmlb_010_Grey_headed_chickadee_hybridization&quot;</span>),</span>
-<span id="cb14-5"><a href="#cb14-5" tabindex="-1"></a>  <span class="at">recursive =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb14-6"><a href="#cb14-6" tabindex="-1"></a>  <span class="at">review.duplicate =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb14-7"><a href="#cb14-7" tabindex="-1"></a>  <span class="at">rdr.overwrite =</span> <span class="cn">FALSE</span></span>
-<span id="cb14-8"><a href="#cb14-8" tabindex="-1"></a>  )</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a></span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a>commit.summary<span class="ot">&lt;-</span> <span class="fu">commit.files</span>(</span>
+<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a>  <span class="at">project =</span> <span class="st">&quot;mbmlb_010_Grey_headed_chickadee_hybridization&quot;</span>,</span>
+<span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a>  <span class="at">local.path =</span> <span class="fu">paste0</span>(wd,<span class="st">&quot;/mbmlb_010_Grey_headed_chickadee_hybridization&quot;</span>),</span>
+<span id="cb13-5"><a href="#cb13-5" tabindex="-1"></a>  <span class="at">recursive =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb13-6"><a href="#cb13-6" tabindex="-1"></a>  <span class="at">review.duplicate =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb13-7"><a href="#cb13-7" tabindex="-1"></a>  <span class="at">rdr.overwrite =</span> <span class="cn">FALSE</span></span>
+<span id="cb13-8"><a href="#cb13-8" tabindex="-1"></a>  )</span></code></pre></div>
 </div>
 </div>
 
