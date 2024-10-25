@@ -64,7 +64,7 @@ pacman::p_load(kableExtra, magrittr)
 kableExtra::kable(
   utils::read.csv(
     "https://raw.githubusercontent.com/hdvincelette/FWSAkRDRtools/refs/heads/main/vignettes/data/function_requirements.csv"
-  ) %>%  `colnames<-`(c("function","FWS network connection","write permission")),
+  ) %>%  `colnames<-`(c("function","FWS network connection","'incoming' write permission")),
   escape = F,
   align = "lcc"
 )  %>% kableExtra::kable_styling(full_width = F, position = "left", font_size = 12) 
