@@ -239,20 +239,9 @@ install packages from GitHub.</p>
 <div class="section level3">
 <h3 id="load">Load<a class="anchor" aria-label="anchor" href="#load"></a>
 </h3>
-<p>Run the following housekeeping code to set chunk behavior within this
-document.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>width <span class="op">=</span> <span class="fl">9999</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu">knitr</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/knitr/man/opts_chunk.html" class="external-link">opts_chunk</a></span><span class="op">$</span><span class="fu">set</span><span class="op">(</span></span>
-<span>  echo <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>  collapse <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>  comment <span class="op">=</span> <span class="st">"#&gt;"</span>,</span>
-<span>  error<span class="op">=</span><span class="cn">TRUE</span></span>
-<span><span class="op">)</span></span></code></pre></div>
 <p>Load ‘FWSAkRDRtools’ into the R library and set the working directory
 (where you would like files to be saved and/or copied from).</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/hdvincelette/FWSAkRDRtools" class="external-link">FWSAkRDRtools</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">wd</span><span class="op">&lt;-</span> <span class="st">"C:/Users/hvincelette/OneDrive - DOI/Documents/Data_management/Test"</span></span></code></pre></div>
@@ -260,7 +249,7 @@ document.</p>
 Help pane, including documentation pages for each function. This is a
 useful quick reference for function usage, arguments, and expected
 output.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/help.html" class="external-link">help</a></span><span class="op">(</span>package <span class="op">=</span> <span class="st">"FWSAkRDRtools"</span><span class="op">)</span></span></code></pre></div>
 <p><br><br></p>
 </div>
@@ -301,7 +290,7 @@ managers have write and modify permissions to all folders. This helps
 ensure files are not accidentally overwritten and/or lost. Use
 <code>incoming = TRUE</code> to include the “incoming” folder in the new
 directory.</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/get.dir.template.html">get.dir.template</a></span><span class="op">(</span></span>
 <span>  project <span class="op">=</span> <span class="st">"mbmlb_909_Eskimo_Curlew_study"</span>,</span>
 <span>  local.path <span class="op">=</span> <span class="va">wd</span>,</span>
@@ -327,7 +316,7 @@ an optional argument to fine-tune search results within RDR program
 folders (fes, mbm, nwrs, osm, sa). The output will either be the full
 folder path (<code>full.path = TRUE</code>) or just the project folder
 name(s) (<code>full.path = FALSE</code>).</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">?</span><span class="fu">base</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/r/base/regex.html" class="external-link">regex</a></span></span>
 <span></span>
 <span><span class="va">project.folders</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/find.projects.html">find.projects</a></span><span class="op">(</span></span>
@@ -363,7 +352,7 @@ include both the main (<code>main = TRUE</code>) and “incoming”
 excluded by changing the argument to <code>FALSE</code>. The output will
 either be the full file path (<code>full.path = TRUE</code>) or just the
 subfolder path(s) and file name(s) (<code>full.path = FALSE</code>).</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">?</span><span class="fu">base</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/r/base/regex.html" class="external-link">regex</a></span></span>
 <span></span>
 <span><span class="va">file.locs</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/find.files.html">find.files</a></span><span class="op">(</span></span>
@@ -394,7 +383,7 @@ to be specified if the download fails (e.g., <code>"internal"</code>,
 <code>"wininet"</code>). Print <code><a href="https://rdrr.io/r/utils/download.file.html" class="external-link">?download.file</a></code> for more
 details on download file methods. Print <code>browseURL(wd)</code> to
 view the downloaded files.</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">?</span><span class="va">download.file</span></span>
 <span></span>
 <span><span class="fu"><a href="../reference/download.files.html">download.files</a></span><span class="op">(</span></span>
@@ -430,7 +419,7 @@ default values. Tables should be reviewed for errors and re-imported as
 needed using the file URLs printed with the output.
 <code><a href="../reference/read.tables.html">read.tables()</a></code> will return a data frame if only one file is
 selected or a list of data frames if multiple files are selected.</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read.tables.html">read.tables</a></span><span class="op">(</span></span>
 <span>  pattern <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"dictionary"</span><span class="op">)</span>,</span>
 <span>  project <span class="op">=</span> <span class="st">"mbmlb_010_Grey_headed_chickadee_hybridization"</span>,</span>
@@ -466,7 +455,7 @@ local path (<code>local.path</code>). Both the main
 (<code>main = TRUE</code>) and “incoming” (<code>incoming = TRUE</code>)
 folders will be cloned unless one or the other is excluded by changing
 the argument to <code>FALSE</code>.</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/clone.project.html">clone.project</a></span><span class="op">(</span></span>
 <span>  project <span class="op">=</span> <span class="st">"mbmlb_010_Grey_headed_chickadee_hybridization"</span>,</span>
 <span>  local.path <span class="op">=</span> <span class="va">wd</span>,</span>
@@ -493,7 +482,7 @@ function will summarize subsequent subfolders
 (<code>main = TRUE</code>) and “incoming” (<code>incoming = TRUE</code>)
 folders unless one or the other is excluded by changing the argument to
 <code>FALSE</code>.</p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">all.summary</span><span class="op">&lt;-</span> <span class="fu"><a href="../reference/summarize.files.html">summarize.files</a></span><span class="op">(</span></span>
 <span>  project <span class="op">=</span> <span class="st">"mbmlb_010_Grey_headed_chickadee_hybridization"</span>,</span>
 <span>  subfolder <span class="op">=</span> <span class="st">""</span>,</span>
@@ -547,7 +536,7 @@ commit. If approved, a summary of the commit is printed to the R Console
 and sent to the changelog in the RDR project “incoming” folder. You may
 want to add additional details to the changelog, including the contents
 of each file.</p>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">commit.summary</span><span class="op">&lt;-</span> <span class="fu"><a href="../reference/commit.files.html">commit.files</a></span><span class="op">(</span></span>
 <span>  project <span class="op">=</span> <span class="st">"mbmlb_010_Grey_headed_chickadee_hybridization"</span>,</span>
 <span>  local.path <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">wd</span>,<span class="st">"/mbmlb_010_Grey_headed_chickadee_hybridization"</span><span class="op">)</span>,</span>
