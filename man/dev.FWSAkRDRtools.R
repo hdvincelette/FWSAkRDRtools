@@ -12,19 +12,19 @@ devtools::build_readme()
 devtools::install()
 
 # Write markdown
-# pkgdown::build_articles()
-# rmarkdown::render('vignettes/01_FWSAkRDRtools_Tutorial.Rmd')
+pkgdown::build_articles()
+rmarkdown::render('vignettes/01_FWSAkRDRtools_Tutorial.Rmd')
 
 
 # Update site
-pkgdown::deploy_to_branch(
-  clean = TRUE,
-  branch = "gh-pages",
-  remote = "origin",
-  github_pages = (branch == "gh-pages"),
-  subdir = NULL,
-  examples = FALSE
-)
+# pkgdown::deploy_to_branch(
+#   clean = TRUE,
+#   branch = "gh-pages",
+#   remote = "origin",
+#   github_pages = (branch == "gh-pages"),
+#   subdir = NULL,
+#   examples = FALSE
+# )
 
 # pkgdown::build_site(examples = FALSE)
 # pkgdown::build_site_github_pages(examples = FALSE)
