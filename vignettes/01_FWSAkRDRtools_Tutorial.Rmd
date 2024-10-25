@@ -49,9 +49,13 @@ Connected users can navigate to the RDR by pasting the link <file://ifw7ro-file.
 Please refer to the [Draft Regional Data Repository Guidance Document](https://ecos.fws.gov/ServCat/Reference/Profile/150400) on ServCat for more information on the overall organization and management of the RDR.
 Most 'FWSAkRDRtools' functions require an FWS network connection, and one function also requires write permission to the relevant 'incoming' project folder.
 
+<br>
+
 ##### [The Alaska Regional Data Repository in File Explorer (left) and Microsoft Edge (right)]{style="color: grey;"}
 
 <img src="https://github.com/hdvincelette/FWSAkRDRtools/raw/main/vignettes/images/RDR_file_explorer.png" width="350"/> <img src="https://github.com/hdvincelette/FWSAkRDRtools/raw/main/vignettes/images/RDR_web_browser.png" width="350"/>
+
+<br>
 
 ##### [Function requirements]{style="color: grey;"}
 
