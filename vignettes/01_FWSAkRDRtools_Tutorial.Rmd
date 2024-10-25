@@ -3,6 +3,7 @@ title: "FWSAkRDRtools Tutorial"
 output:
   knitr:::html_vignette:
     toc: true
+    toc_depth: 2
   rmdformats::downcute:
     lightbox: true
   pdf_document:
@@ -71,10 +72,9 @@ kableExtra::kable(
   
 ```
 
-<br>
-<br>
+<br> <br>
 
-# Workspace
+# **Workspace**
 
 ## Uninstall
 
@@ -135,14 +135,13 @@ help(package = "FWSAkRDRtools")
 
 ```
 
-<br>
-<br>
+<br> <br>
 
-# Functions
+# **Functions**
 
-## `get.dir.template()`: get the directory tree template
+## `get.dir.template()`: [get the directory tree template]{style="color: grey;font-size: 12pt"}
 
-This function establishes a new directory using the standardized RDR project folder structure:
+RDR project folders follow a standardized folder structure:
 
 ```{r, echo=FALSE, comment=NA}
 
@@ -171,8 +170,8 @@ cat(unlist(lapply(fad_subbed_out, paste, collapse = "")), sep = "\n")
 ```
 
 `get.dir.template()` can help organize a local project to be archived in the RDR.
-The project name (`project`) is unrestricted, but a prompt requests approval to overwrite an existing folder with the same name at the local path.
-The local path (`local.path`) is where the new directory will be created.
+The project name (`project`) is unrestricted, but a prompt requests approval to overwrite an existing folder with the same name in the local path.
+The new directory will be created in the local path (`local.path`).
 By default, only main project folders are included (`main = TRUE` & `incoming = FALSE`) .
 Normally, only data stewards have write permission to the 'incoming' folder of an RDR project, while data managers have write and modify permissions to all folders.
 This helps ensure files are not accidentally overwritten and/or lost.
@@ -191,7 +190,7 @@ get.dir.template(
 
 <br>
 
-## `find.projects()`: find RDR projects
+## `find.projects()`: [find RDR projects]{style="color: grey;font-size: 12pt"}
 
 `find.projects()` queries the RDR for existing project folder names.
 Pattern(s) (`pattern)` can be a character string or vector of search term(s).
@@ -216,7 +215,7 @@ project.folders <- find.projects(
 
 <br>
 
-## `find.files()`: find RDR project files
+## `find.files()`: [find RDR project files]{style="color: grey;font-size: 12pt"}
 
 `find.files()` allows you to query a specific RDR project folder for individual files.
 Pattern(s) (`pattern)` can be a character string or vector of search term(s).
@@ -226,7 +225,7 @@ Patterns are not case-sensitive.
 Print `?base::regex` to view the regular expressions R documentation.
 A project name or pattern (`project`) is required.
 If a pattern is provided and more than one project is found, a menu will ask for a selection.
-You can specify the subfolder path (`subfolder.path`) to fine-tune the search results (i.e., search in the "metadata" subfolder for a file name containing "dictionary").
+The subfolder path (`subfolder.path`) can be specified to fine-tune search results (e.g., search in the "metadata" subfolder for a file name containing "dictionary").
 The search can be restricted to the top level of a specified subfolder path (`recursive = FALSE`).
 Otherwise, the function will search subsequent subfolders (`recursive = TRUE`).
 The search will include both the main (`main = TRUE`) and "incoming" (`incoming = TRUE`) folders unless one or the other is excluded by changing the argument to `FALSE`.
@@ -250,11 +249,11 @@ file.locs <- find.files(
 
 <br>
 
-## `download.files()`: download RDR project files
+## `download.files()`: [download RDR project files]{style="color: grey;font-size: 12pt"}
 
 `download.files()` enables you to download files from specified RDR project folder onto your local drive.
 Arguments for `download.files()` operate in the same way as [`find.files()`](https://hdvincelette.github.io/FWSAkRDRtools/articles/01_FWSAkRDRtools_Tutorial.html#find-files-find-rdr-project-files), with a few additions.
-The local path (`local.path`) is where the files will be saved.
+The files will be saved to the local path (`local.path`).
 `download.file.method` is the method for downloading files.
 The default (`"auto"`) chooses an appropriate method for the operating system, but the method may need to be specified if the download fails (e.g., `"internal"`, `"libcurl"`, `"wget"`, `"curl"`, `"wininet"`).
 Print `?download.file` for more details on download file methods.
@@ -280,12 +279,12 @@ browseURL(wd)
 
 <br>
 
-## `read.tables()`: read RDR project tables into R
+## `read.tables()`: [read RDR project tables into R]{style="color: grey;font-size: 12pt"}
 
 `read.tables()` enables you to read tabular data files from a specified RDR project folder directly into R.
 Arguments for `read.tables()` operate in the same way as [`find.files()`](https://hdvincelette.github.io/FWSAkRDRtools/articles/01_FWSAkRDRtools_Tutorial.html#find-files-find-rdr-project-files), with a few additions.
 `read.tables()` currently only reads XLS/XLSX (via readxl::read_excel) and CSV (via utils::read.csv) table formats.
-`na.strings` are any strings that are to be interpreted as NA values.
+`na.strings` are any strings to be interpreted as NA values.
 `header` indicates whether the first line contains variable names.
 `header` only applies to CSV formats, and the default is `TRUE`.
 `read.tables()` should be used cautiously as most arguments in the dependent functions are set to default values.
@@ -320,7 +319,13 @@ df.list <- read.tables(
 
 <br>
 
-## `clone.project()`: clone an RDR project
+## `clone.project()`: [clone an RDR project]{style="color: grey;font-size: 12pt"}
+
+`clone.project()` creates an exact copy of an RDR project on your local drive.
+A project name or pattern (`project`) is required.
+If a pattern is provided and more than one project is found, a menu will ask for a selection.
+The cloned folders will be saved to the local path (`local.path`).
+Both the main (`main = TRUE`) and "incoming" (`incoming = TRUE`) folders will be cloned unless one or the other is excluded by changing the argument to `FALSE`.
 
 ```{r, eval=FALSE}
 
@@ -335,30 +340,66 @@ clone.project(
 
 <br>
 
-## `summarize.files()`: summarize files in an RDR project
+## `summarize.files()`: [summarize files in an RDR project]{style="color: grey;font-size: 12pt"}
+
+`summarize.files()` provides a summary of a specific RDR project folder.
+A project name or pattern (`project`) is required.
+If a pattern is provided and more than one project is found, a menu will ask for a selection.
+One or more subfolders (`subfolder`) can be specified to fine-tune and speed up summary results (e.g., summarize only the "raw_data" and "final_data" subfolders).
+The summary can be restricted to the top level of a specified subfolder (`recursive = FALSE`).
+Otherwise, the function will summarize subsequent subfolders (`recursive = TRUE`).
+The summary will include both the main (`main = TRUE`) and "incoming" (`incoming = TRUE`) folders unless one or the other is excluded by changing the argument to `FALSE`.
 
 ```{r, eval=FALSE}
 
-file.summary<- summarize.files(
+all.summary<- summarize.files(
   project = "mbmlb_010_Grey_headed_chickadee_hybridization",
   subfolder = "",
   main = TRUE,
   incoming = TRUE,
   recursive = TRUE
 )
+
+data.summary<- summarize.files(
+  project = "mbmlb_010_Grey_headed_chickadee_hybridization",
+  subfolder = c("raw_data","final_data"),
+  main = TRUE,
+  incoming = FALSE,
+  recursive = TRUE
+)
 ```
 
 <br>
 
-## `commit.files()`: commit files to an RDR project
+## `commit.files()`: [commit files to an RDR project]{style="color: grey;font-size: 12pt"}
+
+`commit.files()` helps you submit files to the RDR.
+Note, you must be the data steward of the relevant RDR project and/or have write permission to the "incoming" folder.
+Refer to the program data manager to understand your project roles and permissions.
+A project name or pattern (`project`) is required.
+If a pattern is provided and more than one project is found, a menu will ask for a selection.
+The local path (`local.path`) should contain files to commit in the same folder structure as the RDR project folder.
+Therefore, it is recommended to create an local directory using [`get.dir.template()`](https://hdvincelette.github.io/FWSAkRDRtools/articles/01_FWSAkRDRtools_Tutorial.html#get-dir-template-get-the-directory-tree-template) or clone the RDR project folder to the local drive with [`clone.project()`](https://hdvincelette.github.io/FWSAkRDRtools/articles/01_FWSAkRDRtools_Tutorial.html#clone-project-clone-an-rdr-project) before managing file additions.
+The local file search will include subfolders in the local path (`recursive = TRUE`) unless otherwise specified (`recursive = FALSE`).
+If a local file is contained in an unfamiliar subfolder path, `commit.files()` will attempt to find the closest matching RDR subfolder path.
+If incorrect, a new subfolder path can be created.
+`commit.files()` runs numerous tests to ensure files are committed to the correct "incoming" folder.
+You can run `commit.files()` more prudently by reviewing local duplicate files (`review.duplicate = TRUE`) and prohibiting the overwrite of RDR files (`rdr.overwrite = FALSE`).
+These are the recommended defaults.
+File overwrites (`rdr.overwrite = TRUE`) must be individually reviewed and approved.
+Only files in the "incoming" folder of the RDR may be immediately overwritten, while those in the main folders will only be overwritten at the discretion of the data manager.
+`commit.files()` will provide an overview of the files to commit.
+If approved, a summary of the commit is printed to the R Console and sent to the changelog in the RDR project "incoming" folder.
+You may want to add additional details to the changelog, including the contents of each file.
 
 ```{r, eval=FALSE}
-# Note files will only be committed if you are the data steward of the project. Refer to the Data Manager to understand your project roles.
 
 commit.summary<- commit.files(
   project = "mbmlb_010_Grey_headed_chickadee_hybridization",
   local.path = paste0(wd,"/mbmlb_010_Grey_headed_chickadee_hybridization"),
-  recursive = TRUE
+  recursive = TRUE,
+  review.duplicate = TRUE,
+  rdr.overwrite = FALSE
   )
 
 ```
