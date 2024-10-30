@@ -134,8 +134,7 @@ find.files <-
               "/",
               project,
               "/",
-              subfolder.path,
-              "/"
+              subfolder.path
             ),
             pattern = pattern[a],
             ignore.case = TRUE,
