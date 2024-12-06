@@ -18,10 +18,10 @@ scrape_mdEditor <- function(x) {
   }
 
   ## Read mdEditor file ####
-  data <- data.frame(filename = x, json = jsonlite::fromJSON(x)) |>
+  data <- data.frame(filename = x, json = jsonlite::fromJSON(x)) %>%
 
     # map json from attribute within data
-    dplyr::mutate(json = purrr::map(json.data.attributes$json, jsonlite::fromJSON)) |>
+    dplyr::mutate(json = purrr::map(json.data.attributes$json, jsonlite::fromJSON)) %>%
 
     # pull up variables of interest
     tidyr::hoist(
@@ -42,27 +42,28 @@ scrape_mdEditor <- function(x) {
       startDateTime = c("metadata", "resourceInfo", "timePeriod", "startDateTime"),
       endDateTime = c("metadata", "resourceInfo", "timePeriod", "endDateTime"),
       pointOfContact = c("metadata", "resourceInfo", "pointOfContact")
-    ) |>
+    ) %>%
 
     # Create unique ID for each metadata record
-    dplyr::mutate(row_id = dplyr::row_number()) |>
+    dplyr::mutate(row_id = dplyr::row_number()) %>%
 
     # Unnest metadataDate, this likely will create multiple columns for date, type, and description if present
-    tidyr::unnest(metadataDate) |>
+    tidyr::unnest(metadataDate) %>%
 
     # If date from metadataDate is present make it a date variable, otherwise create a column for date and fill with NA
-    dplyr::mutate(date = as.Date(date)) |>
+    dplyr::mutate(date = ifelse("date" %in% names(.), as.Date(date),
+                                NA)) %>%
 
     # Group by unique metadata record
-    dplyr::group_by(row_id) |>
+    dplyr::group_by(row_id) %>%
 
     # pull rows with most recent date
-    dplyr::filter(date == max(date, na.rm = TRUE)) |>
+    dplyr::filter(date == max(date, na.rm = TRUE)) %>%
 
-    dplyr::ungroup() |>
+    dplyr::ungroup() %>%
 
     # rename date to metadataDate
-    dplyr::rename(md_date = date) |>
+    dplyr::rename(md_date = date) %>%
 
     # select variables of interest before export
     dplyr::select(
@@ -78,13 +79,13 @@ scrape_mdEditor <- function(x) {
       endDateTime,
       pointOfContact,
       row_id
-    ) |>
+    ) %>%
 
     # Remove duplicates since there may be multiple rows with the same date but different dateType or description
-    dplyr::distinct(row_id, .keep_all = TRUE) |>
+    dplyr::distinct(row_id, .keep_all = TRUE) %>%
 
     # unlist online resource
-    dplyr::rowwise() |>
+    dplyr::rowwise() %>%
 
     dplyr::mutate(onlineResource = stringr::str_flatten_comma(unlist(onlineResource)))
 
