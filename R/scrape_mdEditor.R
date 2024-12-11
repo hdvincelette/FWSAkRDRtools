@@ -38,6 +38,11 @@ scrape_mdEditor <- function(x) {
         "onlineResource",
         "uri"
       ),
+      title = c(
+        "metadata",
+        "resourceInfo",
+        "citation",
+        "title"),
       abstract = c("metadata", "resourceInfo", "abstract"),
       startDateTime = c("metadata", "resourceInfo", "timePeriod", "startDateTime"),
       endDateTime = c("metadata", "resourceInfo", "timePeriod", "endDateTime"),
@@ -74,6 +79,7 @@ scrape_mdEditor <- function(x) {
       md_date,
       status,
       onlineResource,
+      title,
       abstract,
       startDateTime,
       endDateTime,
