@@ -17,3 +17,6 @@ including their contactIds, names, and email addresses.
 Generates a table of contacts for individuals and organizations associated
 with a set of metadata records. Primarily used within other functions.
 }
+\examples{
+# get_contacts(x = "AK-contacts-mdeditor-20241210-111268.json")
+}

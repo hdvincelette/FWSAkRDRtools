@@ -7,6 +7,9 @@
 #'
 #' @return A data.frame containing all contacts found within metadata file,
 #' including their contactIds, names, and email addresses.
+#' @export
+#' @examples
+#' # get_contacts(x = "AK-contacts-mdeditor-20241210-111268.json")
 
 get_contacts <- function(file) {
 

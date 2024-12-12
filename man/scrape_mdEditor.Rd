@@ -18,3 +18,6 @@ Extracts select metadata parameters from mdEditor file into a dataframe.
 Note that only mdeditor files, not mdjson files, are not compatible with this
 function.
 }
+\examples{
+# scrape_mdEditor(x = "fescgl_001_MixedStockAnalysis-mdeditor-20240805-110842.json")
+}

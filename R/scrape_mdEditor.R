@@ -7,6 +7,9 @@
 #' @param x mdEditor produced JSON file
 #' @return A dataframe containing the file name and select metadata record
 #' parameters. Each row is a unique record.
+#' @export
+#' @examples
+#' # scrape_mdEditor(x = "fescgl_001_MixedStockAnalysis-mdeditor-20240805-110842.json")
 
 scrape_mdEditor <- function(x) {
 
