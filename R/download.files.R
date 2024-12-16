@@ -47,7 +47,7 @@ download.files <-
     }
 
     ## Test connection ####
-    if(dir.exists("//ifw7ro-file.fws.doi.net/datamgt/")==FALSE){
+    if (dir.exists("//ifw7ro-file.fws.doi.net/datamgt/") == FALSE) {
       stop("Unable to connect to the RDR. Check your network and VPN connection.")
     }
 
@@ -67,7 +67,7 @@ download.files <-
         project.choice <- utils::menu(basename(project.list), title  = "Select a project folder.")
       }
     } else {
-      project.choice<- 1
+      project.choice <- 1
     }
 
     project <- basename(project.list)[project.choice]
@@ -84,10 +84,7 @@ download.files <-
                                           recursive,
                                           full.path = TRUE)
 
-    file.list <- gsub(paste0("//ifw7ro-file.fws.doi.net/datamgt/",
-                             program,
-                             "/",
-                             project),
+    file.list <- gsub(paste0("//ifw7ro-file.fws.doi.net/datamgt/", program, "/", project),
                       "",
                       file.url)
 
@@ -103,25 +100,28 @@ download.files <-
       title = "Download which file(s)?"
     )
 
-    selected.url <- paste0("//ifw7ro-file.fws.doi.net/datamgt/",
-                           program,
-                           "/",
-                           project,
-                           file.choice)
+    if (length(file.choice) != 0) {
+      selected.url <- paste0("//ifw7ro-file.fws.doi.net/datamgt/",
+                             program,
+                             "/",
+                             project,
+                             file.choice)
 
-    ## Download files ####
-    for (b in 1:length(selected.url)) {
-      downloader::download(
-        url = paste0("File:", selected.url[b]),
-        destfile = file.path(local.path, basename(selected.url[b])),
-        method= download.file.method,
-        mode = "wb",
-        quiet = FALSE
-      )
+      ## Download files ####
+      for (b in 1:length(selected.url)) {
+        downloader::download(
+          url = paste0("File:", selected.url[b]),
+          destfile = file.path(local.path, basename(selected.url[b])),
+          method = download.file.method,
+          mode = "wb",
+          quiet = FALSE
+        )
+      }
+      message(cat("\n", "The files were downloaded to: ", "\n", local.path))
+
+      return(invisible(NULL))
+
     }
-    message(cat("\n", "The files were downloaded to: ", "\n", local.path))
-
-    return(invisible(NULL))
 
   }
 
