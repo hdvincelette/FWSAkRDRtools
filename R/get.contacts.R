@@ -24,6 +24,7 @@ get.contacts <- function(x) {
         jsonlite::fromJSON)[mdjson[["data"]][["type"]]=="contacts"],
 
       function(x) {
+
         data.frame(
           contactId = x$contactId,
           name = x$name,
