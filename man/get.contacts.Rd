@@ -2,7 +2,7 @@
 % Please edit documentation in R/get.contacts.R
 \name{get.contacts}
 \alias{get.contacts}
-\title{Get Contacts}
+\title{Get contacts from an mdEditor metadata file}
 \usage{
 get.contacts(x)
 }
