@@ -2,8 +2,9 @@ Package: FWSAkRDRtools
 Title: File Management Tools for the Fish & Wildlife Service Alaska Regional Data Repository
 Version: 0.2.0
 Authors@R: 
-    person("Hannah", "Vincelette", , "hdvincelette@gmail.com", role = c("aut", "cre"),
-           comment = c(ORCID = "0000-0002-6404-0410"))
+    c(person("Hannah", "Vincelette", , "hdvincelette@gmail.com", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0002-6404-0410")),
+    person("Jonah", "Withers", , "jonah_withers@fws.gov", role = c("ctb")))
 Description: 
 License: CC0
 Suggests: 
