@@ -1,4 +1,4 @@
-#' Get Contacts
+#' Get contacts from an mdEditor metadata file
 #'
 #' Generates a table of contacts for individuals and organizations associated with a set of metadata records.
 #'
