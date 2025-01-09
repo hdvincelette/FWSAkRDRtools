@@ -2,7 +2,7 @@
 % Please edit documentation in R/scrape.mdEditor.R
 \name{scrape.mdEditor}
 \alias{scrape.mdEditor}
-\title{Scrape mdEditor metadata}
+\title{Scrape metadata from an mdEditor metadata file}
 \usage{
 scrape.mdEditor(x)
 }
