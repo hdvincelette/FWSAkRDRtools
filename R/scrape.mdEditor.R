@@ -1,4 +1,4 @@
-#' Scrape mdEditor metadata
+#' Scrape metadata from an mdEditor metadata file
 #'
 #' Extracts select metadata parameters from an mdEditor file into a dataframe.
 #'
