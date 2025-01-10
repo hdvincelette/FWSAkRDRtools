@@ -4,7 +4,8 @@ Version: 0.2.0
 Authors@R: 
     c(person("Hannah", "Vincelette", , "hdvincelette@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-6404-0410")),
-    person("Jonah", "Withers", , "jonah_withers@fws.gov", role = c("ctb")))
+    person("Jonah", "Withers", , "jonah_withers@fws.gov", role = c("ctb"),
+    comment = c(ORCID = "0009-0005-2998-7165")))
 Description: 
 License: CC0
 Suggests: 
