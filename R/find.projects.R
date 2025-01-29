@@ -16,10 +16,10 @@
 find.projects <-
   function(pattern, program, full.path) {
     if (missing(pattern)) {
-      pattern <- NULL
+      pattern <- ""
     }
     if (missing(program)) {
-      program <- NULL
+      program <- ""
     }
     if (missing(full.path)) {
       full.path <- FALSE
@@ -31,7 +31,7 @@ find.projects <-
     }
 
     ## Check program code ####
-    if(is.null(program)==FALSE) {
+    if(program!="") {
       if (!program %in% c("fes", "mbm", "nwrs", "osm", "sa")) {
         message(cat(
           paste0(
@@ -54,20 +54,23 @@ find.projects <-
 
     for (a in pattern) {
       for (b in program) {
-        message(
-          paste0(
-            "Searching for projects in '",
-            b,
-            "' with the pattern '",
-            a,
-            "'..."
-          )
-        )
+
+        if (pattern != "") {
+          if (program != "") {
+            message(paste0(
+              "Searching for projects in '",
+              b,
+              "' with the pattern '",
+              a,
+              "'..."
+            ))
+          }
+        }
 
         folder.url <- c(
           folder.url,
           dir(
-            path = paste0("//ifw7ro-file.fws.doi.net/datamgt/", b, "/"),
+            path = paste0("//ifw7ro-file.fws.doi.net/datamgt/", b),
             pattern = a,
             full.names = TRUE,
             recursive = FALSE,
