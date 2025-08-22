@@ -56,7 +56,7 @@ find.projects <-
       for (b in program) {
 
         if (pattern != "") {
-          if (program != "") {
+          if (all(program != "")) {
             message(paste0(
               "Searching for projects in '",
               b,
