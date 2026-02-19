@@ -1,0 +1,63 @@
+# FWSAkRDRtools
+
+File Management Tools for the Fish & Wildlife Service Alaska Regional
+Data Repository
+
+## Installation
+
+You can install the development version of FWSAkRDRtools from
+[GitHub](https://github.com/) with:
+
+``` r
+# Install devtools from CRAN
+install.packages("devtools")
+
+# Install FWSAkRDRtools from GitHub
+devtools::install_github("hdvincelette/FWSAkRDRtools")
+```
+
+## Getting help
+
+Submit a [GitHub
+Issue](https://github.com/hdvincelette/FWSAkRDRtools/issues) to report a
+bug and request a feature or enhancement. Contact the [project
+maintainer](https://github.com/hdvincelette) for information about
+contributing to this project.
+
+# Package index
+
+## All functions
+
+- [`clone.project()`](https://hdvincelette.github.io/FWSAkRDRtools/reference/clone.project.md)
+  : Clone a project from the USFWS Alaska Regional Data Repository (RDR)
+- [`commit.files()`](https://hdvincelette.github.io/FWSAkRDRtools/reference/commit.files.md)
+  : Commit files to the "incoming" project subfolder on the USFWS Alaska
+  Regional Data Repository (RDR)
+- [`download.files()`](https://hdvincelette.github.io/FWSAkRDRtools/reference/download.files.md)
+  : Download project file(s) from the USFWS Alaska Regional Data
+  Repository (RDR)
+- [`find.files()`](https://hdvincelette.github.io/FWSAkRDRtools/reference/find.files.md)
+  : Find the location(s) of project file(s) on the USFWS Alaska Regional
+  Data Repository (RDR)
+- [`find.projects()`](https://hdvincelette.github.io/FWSAkRDRtools/reference/find.projects.md)
+  : Find projects on the USFWS Alaska Regional Data Repository (RDR)
+- [`get.contacts()`](https://hdvincelette.github.io/FWSAkRDRtools/reference/get.contacts.md)
+  : Get contacts from an mdEditor metadata file
+- [`get.dir.template()`](https://hdvincelette.github.io/FWSAkRDRtools/reference/get.dir.template.md)
+  : Get the USFWS Alaska Regional Data Repository (RDR) project
+  directory tree template.
+- [`read.tables()`](https://hdvincelette.github.io/FWSAkRDRtools/reference/read.tables.md)
+  : Read a tabular project file on the USFWS Alaska Regional Data
+  Repository (RDR) into R
+- [`scrape.mdEditor()`](https://hdvincelette.github.io/FWSAkRDRtools/reference/scrape.mdEditor.md)
+  : Scrape metadata from an mdEditor metadata file
+- [`summarize.files()`](https://hdvincelette.github.io/FWSAkRDRtools/reference/summarize.files.md)
+  : Summarize project files on the USFWS Alaska Regional Data Repository
+  (RDR)
+
+# Articles
+
+### All vignettes
+
+- [FWSAkRDRtools
+  Tutorial](https://hdvincelette.github.io/FWSAkRDRtools/articles/01_FWSAkRDRtools_Tutorial.md):
