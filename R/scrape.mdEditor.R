@@ -22,6 +22,9 @@ scrape.mdEditor <- function(x) {
   ## Read mdEditor file ####
   data <- data.frame(filename = x, json = jsonlite::fromJSON(x)) %>%
 
+    # Remove data types that are not dictionaries or records
+    filter(json.data.type %in% c("records", "dictionaries")) %>%
+
     # map json from attribute within data
     dplyr::mutate(json = purrr::map(json.data.attributes$json, jsonlite::fromJSON)) %>%
 
