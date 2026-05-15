@@ -55,7 +55,7 @@ find.files <-
     }
 
     ## Find project folder ####
-    project.list <- suppressMessages(find.projects(pattern = project, full.path = TRUE))
+    project.list <- suppressMessages(FWSAkRDRtools::find.projects(pattern = project, full.path = TRUE))
 
     project.choice <- 0
 
