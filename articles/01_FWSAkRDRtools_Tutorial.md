@@ -52,6 +52,7 @@ Occasionally R hits a roadblock and needs you to manually remove a
 package before it can proceed.
 
 ``` r
+
 remove.packages("FWSAkRDRtools")
 .rs.restartR()
 ```
@@ -65,6 +66,7 @@ package ‘remotes’ (demonstrated here) or ‘devtools’ is required to
 install packages from GitHub.
 
 ``` r
+
 if (!require("remotes")) install.packages("remotes")
 
 Sys.setenv(R_REMOTES_STANDALONE="true")
@@ -79,6 +81,7 @@ Load ‘FWSAkRDRtools’ into the R library and set the working directory
 (where you would like files to be saved and/or copied from).
 
 ``` r
+
 library(FWSAkRDRtools)
 
 wd<- "C:/Users/hvincelette/OneDrive - DOI/Documents/Data_management/Test"
@@ -90,6 +93,7 @@ useful quick reference for function usage, arguments, and expected
 output.
 
 ``` r
+
 help(package = "FWSAkRDRtools")
 ```
 
@@ -130,6 +134,7 @@ not accidentally overwritten and/or lost. Use `incoming = TRUE` to
 include the “incoming” folder in the new directory.
 
 ``` r
+
 get.dir.template(
   project = "mbmlb_909_Eskimo_Curlew_study",
   local.path = wd,
@@ -158,6 +163,7 @@ mbm, nwrs, osm, sa). The output will either be the full folder path
 (`full.path = FALSE`).
 
 ``` r
+
 ?base::regex
 
 project.folders <- find.projects(
@@ -194,6 +200,7 @@ will either be the full file path (`full.path = TRUE`) or just the
 subfolder path(s) and file name(s) (`full.path = FALSE`).
 
 ``` r
+
 ?base::regex
 
 file.locs <- find.files(
@@ -228,6 +235,7 @@ details on download file methods. Print `browseURL(wd)` to view the
 downloaded files.
 
 ``` r
+
 ?download.file
 
 download.files(
@@ -270,6 +278,7 @@ will return a data frame if only one file is selected or a list of data
 frames if multiple files are selected.
 
 ``` r
+
 df <- read.tables(
   pattern = c("dictionary"),
   project = "mbmlb_010_Grey_headed_chickadee_hybridization",
@@ -307,6 +316,7 @@ cloned unless one or the other is excluded by changing the argument to
 `FALSE`.
 
 ``` r
+
 clone.project(
   project = "mbmlb_010_Grey_headed_chickadee_hybridization",
   local.path = wd,
@@ -333,6 +343,7 @@ folders unless one or the other is excluded by changing the argument to
 `FALSE`.
 
 ``` r
+
 all.summary<- summarize.files(
   project = "mbmlb_010_Grey_headed_chickadee_hybridization",
   subfolder = "",
@@ -391,6 +402,7 @@ the RDR project “incoming” folder. You may want to add additional
 details to the changelog, including the contents of each file.
 
 ``` r
+
 commit.summary<- commit.files(
   project = "mbmlb_010_Grey_headed_chickadee_hybridization",
   local.path = paste0(wd,"/mbmlb_010_Grey_headed_chickadee_hybridization"),

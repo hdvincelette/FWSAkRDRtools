@@ -9,6 +9,7 @@ You can install the development version of FWSAkRDRtools from
 [GitHub](https://github.com/) with:
 
 ``` r
+
 # Install devtools from CRAN
 install.packages("devtools")
 
