@@ -143,7 +143,6 @@ find.files <-
 
         if (rlang::is_empty(file.loc) == TRUE) {
           message(paste0(" - 0 files found"))
-          next
         } else{
           message(paste0(" - ", length(file.loc), " file(s) found"))
           file.url <- c(file.url, file.loc)
