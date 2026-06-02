@@ -122,10 +122,14 @@ commit.files <-
     RDR.file.elements <-
       strsplit(RDR.file.list, "/(?!.*/)", perl = TRUE)
     RDR.path <- paste0("//ifw7ro-file.fws.doi.net/datamgt/", program, "/", project)
-    for (a in 1:length(RDR.file.elements)) {
-      RDR.file.elements[[a]] <- c(RDR.path, RDR.file.elements[[a]])
+    if (length(RDR.file.elements) > 0) {
+      for (a in 1:length(RDR.file.elements)) {
+        RDR.file.elements[[a]] <- c(RDR.path, RDR.file.elements[[a]])
+      }
+      RDR.files <- sapply(RDR.file.elements, "[", 3)
+    } else {
+      RDR.files <- list()
     }
-    RDR.files <- sapply(RDR.file.elements, "[", 3)
 
 
     if ("changelog.txt" %in% sapply(local.file.elements, "[", 3)) {
