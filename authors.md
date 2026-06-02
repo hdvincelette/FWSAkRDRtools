@@ -11,16 +11,16 @@
 ## Citation
 
 Source:
-[`DESCRIPTION`](https://github.com/hdvincelette/FWSAkRDRtools/blob/main/DESCRIPTION)
+[`DESCRIPTION`](https://github.com/hdvincelette/FWSAkRDRtools/blob/v0.2.1/DESCRIPTION)
 
 Vincelette H (2026). *FWSAkRDRtools: File Management Tools for the Fish
 & Wildlife Service Alaska Regional Data Repository*. R package version
-0.2.1, <https://github.com/hdvincelette/FWSAkRDRtools>.
+0.2.0, <https://github.com/hdvincelette/FWSAkRDRtools>.
 
     @Manual{,
       title = {FWSAkRDRtools: File Management Tools for the Fish & Wildlife Service Alaska Regional Data Repository},
       author = {Hannah Vincelette},
       year = {2026},
-      note = {R package version 0.2.1},
+      note = {R package version 0.2.0},
       url = {https://github.com/hdvincelette/FWSAkRDRtools},
     }
