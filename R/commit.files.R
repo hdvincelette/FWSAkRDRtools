@@ -72,7 +72,6 @@ commit.files <-
       )
     if (rlang::is_empty(local.file.loc) == TRUE) {
       message(paste0(" - 0 files found"))
-      # next
     } else{
       message(paste0(" - ", length(local.file.loc), " file(s) found"))
       local.file.url <- local.file.loc
@@ -93,7 +92,6 @@ commit.files <-
     )
     if (rlang::is_empty(RDR.file.url) == TRUE) {
       message(paste0(" - 0 files found"))
-      # next
     } else{
       message(paste0(" - ", length(RDR.file.url), " file(s) found"))
     }
