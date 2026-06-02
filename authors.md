@@ -11,7 +11,7 @@
 ## Citation
 
 Source:
-[`DESCRIPTION`](https://github.com/hdvincelette/FWSAkRDRtools/blob/main/DESCRIPTION)
+[`DESCRIPTION`](https://github.com/hdvincelette/FWSAkRDRtools/blob/v0.2.1/DESCRIPTION)
 
 Vincelette H (2026). *FWSAkRDRtools: File Management Tools for the Fish
 & Wildlife Service Alaska Regional Data Repository*. R package version
